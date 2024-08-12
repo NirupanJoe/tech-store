@@ -118,7 +118,7 @@ export default [
 				'error',
 				{
 					min: 1,
-					max: 24,
+					max: 32,
 				},
 			],
 			'id-match': [
