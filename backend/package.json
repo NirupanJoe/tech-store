@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "seeder": "node utils/seeder.js"
+    "seeder": "node utils/seeder.js",
+    "dev": "set NODE_ENV=development && nodemon server.js",
+    "prod": "set NODE_ENV=production && nodemon server.js"
   },
   "keywords": [
     "e-commerce",
