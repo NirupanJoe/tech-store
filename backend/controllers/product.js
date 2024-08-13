@@ -60,3 +60,33 @@ exports.getProduct = async (req, res) => {
 		});
 	}
 };
+
+// eslint-disable-next-line max-lines-per-function
+exports.updateProduct = async (req, res) => {
+	try {
+		const product = await Product.findByIdAndUpdate(
+			req.params.id, req.body, {
+				new: true,
+				runValidators: true,
+			},
+		);
+
+		if(!product) {
+			return res.status(Status.NOT_FOUND.code).json({
+				status: Status.NOT_FOUND.message,
+				message: 'Product not found',
+			});
+		}
+
+		res.status(Status.OK.code).json({
+			status: Status.OK.message,
+			product: product,
+		});
+	}
+	catch (err) {
+		res.status(Status.BAD_REQUEST.code).json({
+			status: Status.BAD_REQUEST.message,
+			error: err.message,
+		});
+	}
+};
