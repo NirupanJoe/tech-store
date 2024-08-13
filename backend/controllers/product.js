@@ -1,4 +1,5 @@
 const Product = require('../models/product');
+const ErrorHandler = require('../utils/ErrorHandler');
 const Status = require('../utils/statusEnum');
 
 exports.getProducts = async (req, res) => {
@@ -37,15 +38,15 @@ exports.addProduct = async (req, res) => {
 };
 
 // eslint-disable-next-line max-lines-per-function
-exports.getProduct = async (req, res) => {
+exports.getProduct = async (
+	req, res, next,
+) => {
 	try {
 		const product = await Product.findById(req.params.id);
 
 		if(!product) {
-			return res.status(Status.NOT_FOUND.code).json({
-				status: Status.NOT_FOUND.message,
-				message: 'Product not found',
-			});
+			return next(new ErrorHandler('Product not found',
+				Status.NOT_FOUND.code));
 		}
 
 		res.status(Status.OK.code).json({
@@ -62,7 +63,9 @@ exports.getProduct = async (req, res) => {
 };
 
 // eslint-disable-next-line max-lines-per-function
-exports.updateProduct = async (req, res) => {
+exports.updateProduct = async (
+	req, res, next,
+) => {
 	try {
 		const product = await Product.findByIdAndUpdate(
 			req.params.id, req.body, {
@@ -72,10 +75,8 @@ exports.updateProduct = async (req, res) => {
 		);
 
 		if(!product) {
-			return res.status(Status.NOT_FOUND.code).json({
-				status: Status.NOT_FOUND.message,
-				message: 'Product not found',
-			});
+			return next(new ErrorHandler('Product not found',
+				Status.NOT_FOUND.code));
 		}
 
 		res.status(Status.OK.code).json({
@@ -92,15 +93,15 @@ exports.updateProduct = async (req, res) => {
 };
 
 // eslint-disable-next-line max-lines-per-function
-exports.deleteProduct = async (req, res) => {
+exports.deleteProduct = async (
+	req, res, next,
+) => {
 	try {
 		const product = await Product.findByIdAndDelete(req.params.id);
 
 		if(!product) {
-			return res.status(Status.NOT_FOUND.code).json({
-				status: Status.NOT_FOUND.message,
-				message: 'Product not found',
-			});
+			return next(new ErrorHandler('Product not found',
+				Status.NOT_FOUND.code));
 		}
 
 		res.status(Status.OK.code).json({
