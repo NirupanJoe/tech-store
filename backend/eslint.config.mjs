@@ -123,7 +123,7 @@ export default [
 			],
 			'id-match': [
 				'error',
-				'^[a-z]*([A-Z]([A-Z]|[a-z])+)*$',
+				'^_?[a-z]*([A-Z]([A-Z]|[a-z])+)*$',
 			],
 			'key-spacing': [
 				'error',
@@ -464,7 +464,7 @@ export default [
 			'no-shadow': 'error',
 			'no-redeclare': 'error',
 			'no-shadow-restricted-names': 'error',
-			'no-unused-vars': 'error',
+			'no-unused-vars': ['error', { "argsIgnorePattern": "^_" }],
 			'no-use-before-define': 'error',
 			'no-undef': 'error',
 			'no-undef-init': 'error',
