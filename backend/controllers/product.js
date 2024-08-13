@@ -1,118 +1,90 @@
 const Product = require('../models/product');
 const ErrorHandler = require('../utils/ErrorHandler');
 const Status = require('../utils/statusEnum');
+const asyncHandler = require('../utils/asyncHandler');
 
-exports.getProducts = async (req, res) => {
-	try {
-		const products = await Product.find({});
-
-		res.status(Status.OK.code).json({
-			status: Status.OK.message,
-			products: products,
-			count: products.length,
-		});
-	}
-	catch (err) {
-		res.status(Status.BAD_REQUEST.code).json({
-			status: Status.BAD_REQUEST.message,
-			error: err,
-		});
-	}
+const sendResponse = (
+	res, statusCode, message, data = {},
+) => {
+	res.status(statusCode).json({
+		status: message,
+		...data,
+	});
 };
 
-exports.addProduct = async (req, res) => {
-	try {
-		const product = await Product.create(req.body);
+const checkProductExists = async (id, next) => {
+	const product = await Product.findById(id);
 
-		res.status(Status.CREATED.code).json({
-			status: Status.CREATED.message,
-			product: product,
-		});
+	if(!product) {
+		return next(new ErrorHandler('Product not found',
+			Status.NOT_FOUND.code));
 	}
-	catch (err) {
-		res.status(Status.BAD_REQUEST.code).json({
-			status: Status.BAD_REQUEST.message,
-			error: err,
-		});
-	}
+
+	return product;
 };
 
-// eslint-disable-next-line max-lines-per-function
-exports.getProduct = async (
+exports.getProducts = asyncHandler(async (req, res) => {
+	const products = await Product.find({});
+
+	sendResponse(
+		res, Status.OK.code, Status.OK.message,
+		{ products: products, count: products.length },
+	);
+});
+
+exports.addProduct = asyncHandler(async (req, res) => {
+	const product = await Product.create(req.body);
+
+	sendResponse(
+		res, Status.CREATED.code, Status.CREATED.message, { product },
+	);
+});
+
+exports.getProduct = asyncHandler(async (
 	req, res, next,
 ) => {
-	try {
-		const product = await Product.findById(req.params.id);
+	const product = await checkProductExists(req.params.id, next);
 
-		if(!product) {
-			return next(new ErrorHandler('Product not found',
-				Status.NOT_FOUND.code));
-		}
+	if(!product)
+		return;
 
-		res.status(Status.OK.code).json({
-			status: Status.OK.message,
-			product: product,
-		});
-	}
-	catch (err) {
-		res.status(Status.BAD_REQUEST.code).json({
-			status: Status.BAD_REQUEST.message,
-			error: err.message,
-		});
-	}
-};
+	sendResponse(
+		res, Status.OK.code, Status.OK.message, { product },
+	);
+});
 
-// eslint-disable-next-line max-lines-per-function
-exports.updateProduct = async (
+exports.updateProduct = asyncHandler(async (
 	req, res, next,
 ) => {
-	try {
-		const product = await Product.findByIdAndUpdate(
-			req.params.id, req.body, {
-				new: true,
-				runValidators: true,
-			},
-		);
+	let product = await checkProductExists(req.params.id, next);
 
-		if(!product) {
-			return next(new ErrorHandler('Product not found',
-				Status.NOT_FOUND.code));
-		}
+	if(!product)
+		return;
 
-		res.status(Status.OK.code).json({
-			status: Status.OK.message,
-			product: product,
-		});
-	}
-	catch (err) {
-		res.status(Status.BAD_REQUEST.code).json({
-			status: Status.BAD_REQUEST.message,
-			error: err.message,
-		});
-	}
-};
+	product = await Product.findByIdAndUpdate(
+		req.params.id, req.body, {
+			new: true,
+			runValidators: true,
+		},
+	);
 
-// eslint-disable-next-line max-lines-per-function
-exports.deleteProduct = async (
+	sendResponse(
+		res, Status.OK.code, Status.OK.message, { product },
+	);
+});
+
+exports.deleteProduct = asyncHandler(async (
 	req, res, next,
 ) => {
-	try {
-		const product = await Product.findByIdAndDelete(req.params.id);
+	const product = await checkProductExists(req.params.id, next);
 
-		if(!product) {
-			return next(new ErrorHandler('Product not found',
-				Status.NOT_FOUND.code));
-		}
+	if(!product)
+		return;
 
-		res.status(Status.OK.code).json({
-			status: Status.OK.message,
-			message: 'Product deleted successfully',
-		});
-	}
-	catch (err) {
-		res.status(Status.BAD_REQUEST.code).json({
-			status: Status.BAD_REQUEST.message,
-			error: err.message,
-		});
-	}
-};
+	await Product.findByIdAndDelete(req.params.id);
+
+	sendResponse(
+		res, Status.OK.code, Status.OK.message,
+		{ message: 'Product deleted successfully' },
+	);
+});
