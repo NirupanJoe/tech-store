@@ -8,6 +8,7 @@ exports.getProducts = async (req, res) => {
 		res.status(Status.OK.code).json({
 			status: Status.OK.message,
 			products: products,
+			count: products.length,
 		});
 	}
 	catch (err) {

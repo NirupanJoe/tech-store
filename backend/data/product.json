@@ -1,0 +1,171 @@
+[
+  {
+    "name": "Samsung Galaxy Tab S9",
+    "model": "SM-T970",
+    "price": 849.99,
+    "description": "The Samsung Galaxy Tab S9 is a high-performance tablet with a 12.4-inch Super AMOLED display and powerful multitasking capabilities.",
+    "specifications": {
+      "screenSize": "12.4 inches",
+      "resolution": "2800 x 1752 pixels",
+      "processor": "Snapdragon 8 Gen 2",
+      "ram": "8GB",
+      "storage": "256GB",
+      "battery": "10090mAh",
+      "camera": "13MP + 5MP Dual Camera",
+      "os": "Android 14"
+    },
+    "category": "Tablet",
+    "stock": 75,
+    "imageUrls": [
+      "https://example.com/galaxy-tab-s9-front.jpg",
+      "https://example.com/galaxy-tab-s9-back.jpg",
+      "https://example.com/galaxy-tab-s9-side.jpg"
+    ],
+    "releaseDate": "2024-02-10",
+    "rating": 4.7,
+    "reviews": [
+      {
+        "user": "64d3ca2be4b0b72dff5d1a78",
+        "comment": "Great for both work and entertainment.",
+        "rating": 5,
+        "date": "2024-03-01"
+      }
+    ]
+  },
+  {
+    "name": "Samsung Galaxy S23",
+    "model": "SM-G991B/DS",
+    "price": 999.99,
+    "description": "The Samsung Galaxy S23 offers a powerful performance with its Snapdragon 8 Gen 2 processor, stunning AMOLED display, and advanced camera system.",
+    "specifications": {
+      "screenSize": "6.2 inches",
+      "resolution": "2400 x 1080 pixels",
+      "processor": "Snapdragon 8 Gen 2",
+      "ram": "8GB",
+      "storage": "128GB",
+      "battery": "4000mAh",
+      "camera": "50MP + 12MP + 10MP Triple Camera",
+      "os": "Android 14"
+    },
+    "category": "Smartphone",
+    "stock": 150,
+    "imageUrls": [
+      "https://example.com/galaxy-s23-front.jpg",
+      "https://example.com/galaxy-s23-back.jpg",
+      "https://example.com/galaxy-s23-side.jpg"
+    ],
+    "releaseDate": "2024-01-29",
+    "rating": 4.5,
+    "reviews": [
+      {
+        "user": "64d3c9b3e4b0b72dff5d1a77",
+        "comment": "Excellent phone with great features.",
+        "rating": 5,
+        "date": "2024-02-05"
+      }
+    ],
+    "createdAt": "2024-01-29"
+  },
+  {
+    "name": "Samsung Galaxy Book 3 Pro",
+    "model": "NP940XFG-KC1US",
+    "price": 1299.99,
+    "description": "The Samsung Galaxy Book 3 Pro is a lightweight laptop with a 13th Gen Intel Core i7 processor, ideal for professionals on the go.",
+    "specifications": {
+      "screenSize": "15.6 inches",
+      "resolution": "1920 x 1080 pixels",
+      "processor": "Intel Core i7-1360P",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "battery": "68Wh",
+      "camera": "1080p HD Camera",
+      "os": "Windows 11 Home"
+    },
+    "category": "Laptop",
+    "stock": 50,
+    "imageUrls": [
+      "https://example.com/galaxy-book-3-pro-front.jpg",
+      "https://example.com/galaxy-book-3-pro-back.jpg",
+      "https://example.com/galaxy-book-3-pro-side.jpg"
+    ],
+    "releaseDate": "2024-03-15",
+    "rating": 4.6,
+    "reviews": [
+      {
+        "user": "64d3caa2e4b0b72dff5d1a79",
+        "comment": "Perfect for my work needs.",
+        "rating": 4,
+        "date": "2024-03-20"
+      }
+    ],
+    "createdAt": "2024-03-15"
+  },
+  {
+    "name": "Samsung Galaxy Watch 6",
+    "model": "SM-R930NZKAXAR",
+    "price": 299.99,
+    "description": "The Samsung Galaxy Watch 6 features advanced health tracking, long battery life, and seamless connectivity with other Samsung devices.",
+    "specifications": {
+      "screenSize": "1.4 inches",
+      "resolution": "450 x 450 pixels",
+      "processor": "Exynos W930",
+      "ram": "2GB",
+      "storage": "16GB",
+      "battery": "361mAh",
+      "camera": "N/A",
+      "os": "Wear OS"
+    },
+    "category": "Wearable",
+    "stock": 200,
+    "imageUrls": [
+      "https://example.com/galaxy-watch-6-front.jpg",
+      "https://example.com/galaxy-watch-6-back.jpg",
+      "https://example.com/galaxy-watch-6-side.jpg"
+    ],
+    "releaseDate": "2024-05-01",
+    "rating": 4.8,
+    "reviews": [
+      {
+        "user": "64d3cb25e4b0b72dff5d1a7a",
+        "comment": "Amazing smartwatch with great features.",
+        "rating": 5,
+        "date": "2024-05-10"
+      }
+    ],
+    "createdAt": "2024-05-01"
+  },
+  {
+    "name": "Samsung Galaxy Buds 2",
+    "model": "SM-R177NZWAXAR",
+    "price": 149.99,
+    "description": "The Samsung Galaxy Buds 2 deliver immersive sound quality, active noise cancellation, and a comfortable fit.",
+    "specifications": {
+      "screenSize": "N/A",
+      "resolution": "N/A",
+      "processor": "N/A",
+      "ram": "N/A",
+      "storage": "N/A",
+      "battery": "61mAh per earbud",
+      "camera": "N/A",
+      "os": "N/A"
+    },
+    "category": "Accessory",
+    "stock": 300,
+    "imageUrls": [
+      "https://example.com/galaxy-buds-2-front.jpg",
+      "https://example.com/galaxy-buds-2-case.jpg",
+      "https://example.com/galaxy-buds-2-side.jpg"
+    ],
+    "releaseDate": "2024-06-01",
+    "rating": 4.4,
+    "reviews": [
+      {
+        "user": "64d3cbb8e4b0b72dff5d1a7b",
+        "comment": "Great sound quality and comfortable to wear.",
+        "rating": 4,
+        "date": "2024-06-05"
+      }
+    ],
+    "createdAt": "2024-06-01"
+  }        
+]

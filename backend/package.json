@@ -4,7 +4,8 @@
   "description": "E-commerce using MERN stack",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "seeder": "node utils/seeder.js"
   },
   "keywords": [
     "e-commerce",
