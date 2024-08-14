@@ -2,6 +2,7 @@ const Product = require('../models/product');
 const ErrorHandler = require('../utils/ErrorHandler');
 const Status = require('../utils/statusEnum');
 const asyncHandler = require('../utils/asyncHandler');
+const validateObjectId = require('../utils/validateObjectId');
 
 const sendResponse = (
 	res, statusCode, message, data = {},
@@ -43,6 +44,9 @@ exports.addProduct = asyncHandler(async (req, res) => {
 exports.getProduct = asyncHandler(async (
 	req, res, next,
 ) => {
+	if(!validateObjectId(req.params.id, next))
+		return;
+
 	const product = await checkProductExists(req.params.id, next);
 
 	if(!product)
@@ -56,6 +60,9 @@ exports.getProduct = asyncHandler(async (
 exports.updateProduct = asyncHandler(async (
 	req, res, next,
 ) => {
+	if(!validateObjectId(req.params.id, next))
+		return;
+
 	let product = await checkProductExists(req.params.id, next);
 
 	if(!product)
@@ -76,6 +83,9 @@ exports.updateProduct = asyncHandler(async (
 exports.deleteProduct = asyncHandler(async (
 	req, res, next,
 ) => {
+	if(!validateObjectId(req.params.id, next))
+		return;
+
 	const product = await checkProductExists(req.params.id, next);
 
 	if(!product)
