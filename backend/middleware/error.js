@@ -1,3 +1,4 @@
+const ErrorHandler = require('../utils/ErrorHandler');
 const Status = require('../utils/statusEnum');
 
 const handleDevelopmentError = (err) => ({
@@ -5,7 +6,17 @@ const handleDevelopmentError = (err) => ({
 	stack: err.stack,
 });
 
-const handleProductionError = () => ({});
+const handleProductionError = (err) => {
+	let error = { ...err };
+
+	if(err.name === 'ValidationError') {
+		const message = Object.values(err.errors)
+			.map(({ message: errorMessage }) => errorMessage);
+
+		error = new ErrorHandler(message, Status.BAD_REQUEST.code);
+	}
+	return { message: error.message || Status.INTERNAL_SERVER_ERROR.message };
+};
 
 const errorHandlers = {
 	development: handleDevelopmentError,
