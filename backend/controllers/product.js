@@ -3,6 +3,7 @@ const ErrorHandler = require('../utils/ErrorHandler');
 const Status = require('../utils/statusEnum');
 const asyncHandler = require('../utils/asyncHandler');
 const validateObjectId = require('../utils/validateObjectId');
+const { buildQuery, paginateResults } = require('../utils/productQueryHandler');
 
 const sendResponse = (
 	res, statusCode, message, data = {},
@@ -25,11 +26,19 @@ const checkProductExists = async (id, next) => {
 };
 
 exports.getProducts = asyncHandler(async (req, res) => {
-	const products = await Product.find({});
+	const queryObject = buildQuery(req.query);
+
+	const {
+		products,
+		totalProducts,
+		returnedProductCount,
+	} = await paginateResults(
+		queryObject, req.query.page, req.query.limit,
+	);
 
 	sendResponse(
 		res, Status.OK.code, Status.OK.message,
-		{ products: products, count: products.length },
+		{ totalProducts, returnedProductCount, products },
 	);
 });
 
