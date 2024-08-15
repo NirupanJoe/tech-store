@@ -4,15 +4,7 @@ const Status = require('../utils/statusEnum');
 const asyncHandler = require('../utils/asyncHandler');
 const validateObjectId = require('../utils/validateObjectId');
 const { buildQuery, paginateResults } = require('../utils/productQueryHandler');
-
-const sendResponse = (
-	res, statusCode, message, data = {},
-) => {
-	res.status(statusCode).json({
-		status: message,
-		...data,
-	});
-};
+const sendResponse = require('../utils/sendResponse');
 
 const checkProductExists = async (id, next) => {
 	const product = await Product.findById(id);
