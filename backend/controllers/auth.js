@@ -12,8 +12,9 @@ exports.registerUser = asyncHandler(async (req, res) => {
 			.json({ message: 'Please provide all required fields' });
 	}
 	const user = await User.create({ name, email, password });
+	const token = user.getJwtToken();
 
 	sendResponse(
-		res, Status.CREATED.code, Status.CREATED.message, { user },
+		res, Status.CREATED.code, Status.CREATED.message, { token, user },
 	);
 });
