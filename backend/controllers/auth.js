@@ -87,6 +87,6 @@ exports.loginUser = asyncHandler(async (
 	setTokenCookie(res, token);
 
 	sendResponse(
-		res, Status.OK.code, Status.OK.message, { token, user },
+		res, Status.ACCEPTED.code, Status.ACCEPTED.message, { token, user },
 	);
 });
