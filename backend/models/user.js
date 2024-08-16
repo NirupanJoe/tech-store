@@ -22,6 +22,7 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: [true, 'Please Enter Your Password'],
 		trim: true,
+		select: false,
 	},
 	resetPasswordToken: String,
 	resetPasswordTokenExpire: Date,
@@ -49,6 +50,14 @@ userSchema.methods.getJwtToken = function getJwtToken () {
 		},
 	);
 };
+
+const comparePassword = async function (enteredPassword) {
+	const isMatch = await bcrypt.compare(enteredPassword, this.password);
+
+	return isMatch;
+};
+
+userSchema.methods.comparePassword = comparePassword;
 
 const User = mongoose.model('User', userSchema);
 
