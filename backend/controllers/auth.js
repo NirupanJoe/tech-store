@@ -31,6 +31,21 @@ const validateUserCredentials = async (
 	return true;
 };
 
+const setTokenCookie = (res, token) => {
+	// eslint-disable-next-line no-magic-numbers
+	const millisecondsInADay = 24 * 60 * 60 * 1000;
+	const cookieExpireTime = process.env.COOKIE_EXPIRE * millisecondsInADay;
+
+	const options = {
+		expires: new Date(Date.now() + cookieExpireTime),
+		httpOnly: true,
+	};
+
+	res.cookie(
+		'token', token, options,
+	);
+};
+
 exports.registerUser = asyncHandler(async (req, res) => {
 	const { name, email, password } = req.body;
 
@@ -66,6 +81,10 @@ exports.loginUser = asyncHandler(async (
 		return;
 
 	const token = user.getJwtToken(user);
+
+	user.password = undefined;
+
+	setTokenCookie(res, token);
 
 	sendResponse(
 		res, Status.OK.code, Status.OK.message, { token, user },
