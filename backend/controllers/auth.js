@@ -123,3 +123,30 @@ exports.getUserProfile = asyncHandler(async (req, res) => {
 		res, Status.OK.code, Status.OK.message, { user },
 	);
 });
+
+exports.updateUserPassword = asyncHandler(async (
+	req, res, next,
+) => {
+	const user = await User.findById(req.user.id).select('+password');
+
+	const isValid = await validateUserCredentials(
+		user, req.body.oldPassword, next,
+	);
+
+	if(!isValid)
+		return;
+
+	if(req.body.oldPassword === req.body.newPassword) {
+		const message = 'New password cannot be same as old password';
+
+		return next(new ErrorHandler(message, Status.BAD_REQUEST.code));
+	}
+
+	user.password = req.body.newPassword;
+	await user.save();
+
+	sendResponse(
+		res, Status.ACCEPTED.code, Status.ACCEPTED.message,
+		{ message: 'Password changed successfully' },
+	);
+});
