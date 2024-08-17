@@ -3,6 +3,7 @@ const Status = require('../utils/statusEnum');
 const User = require('../models/user');
 const sendResponse = require('../utils/sendResponse');
 const ErrorHandler = require('../utils/ErrorHandler');
+const { sendResetEmail } = require('../utils/email');
 
 const validateLoginFields = (
 	email, password, next,
@@ -102,4 +103,28 @@ exports.logoutUser = asyncHandler((req, res) => {
 		res, Status.OK.code, Status.OK.message,
 		{ message: 'Logged out successfully' },
 	);
+});
+
+exports.forgetPassword = asyncHandler(async (
+	req, res, next,
+) => {
+	const { email } = req.body;
+
+	if(!email) {
+		return next(new ErrorHandler('Please provide email',
+			Status.BAD_REQUEST.code));
+	}
+
+	const user = await User.findOne({ email });
+
+	if(!user) {
+		return next(new ErrorHandler('User not found',
+			Status.NOT_FOUND.code));
+	}
+
+	const resetToken = user.getResetPasswordToken();
+
+	await user.save({ validateBeforeSave: false });
+
+	await sendResetEmail({ user, resetToken, req, res, next });
 });
