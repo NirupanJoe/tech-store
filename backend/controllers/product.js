@@ -35,6 +35,7 @@ exports.getProducts = asyncHandler(async (req, res) => {
 });
 
 exports.addProduct = asyncHandler(async (req, res) => {
+	req.body.user = req.user.id;
 	const product = await Product.create(req.body);
 
 	sendResponse(
@@ -64,6 +65,7 @@ exports.updateProduct = asyncHandler(async (
 	if(!validateObjectId(req.params.id, next))
 		return;
 
+	req.body.user = req.user.id;
 	let product = await checkProductExists(req.params.id, next);
 
 	if(!product)
