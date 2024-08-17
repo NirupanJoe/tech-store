@@ -4,75 +4,13 @@ const User = require('../models/user');
 const sendResponse = require('../utils/sendResponse');
 const ErrorHandler = require('../utils/ErrorHandler');
 const { sendResetEmail } = require('../utils/email');
-const crypto = require('crypto');
-
-const validateLoginFields = (
-	email, password, next,
-) => {
-	if(!email || !password) {
-		return next(new ErrorHandler('Please provide all required fields',
-			Status.BAD_REQUEST.code));
-	}
-};
-
-const validateUserCredentials = async (
-	user, password, next,
-) => {
-	if(!user) {
-		return next(new ErrorHandler('Invalid credentials',
-			Status.UNAUTHORIZED.code));
-	}
-
-	const isPasswordMatched = await user.comparePassword(password);
-
-	if(!isPasswordMatched) {
-		return next(new ErrorHandler('Invalid credentials',
-			Status.UNAUTHORIZED.code));
-	}
-
-	return true;
-};
-
-const setTokenCookie = (res, token) => {
-	// eslint-disable-next-line no-magic-numbers
-	const millisecondsInADay = 24 * 60 * 60 * 1000;
-	const cookieExpireTime = process.env.COOKIE_EXPIRE * millisecondsInADay;
-
-	const options = {
-		expires: new Date(Date.now() + cookieExpireTime),
-		httpOnly: true,
-	};
-
-	res.cookie(
-		'token', token, options,
-	);
-};
-
-const updateUserPassword = async (user, password) => {
-	user.password = password;
-	user.resetPasswordToken = undefined;
-	user.resetPasswordTokenExpire = undefined;
-	await user.save();
-};
-
-const generateResetPasswordToken = (token) => crypto
-	.createHash('sha256')
-	.update(token)
-	.digest('hex');
-
-const findUserByResetToken = async (token) => {
-	const resetPasswordToken = generateResetPasswordToken(token);
-	const resetPasswordTokenExpire = {
-		$gt: Date.now(),
-	};
-
-	const user = await User.findOne({
-		resetPasswordToken,
-		resetPasswordTokenExpire,
-	});
-
-	return user;
-};
+const {
+	validateLoginFields,
+	validateUserCredentials,
+	setTokenCookie,
+	updateUserPassword,
+	findUserByResetToken,
+} = require('../helper/auth');
 
 exports.registerUser = asyncHandler(async (req, res) => {
 	const { name, email, password } = req.body;
