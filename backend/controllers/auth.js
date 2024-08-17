@@ -115,3 +115,11 @@ exports.resetPassword = asyncHandler(async (
 		{ message: 'Password changed successfully' },
 	);
 });
+
+exports.getUserProfile = asyncHandler(async (req, res) => {
+	const user = await User.findById(req.user.id);
+
+	sendResponse(
+		res, Status.OK.code, Status.OK.message, { user },
+	);
+});

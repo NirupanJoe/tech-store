@@ -5,7 +5,9 @@ const {
 	logoutUser,
 	forgetPassword,
 	resetPassword,
+	getUserProfile,
 } = require('../controllers/auth');
+const { authorizeUser } = require('../middleware/authentication');
 
 const Router = express.Router();
 
@@ -16,5 +18,7 @@ Router.route('/logout').get(logoutUser);
 
 Router.route('/password/forget').post(forgetPassword);
 Router.route('/password/reset/:token').post(resetPassword);
+
+Router.route('/profile').get(authorizeUser, getUserProfile);
 
 module.exports = Router;
