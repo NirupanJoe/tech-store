@@ -150,3 +150,20 @@ exports.updateUserPassword = asyncHandler(async (
 		{ message: 'Password changed successfully' },
 	);
 });
+
+exports.updateUserProfile = asyncHandler(async (req, res) => {
+	const newData = {
+		name: req.body.name,
+		email: req.body.email,
+	};
+	const user = await User.findByIdAndUpdate(
+		req.user.id, newData, {
+			new: true,
+			runValidators: true,
+		},
+	);
+
+	sendResponse(
+		res, Status.OK.code, Status.OK.message, { user },
+	);
+});

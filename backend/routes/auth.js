@@ -7,6 +7,7 @@ const {
 	resetPassword,
 	getUserProfile,
 	updateUserPassword,
+	updateUserProfile,
 } = require('../controllers/auth');
 const { authorizeUser } = require('../middleware/authentication');
 
@@ -16,6 +17,7 @@ Router.route('/register').post(registerUser);
 
 Router.route('/login').post(loginUser);
 Router.route('/logout').get(logoutUser);
+Router.route('/update').put(authorizeUser, updateUserProfile);
 
 Router.route('/password/forget').post(forgetPassword);
 Router.route('/password/reset/:token').post(resetPassword);
