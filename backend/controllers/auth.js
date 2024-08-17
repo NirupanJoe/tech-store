@@ -4,6 +4,7 @@ const User = require('../models/user');
 const sendResponse = require('../utils/sendResponse');
 const ErrorHandler = require('../utils/ErrorHandler');
 const { sendResetEmail } = require('../utils/email');
+const crypto = require('crypto');
 
 const validateLoginFields = (
 	email, password, next,
@@ -45,6 +46,32 @@ const setTokenCookie = (res, token) => {
 	res.cookie(
 		'token', token, options,
 	);
+};
+
+const updateUserPassword = async (user, password) => {
+	user.password = password;
+	user.resetPasswordToken = undefined;
+	user.resetPasswordTokenExpire = undefined;
+	await user.save();
+};
+
+const generateResetPasswordToken = (token) => crypto
+	.createHash('sha256')
+	.update(token)
+	.digest('hex');
+
+const findUserByResetToken = async (token) => {
+	const resetPasswordToken = generateResetPasswordToken(token);
+	const resetPasswordTokenExpire = {
+		$gt: Date.now(),
+	};
+
+	const user = await User.findOne({
+		resetPasswordToken,
+		resetPasswordTokenExpire,
+	});
+
+	return user;
 };
 
 exports.registerUser = asyncHandler(async (req, res) => {
@@ -127,4 +154,26 @@ exports.forgetPassword = asyncHandler(async (
 	await user.save({ validateBeforeSave: false });
 
 	await sendResetEmail({ user, resetToken, req, res, next });
+});
+
+exports.resetPassword = asyncHandler(async (
+	req, res, next,
+) => {
+	const user = await findUserByResetToken(req.params.token);
+
+	if(!user) {
+		return next(new ErrorHandler('Invalid token or token expired',
+			Status.UNAUTHORIZED.code));
+	}
+
+	if(req.body.password !== req.body.confirmPassword) {
+		return next(new ErrorHandler('Passwords do not match',
+			Status.BAD_REQUEST.code));
+	}
+	await updateUserPassword(user, req.body.password);
+
+	sendResponse(
+		res, Status.ACCEPTED.code, Status.ACCEPTED.message,
+		{ message: 'Password changed successfully' },
+	);
 });
