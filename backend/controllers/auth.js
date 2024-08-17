@@ -90,3 +90,16 @@ exports.loginUser = asyncHandler(async (
 		res, Status.ACCEPTED.code, Status.ACCEPTED.message, { token, user },
 	);
 });
+
+exports.logoutUser = asyncHandler((req, res) => {
+	res.cookie(
+		'token', null, {
+			expires: new Date(Date.now()),
+			httpOnly: true,
+		},
+	);
+	sendResponse(
+		res, Status.OK.code, Status.OK.message,
+		{ message: 'Logged out successfully' },
+	);
+});
