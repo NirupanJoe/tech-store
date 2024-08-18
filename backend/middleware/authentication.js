@@ -10,7 +10,7 @@ exports.authorizeUser = asyncHandler(async (
 	const { token } = req.cookies;
 
 	if(!token) {
-		return next(new ErrorHandler('Not authorized to access this route',
+		return next(new ErrorHandler('Login first to access this route',
 			Status.UNAUTHORIZED.code));
 	}
 
@@ -25,7 +25,7 @@ exports.authorizeAdmin = asyncHandler((
 	req, res, next,
 ) => {
 	if(!req.user.isAdmin) {
-		return next(new ErrorHandler('Not authorized to access this route',
+		return next(new ErrorHandler('Admin only access this route',
 			Status.UNAUTHORIZED.code));
 	}
 	next();
