@@ -10,7 +10,11 @@ const {
 	setTokenCookie,
 	updateUserPassword,
 	findUserByResetToken,
+	checkUserExists,
+	buildUserData,
+	findUserById,
 } = require('../helper/auth');
+const validateObjectId = require('../utils/validateObjectId');
 
 exports.registerUser = asyncHandler(async (req, res) => {
 	const { name, email, password } = req.body;
@@ -165,5 +169,73 @@ exports.updateUserProfile = asyncHandler(async (req, res) => {
 
 	sendResponse(
 		res, Status.OK.code, Status.OK.message, { user },
+	);
+});
+
+exports.getAllUsers = asyncHandler(async (req, res) => {
+	const users = await User.find();
+
+	sendResponse(
+		res, Status.OK.code, Status.OK.message, { users },
+	);
+});
+
+exports.getUserById = asyncHandler(async (
+	req, res, next,
+) => {
+	if(!validateObjectId(req.params.id, next))
+		return;
+
+	const user = await checkUserExists(req.params.id, next);
+
+	if(!user)
+		return;
+
+	sendResponse(
+		res, Status.OK.code, Status.OK.message, { user },
+	);
+});
+
+exports.updateUser = asyncHandler(async (
+	req, res, next,
+) => {
+	if(!validateObjectId(req.params.id, next))
+		return;
+
+	let user = await findUserById(req.params.id, next);
+
+	if(!user)
+		return;
+
+	const newData = buildUserData(req);
+
+	user = await User.findByIdAndUpdate(
+		req.params.id, newData, {
+			new: true,
+			runValidators: true,
+		},
+	);
+
+	sendResponse(
+		res, Status.OK.code, Status.OK.message, { user },
+	);
+});
+
+exports.deleteUser = asyncHandler(async (
+	req, res, next,
+) => {
+	if(!validateObjectId(req.params.id, next))
+		return;
+
+	const user = await User.findByIdAndDelete(req.params.id);
+
+	if(!user) {
+		return next(new ErrorHandler('User not found',
+			Status.NOT_FOUND.code));
+	}
+
+	sendResponse(
+		res, Status.OK.code, Status.OK.message,
+		{ message: 'User deleted successfully' },
 	);
 });

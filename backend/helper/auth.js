@@ -77,6 +77,23 @@ const findUserByResetToken = async (token) => {
 	return user;
 };
 
+const checkUserExists = async (id, next) => {
+	const product = await User.findById(id);
+
+	if(!product) {
+		return next(new ErrorHandler('User not found',
+			Status.NOT_FOUND.code));
+	}
+
+	return product;
+};
+
+const buildUserData = (req) => ({
+	name: req.body.name,
+	email: req.body.email,
+	isAdmin: req.body.isAdmin,
+});
+
 module.exports = {
 	validateLoginFields,
 	validateUserCredentials,
@@ -84,4 +101,6 @@ module.exports = {
 	updateUserPassword,
 	generateResetPasswordToken,
 	findUserByResetToken,
+	checkUserExists,
+	buildUserData,
 };
