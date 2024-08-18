@@ -65,8 +65,24 @@ const getOrderById = asyncHandler(async (
 	);
 });
 
+const getAllOrders = asyncHandler(async (
+	req, res, next,
+) => {
+	const orders = await Order.find();
+
+	if(orders.length === 0) {
+		return next(new ErrorHandler('No orders found',
+			Status.NOT_FOUND.code));
+	}
+
+	sendResponse(
+		res, Status.OK.code, Status.OK.message, { orders },
+	);
+});
+
 module.exports = {
 	addOrderItems,
 	getMyOrders,
 	getOrderById,
+	getAllOrders,
 };
