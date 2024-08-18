@@ -20,6 +20,12 @@ const errorNamesHandlers = {
 
 		return new ErrorHandler(message, Status.UNAUTHORIZED.code);
 	},
+
+	CastError: () => {
+		const message = 'Resource not found. Invalid ID';
+
+		return new ErrorHandler(message, Status.NOT_FOUND.code);
+	},
 };
 
 const errorCodesHandlers = {
