@@ -80,9 +80,35 @@ const getAllOrders = asyncHandler(async (
 	);
 });
 
+const updateOrder = asyncHandler(async (
+	req, res, next,
+) => {
+	if(!validateObjectId(req.params.id, next))
+		return;
+
+	const order = await Order.findById(req.params.id);
+
+	if(!order) {
+		return next(new ErrorHandler('Order not found',
+			Status.NOT_FOUND.code));
+	}
+
+	const updatedOrder = await Order.findByIdAndUpdate(
+		req.params.id, req.body, {
+			new: true,
+			runValidators: true,
+		},
+	);
+
+	sendResponse(
+		res, Status.OK.code, Status.OK.message, { order: updatedOrder },
+	);
+});
+
 module.exports = {
 	addOrderItems,
 	getMyOrders,
 	getOrderById,
 	getAllOrders,
+	updateOrder,
 };

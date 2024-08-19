@@ -9,7 +9,7 @@ const {
 	authorizeUser,
 	authorizeAdmin,
 } = require('../middleware/authentication');
-const { getAllOrders } = require('../controllers/order');
+const { getAllOrders, updateOrder } = require('../controllers/order');
 
 const Router = express.Router();
 
@@ -24,5 +24,7 @@ Router.route('/users/:id')
 	.delete(deleteUser);
 
 Router.route('/orders').get(getAllOrders);
+
+Router.route('/orders/:id').put(updateOrder);
 
 module.exports = Router;
