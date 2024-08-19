@@ -40,8 +40,21 @@ const updateProductStock = async (orderItems) => {
 	await Promise.all(productUpdates);
 };
 
+const updateOrderPaymentDetails = (order, paymentInfo) => {
+	order.isPaid = true;
+	order.paidAt = Date.now();
+	order.paymentResult = {
+		id: paymentInfo.id,
+		status: paymentInfo.status,
+		updateTime: paymentInfo.updateTime,
+		emailAddress: paymentInfo.emailAddress,
+	};
+	return order;
+};
+
 module.exports = {
 	validateOrderItems,
 	updateProductStock,
 	createOrder,
+	updateOrderPaymentDetails,
 };

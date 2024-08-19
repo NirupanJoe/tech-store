@@ -5,6 +5,7 @@ const {
 	validateOrderItems,
 	createOrder,
 	updateProductStock,
+	updateOrderPaymentDetails,
 } = require('../helper/orders');
 const Order = require('../models/order');
 const ErrorHandler = require('../utils/ErrorHandler');
@@ -105,10 +106,29 @@ const updateOrder = asyncHandler(async (
 	);
 });
 
+const updateOrderToPaid = asyncHandler(async (
+	req, res, next,
+) => {
+	const order = await Order.findById(req.params.id);
+
+	if(!order)
+		return next(new ErrorHandler('Order not found', Status.NOT_FOUND.code));
+
+	const updatedOrder = await updateOrderPaymentDetails(order, req.body)
+		.save();
+
+	res.status(Status.OK.code).json({
+		success: true,
+		message: 'Order marked as paid',
+		order: updatedOrder,
+	});
+});
+
 module.exports = {
 	addOrderItems,
 	getMyOrders,
 	getOrderById,
 	getAllOrders,
 	updateOrder,
+	updateOrderToPaid,
 };
