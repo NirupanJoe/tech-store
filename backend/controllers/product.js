@@ -4,7 +4,12 @@ const asyncHandler = require('../utils/asyncHandler');
 const validateObjectId = require('../utils/validateObjectId');
 const { buildQuery, paginateResults } = require('../utils/productQueryHandler');
 const sendResponse = require('../utils/sendResponse');
-const { checkProductExists } = require('../helper/product');
+const {
+	checkProductExists,
+	updateReview,
+	checkAlreadyReviewed,
+	updateProductRating,
+} = require('../helper/product');
 
 exports.getProducts = asyncHandler(async (req, res) => {
 	const queryObject = buildQuery(req.query);
@@ -88,5 +93,51 @@ exports.deleteProduct = asyncHandler(async (
 	sendResponse(
 		res, Status.OK.code, Status.OK.message,
 		{ message: 'Product deleted successfully' },
+	);
+});
+
+exports.createProductReview = asyncHandler(async (
+	req, res, next,
+) => {
+	if(!validateObjectId(req.params.id, next))
+		return;
+
+	const product = await checkProductExists(req.params.id, next);
+
+	if(!product)
+		return;
+
+	if(checkAlreadyReviewed(
+		product, req.user.id, next,
+	))
+		return;
+
+	const review = updateReview(req);
+
+	product.reviews.push(review);
+	updateProductRating(product);
+
+	await product.save();
+
+	sendResponse(
+		res, Status.OK.code, Status.OK.message, { message: 'Review added' },
+	);
+});
+
+exports.getProductReviews = asyncHandler(async (
+	req, res, next,
+) => {
+	if(!validateObjectId(req.params.id, next))
+		return;
+
+	const product = await checkProductExists(req.params.id);
+
+	await product.populate('reviews.user', 'name email');
+
+	if(!product)
+		return;
+
+	sendResponse(
+		res, Status.OK.code, Status.OK.message, { reviews: product.reviews },
 	);
 });
