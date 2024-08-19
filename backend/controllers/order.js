@@ -6,6 +6,7 @@ const {
 	createOrder,
 	updateProductStock,
 	updateOrderPaymentDetails,
+	updateOrderDeliveryDetails,
 } = require('../helper/orders');
 const Order = require('../models/order');
 const ErrorHandler = require('../utils/ErrorHandler');
@@ -124,6 +125,23 @@ const updateOrderToPaid = asyncHandler(async (
 	});
 });
 
+const updateOrderToDelivered = asyncHandler(async (
+	req, res, next,
+) => {
+	const order = await Order.findById(req.params.id);
+
+	if(!order)
+		return next(new ErrorHandler('Order not found', Status.NOT_FOUND.code));
+
+	const updatedOrder = await updateOrderDeliveryDetails(order).save();
+
+	res.status(Status.OK.code).json({
+		success: true,
+		message: 'Order marked as delivered',
+		order: updatedOrder,
+	});
+});
+
 module.exports = {
 	addOrderItems,
 	getMyOrders,
@@ -131,4 +149,5 @@ module.exports = {
 	getAllOrders,
 	updateOrder,
 	updateOrderToPaid,
+	updateOrderToDelivered,
 };

@@ -7,6 +7,7 @@ const {
 	getOrderById,
 	getMyOrders,
 	updateOrderToPaid,
+	updateOrderToDelivered,
 } = require('../controllers/order');
 
 const router = express.Router();
@@ -19,5 +20,7 @@ router.route('').post(addOrderItems)
 router.route('/:id').get(getOrderById);
 
 router.route('/:id/pay').put(updateOrderToPaid);
+
+router.route('/:id/deliver').put(updateOrderToDelivered);
 
 module.exports = router;

@@ -52,9 +52,16 @@ const updateOrderPaymentDetails = (order, paymentInfo) => {
 	return order;
 };
 
+const updateOrderDeliveryDetails = (order) => {
+	order.isDelivered = true;
+	order.deliveredAt = Date.now();
+	return order;
+};
+
 module.exports = {
 	validateOrderItems,
 	updateProductStock,
 	createOrder,
 	updateOrderPaymentDetails,
+	updateOrderDeliveryDetails,
 };
