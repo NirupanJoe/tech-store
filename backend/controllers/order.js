@@ -142,6 +142,23 @@ const updateOrderToDelivered = asyncHandler(async (
 	});
 });
 
+const deleteOrder = asyncHandler(async (
+	req, res, next,
+) => {
+	if(!validateObjectId(req.params.id, next))
+		return;
+
+	const order = await Order.findByIdAndDelete(req.params.id);
+
+	if(!order)
+		return next(new ErrorHandler('Order not found', Status.NOT_FOUND.code));
+
+	sendResponse(
+		res, Status.OK.code, Status.OK.message,
+		{ message: 'Order deleted successfully' },
+	);
+});
+
 module.exports = {
 	addOrderItems,
 	getMyOrders,
@@ -150,4 +167,5 @@ module.exports = {
 	updateOrder,
 	updateOrderToPaid,
 	updateOrderToDelivered,
+	deleteOrder,
 };
