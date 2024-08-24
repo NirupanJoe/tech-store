@@ -2,6 +2,8 @@ const Product = require('../models/product');
 const ErrorHandler = require('../utils/ErrorHandler');
 const Status = require('../utils/statusEnum');
 
+const decimalPart = 10;
+
 const checkProductExists = async (id, next) => {
 	const product = await Product.findById(id);
 
@@ -28,9 +30,11 @@ const checkAlreadyReviewed = (
 };
 
 const updateProductRating = (product) => {
-	product.numReviews = product.reviews.length;
-	product.rating = product.reviews.reduce((acc, item) =>
+	product.reviewsCount = product.reviews.length;
+	const rating = product.reviews.reduce((acc, item) =>
 		item.rating + acc, 0) / product.reviews.length;
+
+	product.rating = Math.round(rating * decimalPart) / decimalPart;
 };
 
 const updateReview = (req) => ({
