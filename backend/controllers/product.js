@@ -141,3 +141,27 @@ exports.getProductReviews = asyncHandler(async (
 		res, Status.OK.code, Status.OK.message, { reviews: product.reviews },
 	);
 });
+
+exports.deleteProductReview = asyncHandler(async (
+	req, res, next,
+) => {
+	if(!validateObjectId(req.params.id, next))
+		return;
+
+	const product = await checkProductExists(req.params.id, next);
+
+	if(!product)
+		return;
+
+	const reviews = product.reviews.filter((review) =>
+		review.user.toString() !== req.user.id);
+
+	product.reviews = reviews;
+	updateProductRating(product);
+
+	await product.save();
+
+	sendResponse(
+		res, Status.OK.code, Status.OK.message, { message: 'Review deleted' },
+	);
+});
