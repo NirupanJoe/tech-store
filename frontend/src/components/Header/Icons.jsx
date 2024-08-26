@@ -1,4 +1,6 @@
 import { Menu, X as XIcon, ShoppingCart, Search, User } from 'lucide-react';
+import { useState } from 'react';
+import SearchModal from './SearchModel';
 
 const profileOpenData = [
 	{ name: 'Login/Sign-Up', href: '#' },
@@ -54,10 +56,21 @@ const MenuToggle = ({ isMenuOpen, setIsMenuOpen }) =>
 			: <MenuIcon { ...{ setIsMenuOpen } }/> }
 	</div>;
 
+const SearchIcon = () => {
+	const [isOpen, setOpen] = useState(false);
+
+	const onClose = () => setOpen(!isOpen);
+
+	return <div>
+		<Search onClick={ onClose } className="h-6 w-6 text-gray-600 cursor-pointer"/>
+		{ isOpen && <SearchModal { ...{ isOpen, onClose } }/> }
+	</div>;
+};
+
 const Icons = ({ isMenuOpen, setIsMenuOpen, isProfileOpen, setIsProfileOpen }) =>
 	<div className="flex items-center space-x-4">
 		<ProfileMenu isProfileOpen={ isProfileOpen } setIsProfileOpen={ setIsProfileOpen }/>
-		<Search className="h-6 w-6 text-gray-600 cursor-pointer"/>
+		<SearchIcon/>
 		<CartIcon/>
 		<MenuToggle isMenuOpen={ isMenuOpen } setIsMenuOpen={ setIsMenuOpen }/>
 	</div>;
