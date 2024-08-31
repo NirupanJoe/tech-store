@@ -6,11 +6,11 @@ const productsSlice = createSlice({
 	reducers: {
 		productsRequest: () =>
 			({ loading: true }),
+		productsSuccess: (state, action) =>
+			({ loading: false, products: action.payload.products }),
+		productsFail: (state, action) =>
+			({ loading: false, error: action.payload }),
 	},
-	productsSuccess: (state, action) =>
-		({ loading: false, products: action.payload.products }),
-	productsFail: (state, action) =>
-		({ loading: false, error: action.payload }),
 });
 
 export const { productsRequest, productsSuccess, productsFail } = productsSlice.actions;
