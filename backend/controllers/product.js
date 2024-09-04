@@ -30,6 +30,11 @@ exports.getProducts = asyncHandler(async (req, res) => {
 
 exports.addProduct = asyncHandler(async (req, res) => {
 	req.body.user = req.user.id;
+	req.body.variants = req.body.variants.map((variant) => ({
+		...variant,
+		discountedPrice: variant.price - variant.discount,
+	}));
+
 	const product = await Product.create(req.body);
 
 	sendResponse(

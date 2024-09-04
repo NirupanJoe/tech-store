@@ -1,5 +1,41 @@
 const mongoose = require('mongoose');
 
+const variantSchema = new mongoose.Schema({
+	color: {
+		type: String,
+		required: [true, 'Please Enter Variant Color'],
+	},
+	colorName: {
+		type: String,
+		required: [true, 'Please Enter Variant Color Name'],
+	},
+	storage: {
+		type: String,
+		required: [true, 'Please Enter Variant Storage'],
+	},
+	ram: {
+		type: String,
+		required: [true, 'Please Enter Variant RAM'],
+	},
+	imageUrls: {
+		type: [String],
+		required: [true, 'Please Enter Variant Image Urls'],
+	},
+	price: {
+		type: Number,
+		required: [true, 'Please Enter Price'],
+		min: 0,
+	},
+	discountedPrice: {
+		type: Number,
+		min: 0,
+	},
+	discount: {
+		type: Number,
+		required: [true, 'Please Enter Discount Amount'],
+	},
+});
+
 const productSchema = new mongoose.Schema({
 	name: {
 		type: String,
@@ -11,11 +47,6 @@ const productSchema = new mongoose.Schema({
 		required: [true, 'Please Enter Product Model'],
 		trim: true,
 	},
-	price: {
-		type: Number,
-		required: [true, 'Please Enter Product Price'],
-		min: 0,
-	},
 	description: {
 		type: String,
 		required: [true, 'Please Enter Product Description'],
@@ -25,8 +56,6 @@ const productSchema = new mongoose.Schema({
 		screenSize: String,
 		resolution: String,
 		processor: String,
-		ram: String,
-		storage: String,
 		battery: String,
 		camera: String,
 		weight: String,
@@ -35,7 +64,7 @@ const productSchema = new mongoose.Schema({
 	category: {
 		type: String,
 		require: [true, 'Please Enter Product Category'],
-		enum: ['Smartphone', 'Tablet', 'Laptop', 'Wearable', 'Accessory'],
+		enum: ['smartphone', 'tablet', 'laptop', 'wearable', 'accessory'],
 	},
 	stock: {
 		type: Number,
@@ -78,6 +107,7 @@ const productSchema = new mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User',
 	},
+	variants: [variantSchema],
 	createdAt: {
 		type: Date,
 		default: Date.now,
