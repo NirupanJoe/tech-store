@@ -42,7 +42,7 @@ const handleDevelopmentError = (err) => ({
 });
 
 const handleProductionError = (err) => {
-	let error = { ...err };
+	let error = err;
 
 	if(errorNamesHandlers[err.name])
 		error = errorNamesHandlers[err.name](err);
