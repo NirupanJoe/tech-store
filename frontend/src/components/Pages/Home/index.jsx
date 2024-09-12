@@ -8,7 +8,7 @@ import Error from '../Error';
 
 const Home = () => {
 	const dispatch = useDispatch();
-	const { products, loading, error } = useSelector((state) => state.productState);
+	const { products, loading, error } = useSelector((state) => state.productsState);
 
 	useEffect(() => {
 		dispatch(getProducts());

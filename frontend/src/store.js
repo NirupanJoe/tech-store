@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { thunk } from 'redux-thunk';
-import productReducer from './slice/productsSlice';
+import productsReducer from './slice/productsSlice';
 
-const reducer = combineReducers({ productState: productReducer });
+const reducer = combineReducers({ productsState: productsReducer });
 
 const middleware = () => [thunk];
 
