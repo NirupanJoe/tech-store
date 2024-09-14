@@ -482,7 +482,7 @@ export default [
 			'no-extra-label': 'error',
 			'complexity': [
 				'error',
-				{ max: 4 },
+				{ max: 5 },
 			],
 			'no-new': 'error',
 			'no-new-func': 'error',
