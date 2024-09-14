@@ -71,10 +71,6 @@ const productSchema = new mongoose.Schema({
 		required: true,
 		min: 0,
 	},
-	imageUrls: {
-		type: [String],
-		required: [true, 'Please Enter Product Image Urls'],
-	},
 	releaseDate: {
 		type: Date,
 	},
