@@ -1,11 +1,14 @@
 import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 const Title = ({ title }) =>
 	<h3 className="text-lg font-semibold mt-4 h-5">{ title }</h3>;
 
-const Image = ({ src, alt }) =>
+const Image = ({ src, product: { _id: id, name: alt }}) =>
 	<div className="flex justify-center">
-		<img src={ src } alt={ alt } className="w-60 h-60 object-contain"/>
+		<Link to={ `/product/${ id }` }>
+			<img src={ src } alt={ alt } className="w-60 h-60 object-contain"/>
+		</Link>
 	</div>;
 
 const Color = ({ color }) =>
@@ -40,9 +43,11 @@ const Pricing = ({ price, discountedPrice, discount }) =>
 		<p className="text-blue-500 text-sm mt-1">Save { discount }</p>
 	</Fragment>;
 
-const BuyButton = () =>
+const BuyButton = ({ _id: id }) =>
 	<button className="bg-black text-white mt-4 py-2 px-4 rounded-full hover:bg-gray-500 w-1/2">
-		Buy now
+		<Link to={ `/product/${ id }` }>
+			Buy now
+		</Link>
 	</button>;
 
 const ProductCard = ({ product }) => {
@@ -50,7 +55,7 @@ const ProductCard = ({ product }) => {
 
 	return <div className="rounded-lg p-4 text-center">
 		<Title title={ product.name }/>
-		<Image src={ variant.imageUrls[0] } alt={ product.name }/>
+		<Image src={ variant.imageUrls[0] } product={ product }/>
 		<Color color={ variant.colorName }/>
 		<ColorIndicator color={ variant.color }/>
 		<Storage storage={ variant.storage }/>
@@ -59,7 +64,7 @@ const ProductCard = ({ product }) => {
 			discountedPrice={ variant.discountedPrice }
 			discount={ variant.discount }
 		/>
-		<BuyButton/>
+		<BuyButton { ...product }/>
 	</div>;
 };
 
