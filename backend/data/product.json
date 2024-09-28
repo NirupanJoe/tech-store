@@ -33,6 +33,90 @@
         "discount": 50000
       },
       {
+        "color": "#cbd9e7",
+        "colorName": "Ice Blue",
+        "storage": "256GB",
+        "ram": "6GB",
+        "imageUrls": [
+          "/assets/j7/iceBlue/image.png",
+          "/assets/j7/iceBlue/front.png",
+          "/assets/j7/iceBlue/back.png"
+        ],
+        "price": 40999.99,
+        "discountedPrice": 36999.99,
+        "discount": 50000
+      },
+      {
+        "color": "#cbd9e7",
+        "colorName": "Ice Blue",
+        "storage": "128GB",
+        "ram": "8GB",
+        "imageUrls": [
+          "/assets/j7/iceBlue/image.png",
+          "/assets/j7/iceBlue/front.png",
+          "/assets/j7/iceBlue/back.png"
+        ],
+        "price": 40999.99,
+        "discountedPrice": 36999.99,
+        "discount": 50000
+      },
+      {
+        "color": "#cbd9e7",
+        "colorName": "Ice Blue",
+        "storage": "256GB",
+        "ram": "8GB",
+        "imageUrls": [
+          "/assets/j7/iceBlue/image.png",
+          "/assets/j7/iceBlue/front.png",
+          "/assets/j7/iceBlue/back.png"
+        ],
+        "price": 41999.99,
+        "discountedPrice": 37999.99,
+        "discount": 50000
+      },
+      {
+        "color": "#3e424b",
+        "colorName": "Navy",
+        "storage": "128GB",
+        "ram": "6GB",
+        "imageUrls": [
+          "/assets/j7/navy/image.png",
+          "/assets/j7/navy/front.png",
+          "/assets/j7/navy/back.png"
+        ],
+        "price": 39999.99,
+        "discountedPrice": 34999.99,
+        "discount": 50000
+      },
+      {
+        "color": "#3e424b",
+        "colorName": "Navy",
+        "storage": "256GB",
+        "ram": "6GB",
+        "imageUrls": [
+          "/assets/j7/navy/image.png",
+          "/assets/j7/navy/front.png",
+          "/assets/j7/navy/back.png"
+        ],
+        "price": 40999.99,
+        "discountedPrice": 36999.99,
+        "discount": 50000
+      },
+      {
+        "color": "#3e424b",
+        "colorName": "Navy",
+        "storage": "128GB",
+        "ram": "8GB",
+        "imageUrls": [
+          "/assets/j7/navy/image.png",
+          "/assets/j7/navy/front.png",
+          "/assets/j7/navy/back.png"
+        ],
+        "price": 40999.99,
+        "discountedPrice": 36999.99,
+        "discount": 50000
+      },
+      {
         "color": "#3e424b",
         "colorName": "Navy",
         "storage": "256GB",
@@ -42,8 +126,8 @@
           "/assets/j7/navy/front.png",
           "/assets/j7/navy/back.png"
         ],
-        "price": 45999.99,
-        "discountedPrice": 41999.99,
+        "price": 41999.99,
+        "discountedPrice": 37999.99,
         "discount": 50000
       }
     ],
@@ -83,6 +167,76 @@
         "discount": 30000
       },
       {
+        "color": "#2a3244",
+        "colorName": "Dark Blue",
+        "storage": "128GB",
+        "ram": "4GB",
+        "imageUrls": [
+          "/assets/tabE/darkBlue/image.png",
+          "/assets/tabE/darkBlue/front.png",
+          "/assets/tabE/darkBlue/back.png"
+        ],
+        "price": 36999.99,
+        "discountedPrice": 31999.99,
+        "discount": 30000
+      },
+      {
+        "color": "#2a3244",
+        "colorName": "Dark Blue",
+        "storage": "64GB",
+        "ram": "6GB",
+        "imageUrls": [
+          "/assets/tabE/darkBlue/image.png",
+          "/assets/tabE/darkBlue/front.png",
+          "/assets/tabE/darkBlue/back.png"
+        ],
+        "price": 36999.99,
+        "discountedPrice": 31999.99,
+        "discount": 30000
+      },
+      {
+        "color": "#c9c9c8",
+        "colorName": "Gray",
+        "storage": "64GB",
+        "ram": "4GB",
+        "imageUrls": [
+          "/assets/tabE/gray/image.png",
+          "/assets/tabE/gray/front.png",
+          "/assets/tabE/gray/back.png"
+        ],
+        "price": 34999.99,
+        "discountedPrice": 29999.99,
+        "discount": 30000
+      },
+      {
+        "color": "#c9c9c8",
+        "colorName": "Gray",
+        "storage": "128GB",
+        "ram": "4GB",
+        "imageUrls": [
+          "/assets/tabE/gray/image.png",
+          "/assets/tabE/gray/front.png",
+          "/assets/tabE/gray/back.png"
+        ],
+        "price": 36999.99,
+        "discountedPrice": 31999.99,
+        "discount": 30000
+      },
+      {
+        "color": "#c9c9c8",
+        "colorName": "Gray",
+        "storage": "64GB",
+        "ram": "6GB",
+        "imageUrls": [
+          "/assets/tabE/gray/image.png",
+          "/assets/tabE/gray/front.png",
+          "/assets/tabE/gray/back.png"
+        ],
+        "price": 36999.99,
+        "discountedPrice": 31999.99,
+        "discount": 30000
+      },
+      {
         "color": "#c9c9c8",
         "colorName": "Gray",
         "storage": "128GB",
@@ -92,8 +246,8 @@
           "/assets/tabE/gray/front.png",
           "/assets/tabE/gray/back.png"
         ],
-        "price": 39999.99,
-        "discountedPrice": 34999.99,
+        "price": 36999.99,
+        "discountedPrice": 31999.99,
         "discount": 30000
       }
     ],
@@ -133,6 +287,90 @@
         "discount": 30000
       },
       {
+        "color": "#2a3244",
+        "colorName": "Raisin Black",
+        "storage": "128GB",
+        "ram": "4GB",
+        "imageUrls": [
+          "/assets/c3/raisinBlack/image.png",
+          "/assets/c3/raisinBlack/front.png",
+          "/assets/c3/raisinBlack/back.png"
+        ],
+        "price": 31999.99,
+        "discountedPrice": 27999.99,
+        "discount": 30000
+      },
+      {
+        "color": "#2a3244",
+        "colorName": "Raisin Black",
+        "storage": "64GB",
+        "ram": "6GB",
+        "imageUrls": [
+          "/assets/c3/raisinBlack/image.png",
+          "/assets/c3/raisinBlack/front.png",
+          "/assets/c3/raisinBlack/back.png"
+        ],
+        "price": 34999.99,
+        "discountedPrice": 29999.99,
+        "discount": 30000
+      },
+      {
+        "color": "#2a3244",
+        "colorName": "Raisin Black",
+        "storage": "128GB",
+        "ram": "6GB",
+        "imageUrls": [
+          "/assets/c3/raisinBlack/image.png",
+          "/assets/c3/raisinBlack/front.png",
+          "/assets/c3/raisinBlack/back.png"
+        ],
+        "price": 36999.99,
+        "discountedPrice": 31999.99,
+        "discount": 30000
+      },
+      {
+        "color": "#e17e00",
+        "colorName": "Apricot Crush",
+        "storage": "64GB",
+        "ram": "4GB",
+        "imageUrls": [
+          "/assets/c3/apricotCrush/image.png",
+          "/assets/c3/apricotCrush/front.png",
+          "/assets/c3/apricotCrush/back.png"
+        ],
+        "price": 29999.99,
+        "discountedPrice": 24999.99,
+        "discount": 30000
+      },
+      {
+        "color": "#e17e00",
+        "colorName": "Apricot Crush",
+        "storage": "128GB",
+        "ram": "4GB",
+        "imageUrls": [
+          "/assets/c3/apricotCrush/image.png",
+          "/assets/c3/apricotCrush/front.png",
+          "/assets/c3/apricotCrush/back.png"
+        ],
+        "price": 31999.99,
+        "discountedPrice": 27999.99,
+        "discount": 30000
+      },
+      {
+        "color": "#e17e00",
+        "colorName": "Apricot Crush",
+        "storage": "64GB",
+        "ram": "6GB",
+        "imageUrls": [
+          "/assets/c3/apricotCrush/image.png",
+          "/assets/c3/apricotCrush/front.png",
+          "/assets/c3/apricotCrush/back.png"
+        ],
+        "price": 34999.99,
+        "discountedPrice": 29999.99,
+        "discount": 30000
+      },
+      {
         "color": "#e17e00",
         "colorName": "Apricot Crush",
         "storage": "128GB",
@@ -142,8 +380,8 @@
           "/assets/c3/apricotCrush/front.png",
           "/assets/c3/apricotCrush/back.png"
         ],
-        "price": 34999.99,
-        "discountedPrice": 29999.99,
+        "price": 36999.99,
+        "discountedPrice": 31999.99,
         "discount": 30000
       }
     ],
@@ -183,6 +421,34 @@
         "discount": 50000
       },
       {
+        "color": "#efc5be",
+        "colorName": "Phantom Pink",
+        "storage": "512GB",
+        "ram": "8GB",
+        "imageUrls": [
+          "/assets/p9/phantomPink/image.png",
+          "/assets/p9/phantomPink/front.png",
+          "/assets/p9/phantomPink/back.png"
+        ],
+        "price": 74999.99,
+        "discountedPrice": 69999.99,
+        "discount": 50000
+      },
+      {
+        "color": "#efc5be",
+        "colorName": "Phantom Pink",
+        "storage": "256GB",
+        "ram": "12GB",
+        "imageUrls": [
+          "/assets/p9/phantomPink/image.png",
+          "/assets/p9/phantomPink/front.png",
+          "/assets/p9/phantomPink/back.png"
+        ],
+        "price": 79999.99,
+        "discountedPrice": 74999.99,
+        "discount": 50000
+      },
+      {
         "color": "#a5a8c4",
         "colorName": "Phantom Violet",
         "storage": "512GB",
@@ -192,8 +458,64 @@
           "/assets/p9/phantomViolet/front.png",
           "/assets/p9/phantomViolet/back.png"
         ],
+        "price": 82999.99,
+        "discountedPrice": 79999.99,
+        "discount": 50000
+      },
+      {
+        "color": "#a5a8c4",
+        "colorName": "Phantom Violet",
+        "storage": "256GB",
+        "ram": "8GB",
+        "imageUrls": [
+          "/assets/p9/phantomViolet/image.png",
+          "/assets/p9/phantomViolet/front.png",
+          "/assets/p9/phantomViolet/back.png"
+        ],
+        "price": 69999.99,
+        "discountedPrice": 64999.99,
+        "discount": 50000
+      },
+      {
+        "color": "#a5a8c4",
+        "colorName": "Phantom Violet",
+        "storage": "512GB",
+        "ram": "8GB",
+        "imageUrls": [
+          "/assets/p9/phantomViolet/image.png",
+          "/assets/p9/phantomViolet/front.png",
+          "/assets/p9/phantomViolet/back.png"
+        ],
+        "price": 74999.99,
+        "discountedPrice": 69999.99,
+        "discount": 50000
+      },
+      {
+        "color": "#a5a8c4",
+        "colorName": "Phantom Violet",
+        "storage": "256GB",
+        "ram": "12GB",
+        "imageUrls": [
+          "/assets/p9/phantomViolet/image.png",
+          "/assets/p9/phantomViolet/front.png",
+          "/assets/p9/phantomViolet/back.png"
+        ],
         "price": 79999.99,
         "discountedPrice": 74999.99,
+        "discount": 50000
+      },
+      {
+        "color": "#a5a8c4",
+        "colorName": "Phantom Violet",
+        "storage": "512GB",
+        "ram": "12GB",
+        "imageUrls": [
+          "/assets/p9/phantomViolet/image.png",
+          "/assets/p9/phantomViolet/front.png",
+          "/assets/p9/phantomViolet/back.png"
+        ],
+        "price": 82999.99,
+        "discountedPrice": 79999.99,
         "discount": 50000
       }
     ],
@@ -233,6 +555,90 @@
         "discount": 50000
       },
       {
+        "color": "#808080",
+        "colorName": "Gray",
+        "storage": "256GB",
+        "ram": "6GB",
+        "imageUrls": [
+          "/assets/tabY5/gray/image.png",
+          "/assets/tabY5/gray/front.png",
+          "/assets/tabY5/gray/back.png"
+        ],
+        "price": 64999.99,
+        "discountedPrice": 59999.99,
+        "discount": 50000
+      },
+      {
+        "color": "#808080",
+        "colorName": "Gray",
+        "storage": "128GB",
+        "ram": "8GB",
+        "imageUrls": [
+          "/assets/tabY5/gray/image.png",
+          "/assets/tabY5/gray/front.png",
+          "/assets/tabY5/gray/back.png"
+        ],
+        "price": 64999.99,
+        "discountedPrice": 59999.99,
+        "discount": 50000
+      },
+      {
+        "color": "#808080",
+        "colorName": "Gray",
+        "storage": "256GB",
+        "ram": "8GB",
+        "imageUrls": [
+          "/assets/tabY5/gray/image.png",
+          "/assets/tabY5/gray/front.png",
+          "/assets/tabY5/gray/back.png"
+        ],
+        "price": 69999.99,
+        "discountedPrice": 64999.99,
+        "discount": 50000
+      },
+      {
+        "color": "#c1d1a6",
+        "colorName": "Mint Green",
+        "storage": "128GB",
+        "ram": "6GB",
+        "imageUrls": [
+          "/assets/tabY5/mint/image.png",
+          "/assets/tabY5/mint/front.png",
+          "/assets/tabY5/mint/back.png"
+        ],
+        "price": 64999.99,
+        "discountedPrice": 59999.99,
+        "discount": 50000
+      },
+      {
+        "color": "#c1d1a6",
+        "colorName": "Mint Green",
+        "storage": "256GB",
+        "ram": "6GB",
+        "imageUrls": [
+          "/assets/tabY5/mint/image.png",
+          "/assets/tabY5/mint/front.png",
+          "/assets/tabY5/mint/back.png"
+        ],
+        "price": 69999.99,
+        "discountedPrice": 64999.99,
+        "discount": 50000
+      },
+      {
+        "color": "#c1d1a6",
+        "colorName": "Mint Green",
+        "storage": "128GB",
+        "ram": "8GB",
+        "imageUrls": [
+          "/assets/tabY5/mint/image.png",
+          "/assets/tabY5/mint/front.png",
+          "/assets/tabY5/mint/back.png"
+        ],
+        "price": 69999.99,
+        "discountedPrice": 64999.99,
+        "discount": 50000
+      },
+      {
         "color": "#c1d1a6",
         "colorName": "Mint Green",
         "storage": "256GB",
@@ -242,8 +648,8 @@
           "/assets/tabY5/mint/front.png",
           "/assets/tabY5/mint/back.png"
         ],
-        "price": 69999.99,
-        "discountedPrice": 64999.99,
+        "price": 74999.99,
+        "discountedPrice": 69999.99,
         "discount": 50000
       }
     ],
