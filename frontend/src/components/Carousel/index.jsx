@@ -1,13 +1,21 @@
 import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Thumbs } from 'swiper/modules';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 
 const ImageSlide = ({ image }) =>
 	<div className="flex flex-col items-center">
-		<img src={ image } alt={ image } className="w-full h-auto"/>
+		<LazyLoadImage
+			className="w-full h-auto"
+			alt={ image }
+			effect="blur"
+			wrapperProps={ { style: { transitionDelay: '0.5s' }} }
+			src={ image }
+		/>
 	</div>;
 
 const MainSwiper = ({ images, thumbsSwiper }) =>
@@ -26,10 +34,12 @@ const MainSwiper = ({ images, thumbsSwiper }) =>
 
 const ImageThumbnail = ({ image }) =>
 	<div className="flex flex-col items-center">
-		<img
-			src={ image }
-			alt={ image }
+		<LazyLoadImage
 			className="w-full h-auto object-contain cursor-pointer"
+			alt={ image }
+			effect="blur"
+			wrapperProps={ { style: { transitionDelay: '0.5s' }} }
+			src={ image }
 		/>
 	</div>;
 

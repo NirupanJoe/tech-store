@@ -1,5 +1,7 @@
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Title = ({ title }) =>
 	<h3 className="text-lg font-semibold mt-4 h-5">{ title }</h3>;
@@ -7,7 +9,13 @@ const Title = ({ title }) =>
 const Image = ({ src, product: { _id: id, name: alt }}) =>
 	<div className="flex justify-center">
 		<Link to={ `/product/${ id }` }>
-			<img src={ src } alt={ alt } className="w-60 h-60 object-contain"/>
+			<LazyLoadImage
+				className="w-60 h-60 object-contain"
+				alt={ alt }
+				effect="blur"
+				wrapperProps={ { style: { transitionDelay: '0.5s' }} }
+				src={ src }
+			/>
 		</Link>
 	</div>;
 
