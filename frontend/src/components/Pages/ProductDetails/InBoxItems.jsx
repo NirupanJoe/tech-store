@@ -5,7 +5,6 @@ const InBoxItems = () =>
 	<div>
 		<h2 className="font-semibold mb-2">In-box items</h2>
 		<LazyLoadImage
-			className="w-60 h-60 object-contain"
 			alt="In-box-items"
 			effect="blur"
 			wrapperProps={ { style: { transitionDelay: '0.5s' }} }
