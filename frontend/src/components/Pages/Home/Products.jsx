@@ -2,6 +2,8 @@ import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import Pagination from 'react-js-pagination';
+import config from '../../../actions/config';
 
 const Title = ({ title }) =>
 	<h3 className="text-lg font-semibold mt-4 h-5">{ title }</h3>;
@@ -48,7 +50,7 @@ const Pricing = ({ price, discountedPrice, discount }) =>
 			₹ { price }
 		</p>
 		<p className="text-gray-400 line-through text-sm">{ discountedPrice }</p>
-		<p className="text-blue-500 text-sm mt-1">Save { discount }</p>
+		<p className="text-primary-500 text-sm mt-1">Save { discount }</p>
 	</Fragment>;
 
 const BuyButton = ({ _id: id }) =>
@@ -76,9 +78,34 @@ const ProductCard = ({ product }) => {
 	</div>;
 };
 
-const Products = ({ products }) =>
+const ProductGrid = ({ products }) =>
 	<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-		{ products.map((product, index) => <ProductCard key={ index } product={ product }/>) }
+		{ products.map((product) => {
+			const { _id: id } = product;
+
+			return <ProductCard key={ id } { ...{ product } }/>;
+		}) }
 	</div>;
+
+const ProductPagination = ({ currentPage, setCurrentPage, productsCount }) =>
+	<div className="mt-10 flex justify-center">
+		<Pagination
+			activePage={ currentPage }
+			itemsCountPerPage={ config.productsPerPage }
+			totalItemsCount={ productsCount }
+			onChange={ (page) => setCurrentPage(page) }
+			itemClass="inline-block mx-1"
+			linkClass="px-4 py-2 border border-primary-500 rounded-full text-white-600
+         hover:bg-primary-600 hover:text-white hover:border-white-500"
+			activeLinkClass="bg-primary-600 text-white"
+			disabledClass="opacity-50 cursor-not-allowed"
+		/>
+	</div>;
+
+const Products = (props) =>
+	<section>
+		<ProductGrid { ...props }/>
+		<ProductPagination { ...props }/>
+	</section>;
 
 export default Products;
