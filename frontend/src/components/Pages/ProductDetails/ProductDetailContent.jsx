@@ -4,6 +4,7 @@ import ProductPriceStock from './ProductPriceStock';
 import Rating from '../../Rating';
 import InBoxItems from './InBoxItems';
 import Carousel from '../../Carousel';
+import MetaData from '../../../MetaData';
 
 const ProductImageGallery = ({ productImage }) =>
 	<div className="md:w-1/2">
@@ -91,6 +92,7 @@ const ProductDetailContent = ({ product }) => {
 
 	return (
 		<div className="flex flex-col md:flex-row gap-8">
+			<MetaData title={ `${ product.name } | product` }/>
 			<ProductImageGallery { ...productSelection }/>
 			<ProductInfoSection
 				product={ product }
