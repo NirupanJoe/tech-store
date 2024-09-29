@@ -8,7 +8,13 @@ const productsSlice = createSlice({
 			state.loading = true;
 		},
 		productsSuccess: (state, action) =>
-			({ ...state, loading: false, products: action.payload.products }),
+			({
+				...state,
+				loading: false,
+				products: action.payload.products,
+				productsCount: action.payload.totalProducts,
+				returnedProductCount: action.payload.returnedProductCount,
+			}),
 		productsFail: (state, action) =>
 			({ ...state, loading: false, error: action.payload }),
 	},
