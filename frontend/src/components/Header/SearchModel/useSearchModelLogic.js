@@ -1,27 +1,27 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-const maxSearchHistory = 4;
+import { setSearchHistory, clearSearchHistory } from '../../../actions/searchActions';
+import { useDispatch } from 'react-redux';
 
 const useSearchModalLogic = () => {
 	const [searchTerm, setSearchTerm] = useState('');
-	const [searchHistory, setSearchHistory] = useState(['']);
+	const dispatch = useDispatch();
 	const navigation = useNavigate();
 
 	const handleSearch = (term) => {
 		if(term.trim()) {
 			navigation(`/search/${ term }`);
-			setSearchHistory((prevHistory) => [term, ...prevHistory.slice(0, maxSearchHistory)]);
-			setSearchTerm('');
+			dispatch(setSearchHistory(term));
 		}
 	};
 
-	const clearHistory = () => setSearchHistory([]);
+	const clearHistory = () => {
+		dispatch(clearSearchHistory());
+	};
 
 	return {
 		searchTerm,
 		setSearchTerm,
-		searchHistory,
 		clearHistory,
 		handleSearch,
 	};
