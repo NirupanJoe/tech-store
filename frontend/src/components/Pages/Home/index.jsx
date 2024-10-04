@@ -14,7 +14,7 @@ const Home = () => {
 	const productsProps = { ...productsState, currentPage, setCurrentPage };
 
 	useEffect(() => {
-		dispatch(getProducts(currentPage));
+		dispatch(getProducts({ currentPage }));
 	}, [dispatch, currentPage]);
 
 	return (

@@ -4,13 +4,17 @@ import config from './config';
 
 const options = { headers: { 'Cache-Control': 'no-cache' }};
 
-export const getProducts = (page) => async (dispatch) => {
+export const getProducts = ({ currentPage, keyword }) => async (dispatch) => {
 	const { productsPerPage } = config;
 
 	try {
 		dispatch(productsRequest());
+		let link = `/api/products?page=${ currentPage }&limit=${ productsPerPage }`;
 
-		const response = await axios.get(`/api/products?page=${ page }&limit=${ productsPerPage }`, options);
+		if(keyword)
+			link += `&keyword=${ keyword }`;
+
+		const response = await axios.get(link, options);
 
 		dispatch(productsSuccess(response.data));
 	}
