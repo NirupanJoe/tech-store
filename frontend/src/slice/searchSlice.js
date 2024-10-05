@@ -6,10 +6,9 @@ const searchSlice = createSlice({
 	initialState: { searchHistory: [] },
 	reducers: {
 		addSearchHistory (state, action) {
-			state.searchHistory = [
-				...state.searchHistory.slice(0, config.maxSearchHistory),
-				action.payload,
-			];
+			const newHistory = [action.payload, ...state.searchHistory];
+
+			state.searchHistory = Array.from(new Set(newHistory)).slice(0, config.maxSearchHistory);
 		},
 		clearHistory () {
 			return { searchHistory: [] };
