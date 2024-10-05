@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import KeywordList from './KeywordList';
 
-const SearchHistory = ({ handleSearch, clearHistory }) => {
+const SearchHistory = ({ clearHistory, ...props }) => {
 	const { searchHistory } = useSelector((state) => state.searchState);
 
 	return searchHistory.length > 0
@@ -12,7 +12,7 @@ const SearchHistory = ({ handleSearch, clearHistory }) => {
 						Clear All
 					</button>
 				</div>
-				<KeywordList keywords={ searchHistory } handleSearch={ handleSearch }/>
+				<KeywordList keywords={ searchHistory } { ...props }/>
 			</div>;
 };
 
