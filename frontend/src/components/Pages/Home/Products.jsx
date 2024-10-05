@@ -88,7 +88,8 @@ const ProductGrid = ({ products }) =>
 	</div>;
 
 const ProductPagination = ({ currentPage, setCurrentPage, productsCount }) =>
-	<div className="mt-10 flex justify-center">
+	productsCount > config.productsPerPage
+	&& <div className="mt-10 flex justify-center">
 		<Pagination
 			activePage={ currentPage }
 			itemsCountPerPage={ config.productsPerPage }
