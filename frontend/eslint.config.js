@@ -418,7 +418,7 @@ export default [
 			],
 			'no-template-curly-in-string': 'error',
 			'no-await-in-loop': 'error',
-			'no-console': 'error',
+			'no-console': ["error", { allow: ["warn", "error"] }],
 			'no-debugger': 'error',
 			'strict': [
 				'error',
