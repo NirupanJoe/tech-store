@@ -4,6 +4,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Pagination from 'react-js-pagination';
 import config from '../../../actions/config';
+import Error from '../Error';
 
 const Title = ({ title }) =>
 	<h3 className="text-lg font-semibold mt-4 h-5">{ title }</h3>;
@@ -103,10 +104,15 @@ const ProductPagination = ({ currentPage, setCurrentPage, productsCount }) =>
 		/>
 	</div>;
 
-const Products = (props) =>
-	<section>
-		<ProductGrid { ...props }/>
-		<ProductPagination { ...props }/>
-	</section>;
+const Products = (props) => {
+	const { products } = props;
+
+	return products.length > 0
+		? <section>
+			<ProductGrid { ...props }/>
+			<ProductPagination { ...props }/>
+		</section>
+		: <Error error="No Product found"/>;
+};
 
 export default Products;

@@ -7,12 +7,12 @@ import Loader from '../../Loader';
 import Error from '../Error';
 import { useParams } from 'react-router-dom';
 
-const RenderContent = ({ products, loading, error, productsProps }) =>
+const RenderContent = ({ loading, error, ...productsProps }) =>
 	(loading
 		? <Loader/>
 		: error
 			? <Error { ...{ error } }/>
-			: products.length > 0 && <Products { ...productsProps }/>);
+			: <Products { ...productsProps }/>);
 
 const ProductSearch = () => {
 	const dispatch = useDispatch();

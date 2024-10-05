@@ -10,7 +10,7 @@ const Home = () => {
 	const dispatch = useDispatch();
 	const productsState = useSelector((state) => state.productsState);
 	const [currentPage, setCurrentPage] = useState(1);
-	const { products, loading, error } = productsState;
+	const { loading, error } = productsState;
 	const productsProps = { ...productsState, currentPage, setCurrentPage };
 
 	useEffect(() => {
@@ -24,7 +24,7 @@ const Home = () => {
 				? <Loader/>
 				: error
 					? <Error { ...{ error } }/>
-					: products.length > 0 && <Products { ...productsProps }/> }
+					: <Products { ...productsProps }/> }
 		</main>
 	);
 };
