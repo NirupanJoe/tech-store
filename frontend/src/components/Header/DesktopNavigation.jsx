@@ -1,27 +1,29 @@
+import { Link } from 'react-router-dom';
 
 const data = [
 	{
 		name: 'Smartphones',
-		href: '#',
+		to: '/smartphones',
 	},
 	{
 		name: 'Tablets',
-		href: '#',
+		to: '/tablets',
 	},
 ];
 
-const DesktopNavigation = () =>
+const DesktopNavigation = ({ setIsMenuOpen }) =>
 	<nav className="hidden lg:flex space-x-6">
 		{
 			data.map((item) =>
-				<a
+				<Link
 					key={ item.name }
-					href={ item.href }
+					to={ item.to }
 					className="text-black text-md px-3 py-1
            font-medium hover:bg-black hover:text-white hover:rounded-[40px]"
+					onClick={ () => setIsMenuOpen(false) }
 				>
 					{ item.name }
-				</a>)
+				</Link>)
 		}
 	</nav>;
 
