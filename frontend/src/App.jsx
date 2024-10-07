@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Home from './components/Pages/Home';
 import { Route, Routes } from 'react-router-dom';
 import ProductDetails from './components/Pages/ProductDetails';
-import ProductSearch from './components/Pages/ProductsSearch';
+import ProductSearch from './components/Pages/ProductSearch';
 import Smartphones from './components/Pages/SmartPhones';
 import Tablets from './components/Pages/Tables';
 
