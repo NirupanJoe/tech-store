@@ -10,7 +10,7 @@ const Image = ({ src, product: { _id: id, name: alt }}) =>
 	<div className="flex justify-center">
 		<Link to={ `/product/${ id }` }>
 			<LazyLoadImage
-				className="w-60 h-60 object-contain"
+				className="mt-2 sm:w-96 md:w-80 ld:w-96 sm:h-96 md:h-80 ld:h-96 object-contain"
 				alt={ alt }
 				effect="blur"
 				wrapperProps={ { style: { transitionDelay: '0.5s' }} }
