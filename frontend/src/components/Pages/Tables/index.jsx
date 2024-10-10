@@ -10,7 +10,7 @@ const Tablets = () => {
 
 	return <Fragment>
 		<MetaData title="Tablets | Home"/>
-		<Products { ...fetchData }/>
+		<Products { ...fetchData } filter={ true }/>
 	</Fragment>;
 };
 

@@ -2,13 +2,21 @@ import Loader from '../Loader';
 import Error from '../Pages/Error';
 import ProductGrid from '../../components/Products/ProductGrid';
 import ProductPagination from '../../components/Products/ProductPagination';
-import { Fragment } from 'react';
+import FilterOptions from './FilterOptions';
 
-const RenderProducts = (props) =>
-	<Fragment>
-		<ProductGrid { ...props }/>
-		<ProductPagination { ...props }/>
-	</Fragment>;
+const RenderProducts = (props) => {
+	const { filter } = props;
+
+	return <div className="flex flex-col sm:flex-row sm:justify-around">
+		<div className={ `w-1/3 lg:w-1/5 ${ !filter && 'hidden' }` }>
+			<FilterOptions/>
+		</div>
+		<div className="lg:w-4/5">
+			<ProductGrid { ...props }/>
+			<ProductPagination { ...props }/>
+		</div>
+	</div>;
+};
 
 const Products = (props) => {
 	const { loading, error } = props;
