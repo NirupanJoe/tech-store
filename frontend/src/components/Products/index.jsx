@@ -8,9 +8,11 @@ const RenderProducts = (props) => {
 	const { filter } = props;
 
 	return <div className="flex flex-col sm:flex-row sm:justify-around">
-		<div className={ `w-1/3 lg:w-1/5 ${ !filter && 'hidden' }` }>
-			<FilterOptions/>
-		</div>
+		{
+			filter && <div className="w-1/3 lg:w-1/5">
+				<FilterOptions { ...props }/>
+			</div>
+		}
 		<div className="lg:w-4/5">
 			<ProductGrid { ...props }/>
 			<ProductPagination { ...props }/>
