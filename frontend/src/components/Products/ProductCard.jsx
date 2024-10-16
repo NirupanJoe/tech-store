@@ -45,9 +45,9 @@ const Storage = ({ storage }) =>
 const Pricing = ({ price, discountedPrice, discount }) =>
 	<Fragment>
 		<p className="text-sm mt-2 font-semibold">
-			₹ { price }
+			₹ { discountedPrice }
 		</p>
-		<p className="text-gray-400 line-through text-sm">{ discountedPrice }</p>
+		<p className="text-gray-400 line-through text-sm">{ price }</p>
 		<p className="text-primary-500 text-sm mt-1">Save { discount }</p>
 	</Fragment>;
 
