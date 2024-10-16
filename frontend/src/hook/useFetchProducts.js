@@ -9,7 +9,7 @@ const useFetchProducts = (productsParams = {}) => {
 
 	useEffect(() => {
 		dispatch(getProducts({ currentPage, ...productsParams }));
-	}, [dispatch, currentPage]);
+	}, [dispatch, currentPage, JSON.stringify(productsParams)]);
 
 	return { ...productsState, currentPage, setCurrentPage };
 };
