@@ -23,7 +23,10 @@ const buildPriceQuery = (minPrice, maxPrice) => {
 		priceQuery.$gte = minPrice;
 	if(maxPrice)
 		priceQuery.$lte = maxPrice;
-	return Object.keys(priceQuery).length > 0 ? { price: priceQuery } : {};
+
+	return Object.keys(priceQuery).length > 0
+		? { 'variants.discountedPrice': priceQuery }
+		: priceQuery;
 };
 
 const buildQuery = ({ keyword, category, minPrice, maxPrice }) => ({
