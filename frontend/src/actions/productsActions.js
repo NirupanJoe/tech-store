@@ -4,20 +4,24 @@ import config from './config';
 
 const options = { headers: { 'Cache-Control': 'no-cache' }};
 
-const generateQueryString = ({ currentPage, category, keyword, productsPerPage }) => {
+const generateQueryString = ({
+	currentPage, category, keyword,
+	productsPerPage, ...props
+}) => {
 	const queryParams = {
 		page: currentPage,
 		limit: productsPerPage,
 		...keyword && { keyword },
 		...category && { category },
+		...props,
 	};
 
 	return new URLSearchParams(queryParams).toString();
 };
 
-export const getProducts = ({ currentPage, category, keyword }) => async (dispatch) => {
+export const getProducts = ({ currentPage, ...props }) => async (dispatch) => {
 	const { productsPerPage } = config;
-	const queryString = generateQueryString({ currentPage, category, keyword, productsPerPage });
+	const queryString = generateQueryString({ currentPage, productsPerPage, ...props });
 	const link = `/api/products?${ queryString }`;
 
 	try {
