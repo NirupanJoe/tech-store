@@ -30,7 +30,7 @@ const FilterSidebar = ({ isFilterOpen, setFilterOpen, props }) => {
       ${ isFilterOpen ? 'translate-x-0' : '-translate-x-full' } 
       sm:translate-x-0 absolute sm:static bg-white z-10 h-full sm:h-auto` }
 		>
-			<div className="flex p-2 hidden sm: justify-between items-center">
+			<div className="flex p-2 sm:hidden sm: justify-between items-center">
 				<div className="text-lg font-semibold">Filters</div>
 				<button onClick={ () => setFilterOpen(false) }>
 					<XIcon/>
