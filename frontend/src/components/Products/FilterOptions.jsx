@@ -1,7 +1,7 @@
 import config from '../../actions/config';
 
 const PriceOption = ({ priceOption, selectedPrice, handlePriceChange }) =>
-	<label className="flex items-center space-x-2 text-xs lg:text-base">
+	<label className="flex items-center space-x-2 text-lg md:text-xs lg:text-lg">
 		<input
 			type="radio"
 			name="price"
