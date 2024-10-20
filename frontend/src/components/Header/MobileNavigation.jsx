@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const data = [
-	{ name: 'Log-In/Sign-Up', to: '#' },
+	{ name: 'Log-In/Sign-Up', to: '/login' },
 	{ name: 'Smartphones', to: '/smartphones' },
 	{ name: 'Tablets', to: '/tablets' },
 	{ name: 'Order', to: '#' },

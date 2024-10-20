@@ -7,6 +7,7 @@ import ProductDetails from './components/Pages/ProductDetails';
 import ProductSearch from './components/Pages/ProductSearch';
 import Smartphones from './components/Pages/SmartPhones';
 import Tablets from './components/Pages/Tables';
+import Login from './components/Pages/User/Login';
 
 const App = () =>
 	<div>
@@ -17,6 +18,7 @@ const App = () =>
 			<Route path="/search/:keyword" element={ <ProductSearch/> }/>
 			<Route path="/smartphones" element={ <Smartphones/> }/>
 			<Route path="/tablets" element={ <Tablets/> }/>
+			<Route path="/login" element={ <Login/> }/>
 		</Routes>
 		<Footer/>
 	</div>;

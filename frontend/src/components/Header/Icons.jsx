@@ -3,7 +3,7 @@ import { useState } from 'react';
 import SearchModal from './SearchModel';
 
 const profileOpenData = [
-	{ name: 'Login/Sign-Up', href: '#' },
+	{ name: 'Login/Sign-Up', href: '/login' },
 	{ name: 'Order', href: '#' },
 ];
 
