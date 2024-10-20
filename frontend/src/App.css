@@ -1,3 +1,16 @@
 .fill-black {
-  fill: black;
+	fill: black;
+}
+
+input[type="password"]::-webkit-textfield-decoration-container {
+	display: none;
+}
+
+input[type="password"]::-moz-password-visible,
+input[type="password"]::-moz-password-hidden {
+	display: none;
+}
+
+input[type="password"]::-ms-reveal {
+	display: none;
 }
