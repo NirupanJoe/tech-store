@@ -1,23 +1,24 @@
 import { Menu, X as XIcon, ShoppingCart, Search, User } from 'lucide-react';
 import { useState } from 'react';
 import SearchModal from './SearchModel';
+import { Link } from 'react-router-dom';
 
 const profileOpenData = [
-	{ name: 'Login/Sign-Up', href: '/login' },
-	{ name: 'Order', href: '#' },
+	{ name: 'Login/Sign-Up', to: '/login' },
+	{ name: 'Order', to: '#' },
 ];
 
 const ProfileOpen = () =>
 	<div className="absolute right-0 w-48 bg-white rounded-md shadow-lg py-1 z-10">
 		{ profileOpenData.map((item) =>
-			<a
+			<Link
 				key={ item.name }
-				href={ item.href }
+				to={ item.to }
 				className="block px-4 py-2 text-sm text-black-700
 				hover:text-black hover:font-bold"
 			>
 				{ item.name }
-			</a>) }
+			</Link>) }
 	</div>;
 
 const ProfileMenu = ({ isProfileOpen, setIsProfileOpen }) =>
