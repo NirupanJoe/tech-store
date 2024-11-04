@@ -4,6 +4,7 @@ import useLoginForm from '../useLoginForm';
 import useAuth from '../useAuth';
 import Title from '../Title';
 import LoginForm from './LoginForm';
+import LoginAccountMessage from './LoginAccountMessage';
 
 const Login = () => {
 	const loginState = useLoginForm();
@@ -19,6 +20,7 @@ const Login = () => {
 					<div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
 						<LoginForm { ...loginState }/>
 					</div>
+					<LoginAccountMessage/>
 				</div>
 			</div>
 		</Fragment>

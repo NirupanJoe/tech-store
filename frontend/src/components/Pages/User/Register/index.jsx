@@ -4,6 +4,7 @@ import useLoginForm from '../useLoginForm';
 import useAuth from '../useAuth';
 import Title from '../Title';
 import RegisterForm from './RegisterForm';
+import RegisterAccountMessage from './RegisterAccountMessage';
 
 const Register = () => {
 	const loginState = useLoginForm();
@@ -19,6 +20,7 @@ const Register = () => {
 					<div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
 						<RegisterForm { ...loginState }/>
 					</div>
+					<RegisterAccountMessage/>
 				</div>
 			</div>
 		</Fragment>
