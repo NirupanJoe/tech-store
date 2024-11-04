@@ -1,17 +1,5 @@
-import { Fragment } from 'react';
-import MetaData from '../../../MetaData';
-import Products from '../../Products';
-import useFetchProducts from '../../../hook/useFetchProducts';
+import ProductCategory from '../../ProductCategory';
 
-const Tablets = () => {
-	const category = 'tablet';
-
-	const fetchData = useFetchProducts({ category });
-
-	return <Fragment>
-		<MetaData title="Tablets | Home"/>
-		<Products { ...fetchData } filter={ true }/>
-	</Fragment>;
-};
+const Tablets = () => <ProductCategory category="tablet" title="Tablets"/>;
 
 export default Tablets;
