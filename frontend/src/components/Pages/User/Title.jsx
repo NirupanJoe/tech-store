@@ -1,8 +1,8 @@
-const LoginTitle = () =>
+const Title = ({ title }) =>
 	<div className="sm:mx-auto sm:w-full sm:max-w-md">
 		<h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-			Sign in
+			{ title }
 		</h2>
 	</div>;
 
-export default LoginTitle;
+export default Title;

@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { login } from '../../../../actions/authActions';
-import EmailInput from './EmailInput';
-import PasswordInput from './PasswordInput';
-import ErrorMessage from './ErrorMessage';
-import SignInButton from './SignInButton';
+import EmailInput from '../EmailInput';
+import PasswordInput from '../PasswordInput';
+import ErrorMessage from '../ErrorMessage';
+import SubmitButton from '../SubmitButton';
 
 const LoginForm = (props) => {
 	const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const LoginForm = (props) => {
 		<EmailInput { ...props }/>
 		<PasswordInput { ...props }/>
 		<ErrorMessage { ...props }/>
-		<SignInButton { ...props }/>
+		<SubmitButton { ...props } label="Sign In"/>
 	</form>;
 };
 

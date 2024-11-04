@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-const SignInButton = () => {
+const SubmitButton = ({ label }) => {
 	const { loading } = useSelector(({ authState }) => authState);
 
 	return <div>
@@ -11,9 +11,9 @@ const SignInButton = () => {
 					rounded-md shadow-sm font-medium text-white bg-blue-600 hover:bg-blue-700
 					focus:outline-none text-sm focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
 		>
-			Sign in
+			{ label }
 		</button>
 	</div>;
 };
 
-export default SignInButton;
+export default SubmitButton;
