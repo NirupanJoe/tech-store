@@ -9,9 +9,18 @@ import Smartphones from './components/Pages/SmartPhones';
 import Tablets from './components/Pages/Tables';
 import Login from './components/Pages/User/Login';
 import Register from './components/Pages/User/Register';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { loadUser } from './actions/authActions';
 
-const App = () =>
-	<div>
+const App = () => {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(loadUser());
+	}, []);
+
+	return <div>
 		<Header/>
 		<Routes>
 			<Route path="/" element={ <Home/> }/>
@@ -24,5 +33,6 @@ const App = () =>
 		</Routes>
 		<Footer/>
 	</div>;
+};
 
 export default App;
