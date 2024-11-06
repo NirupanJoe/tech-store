@@ -1,36 +1,64 @@
 import { Menu, X as XIcon, ShoppingCart, Search, User } from 'lucide-react';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import SearchModal from './SearchModel';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const profileOpenData = [
 	{ name: 'Login/Sign-Up', to: '/login' },
-	{ name: 'Order', to: '#' },
+	{ name: 'Orders', to: '#' },
 ];
 
-const ProfileOpen = () =>
-	<div className="absolute right-0 w-48 bg-white rounded-md shadow-lg py-1 z-10">
+const authLinks = [
+	{ name: 'Orders', to: '#' },
+	{ name: 'Log Out', to: '#' },
+];
+
+const ProfileLink = ({ name, to }) =>
+	<Link
+		to={ to }
+		className="block px-4 py-2 text-sm text-black-700 hover:text-black hover:font-bold"
+	>
+		{ name }
+	</Link>;
+
+const ProfileAuthenticated = ({ user }) =>
+	<Fragment>
+		<div className="block px-4 py-2 text-sm text-black-700 hover:text-black hover:font-bold">
+			Hi, { user.name }
+		</div>
+		{ authLinks .map((item) =>
+			<ProfileLink key={ item.name } { ...item }/>) }
+	</Fragment>;
+
+const ProfileUnauthenticated = () =>
+	<Fragment>
 		{ profileOpenData.map((item) =>
-			<Link
-				key={ item.name }
-				to={ item.to }
-				className="block px-4 py-2 text-sm text-black-700
-				hover:text-black hover:font-bold"
-			>
-				{ item.name }
-			</Link>) }
-	</div>;
+			<ProfileLink key={ item.name } { ...item }/>) }
+	</Fragment>;
+
+const ProfileOpen = () => {
+	const { isAuthenticated, user } = useSelector((state) => state.authState);
+
+	return (
+		<div className="absolute right-0 top-6 w-48 bg-white rounded-md shadow-lg py-1 z-10">
+			{ isAuthenticated
+				? <ProfileAuthenticated user={ user }/>
+				: <ProfileUnauthenticated/> }
+		</div>
+	);
+};
 
 const ProfileMenu = ({ isProfileOpen, setIsProfileOpen }) =>
 	<div
-		className="relative"
+		className="lg:block relative hidden"
 		onMouseEnter={ () => setIsProfileOpen(true) }
 		onMouseLeave={ () => setIsProfileOpen(false) }
 	>
 		<div className="flex items-center cursor-pointer">
 			<User className="h-6 w-6 text-gray-600"/>
+			{ isProfileOpen && <ProfileOpen { ...{ setIsProfileOpen } }/> }
 		</div>
-		{ isProfileOpen && <ProfileOpen { ...{ setIsProfileOpen } }/> }
 	</div>;
 
 const CartIcon = () =>
