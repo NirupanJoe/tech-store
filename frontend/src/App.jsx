@@ -12,6 +12,7 @@ import Register from './components/Pages/User/Register';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { loadUser } from './actions/authActions';
+import Logout from './components/Pages/User/Logout';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const App = () => {
 			<Route path="/tablets" element={ <Tablets/> }/>
 			<Route path="/login" element={ <Login/> }/>
 			<Route path="/register" element={ <Register/> }/>
+			<Route path="/logout" element={ <Logout/> }/>
 		</Routes>
 		<Footer/>
 	</div>;

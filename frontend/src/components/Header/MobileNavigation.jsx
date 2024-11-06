@@ -10,7 +10,7 @@ const guestLinks = [{ name: 'Log-In/Sign-Up', to: '/login' }];
 const profileLinks = [{ name: 'Orders', to: '#' }];
 const authLinks = [
 	{ name: 'Orders', to: '#' },
-	{ name: 'Log Out', to: '#' },
+	{ name: 'Log Out', to: '/logout' },
 ];
 
 const LinkList = ({ links, setIsMenuOpen }) =>

@@ -10,14 +10,17 @@ import {
 	loadUserRequest,
 	loadUserSuccess,
 	loadUserFail,
+	logoutRequest,
+	logoutSuccess,
+	logoutFail,
 } from '../slice/authSlice';
 
 export const login = ({ email, password }) => async (dispatch) => {
 	try {
 		dispatch(loginRequest());
-		const { data } = await axios.post('/api/users/login', { email, password });
+		const { data: { user }} = await axios.post('/api/users/login', { email, password });
 
-		dispatch(loginSuccess({ user: data }));
+		dispatch(loginSuccess({ user }));
 	}
 	catch (error) {
 		dispatch(loginFail({ error: error.response.data.message }));
@@ -48,11 +51,24 @@ export const loadUser = () => async (dispatch) => {
 	try {
 		dispatch(loadUserRequest());
 
-		const { data } = await axios.get('/api/users/profile');
+		const { data: { user }} = await axios.get('/api/users/profile');
 
-		dispatch(loadUserSuccess(data));
+		dispatch(loadUserSuccess({ user }));
 	}
 	catch (err) {
 		dispatch(loadUserFail({ error: err.response.data.message }));
+	}
+};
+
+export const logout = () => async (dispatch) => {
+	try {
+		dispatch(logoutRequest());
+
+		await axios.get('/api/users/logout');
+
+		dispatch(logoutSuccess());
+	}
+	catch (err) {
+		dispatch(logoutFail({ error: err.response.data.message }));
 	}
 };

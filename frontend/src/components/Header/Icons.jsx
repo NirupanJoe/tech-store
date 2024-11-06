@@ -11,7 +11,7 @@ const profileOpenData = [
 
 const authLinks = [
 	{ name: 'Orders', to: '#' },
-	{ name: 'Log Out', to: '#' },
+	{ name: 'Log Out', to: '/logout' },
 ];
 
 const ProfileLink = ({ name, to }) =>
