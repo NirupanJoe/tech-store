@@ -13,6 +13,9 @@ import {
 	logoutRequest,
 	logoutSuccess,
 	logoutFail,
+	updateProfileRequest,
+	updateProfileSuccess,
+	updateProfileFail,
 } from '../slice/authSlice';
 
 export const login = ({ email, password }) => async (dispatch) => {
@@ -70,5 +73,18 @@ export const logout = () => async (dispatch) => {
 	}
 	catch (err) {
 		dispatch(logoutFail({ error: err.response.data.message }));
+	}
+};
+
+export const updateProfile = (updatedUser) => async (dispatch) => {
+	try {
+		dispatch(updateProfileRequest());
+
+		const { data: { user }} = await axios.put('/api/users/profile', updatedUser);
+
+		dispatch(updateProfileSuccess({ user }));
+	}
+	catch (err) {
+		dispatch(updateProfileFail({ error: err.response.data.message }));
 	}
 };
