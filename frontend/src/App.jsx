@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import './App.css';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -13,6 +14,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { loadUser } from './actions/authActions';
 import Logout from './components/Pages/User/Logout';
+import MyPage from './components/Pages/User/MyPage';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -32,6 +34,7 @@ const App = () => {
 			<Route path="/login" element={ <Login/> }/>
 			<Route path="/register" element={ <Register/> }/>
 			<Route path="/logout" element={ <Logout/> }/>
+			<Route path="/myPage" element={ <MyPage/> }/>
 		</Routes>
 		<Footer/>
 	</div>;

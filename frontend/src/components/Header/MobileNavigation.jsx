@@ -9,6 +9,7 @@ const categories = [
 const guestLinks = [{ name: 'Log-In/Sign-Up', to: '/login' }];
 const profileLinks = [{ name: 'Orders', to: '#' }];
 const authLinks = [
+	{ name: 'My Page', to: '/myPage' },
 	{ name: 'Orders', to: '#' },
 	{ name: 'Log Out', to: '/logout' },
 ];

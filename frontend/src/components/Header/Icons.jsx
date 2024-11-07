@@ -10,6 +10,7 @@ const profileOpenData = [
 ];
 
 const authLinks = [
+	{ name: 'MyPage', to: '/myPage' },
 	{ name: 'Orders', to: '#' },
 	{ name: 'Log Out', to: '/logout' },
 ];
