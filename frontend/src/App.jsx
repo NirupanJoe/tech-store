@@ -15,13 +15,14 @@ import { useDispatch } from 'react-redux';
 import { loadUser } from './actions/authActions';
 import Logout from './components/Pages/User/Logout';
 import MyPage from './components/Pages/User/MyPage';
+import ProtectedRoute from './components/Route/ProtectedRoute';
 
 const App = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(loadUser());
-	}, []);
+	}, [dispatch]);
 
 	return <div>
 		<Header/>
@@ -34,7 +35,7 @@ const App = () => {
 			<Route path="/login" element={ <Login/> }/>
 			<Route path="/register" element={ <Register/> }/>
 			<Route path="/logout" element={ <Logout/> }/>
-			<Route path="/myPage" element={ <MyPage/> }/>
+			<Route path="/myPage" element={ <ProtectedRoute><MyPage/></ProtectedRoute> }/>
 		</Routes>
 		<Footer/>
 	</div>;
