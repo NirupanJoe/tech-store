@@ -80,7 +80,7 @@ export const updateProfile = (updatedUser) => async (dispatch) => {
 	try {
 		dispatch(updateProfileRequest());
 
-		const { data: { user }} = await axios.put('/api/users/profile', updatedUser);
+		const { data: { user }} = await axios.put('/api/users/update', updatedUser);
 
 		dispatch(updateProfileSuccess({ user }));
 	}
