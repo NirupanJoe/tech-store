@@ -43,7 +43,11 @@ const App = () => {
 				element={ <ProtectedRoute>
 					<UpdateProfile/></ProtectedRoute> }
 			/>
-			<Route path="/updatePassword" element={ <UpdatePassword/> }/>
+			<Route
+				path="/updatePassword"
+				element={ <ProtectedRoute>
+					<UpdatePassword/></ProtectedRoute> }
+			/>
 		</Routes>
 		<Footer/>
 	</div>;
