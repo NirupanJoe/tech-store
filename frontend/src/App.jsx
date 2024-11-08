@@ -17,6 +17,7 @@ import Logout from './components/Pages/User/Logout';
 import MyPage from './components/Pages/User/MyPage';
 import ProtectedRoute from './components/Route/ProtectedRoute';
 import UpdateProfile from './components/Pages/User/UpdateProfile';
+import UpdatePassword from './components/Pages/User/UpdatePassword';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -42,6 +43,7 @@ const App = () => {
 				element={ <ProtectedRoute>
 					<UpdateProfile/></ProtectedRoute> }
 			/>
+			<Route path="/updatePassword" element={ <UpdatePassword/> }/>
 		</Routes>
 		<Footer/>
 	</div>;

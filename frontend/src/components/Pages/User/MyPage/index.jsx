@@ -45,7 +45,7 @@ const UserActions = () =>
 			My Orders
 		</Link>
 		<Link
-			to="#"
+			to="/updatePassword"
 			className="mt-3 w-full py-2 px-4 text-white bg-primary-500
 				rounded hover:bg-primary-600 transition-colors"
 		>
