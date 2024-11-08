@@ -1,4 +1,5 @@
 import { Eye, EyeOff } from 'lucide-react';
+import { useState } from 'react';
 
 const Label = () =>
 	<label htmlFor="password" className="block text-sm font-medium text-gray-700">
@@ -17,7 +18,8 @@ const TogglePasswordButton = ({ showPassword, setShowPassword }) =>
 	</button>;
 
 const Input = (props) => {
-	const { showPassword, password, setPassword } = props;
+	const { password, setPassword } = props;
+	const [showPassword, setShowPassword] = useState(false);
 
 	return <div className="mt-1 relative">
 		<input
@@ -32,7 +34,7 @@ const Input = (props) => {
 			value={ password }
 			onChange={ (e) => setPassword(e.target.value) }
 		/>
-		<TogglePasswordButton { ...props }/>
+		<TogglePasswordButton { ...{ ...props, showPassword, setShowPassword } }/>
 	</div>;
 };
 

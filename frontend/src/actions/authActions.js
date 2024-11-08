@@ -92,13 +92,13 @@ export const updateProfile = (updatedUser) => async (dispatch) => {
 	}
 };
 
-export const updatePassword = () => async (dispatch) => {
+export const updatePassword = (data) => async (dispatch) => {
 	try {
 		dispatch(updatePasswordRequest());
 
-		const { data: { user }} = await axios.put('/api/users/password/update');
+		await axios.put('/api/users/password/update', data);
 
-		dispatch(updatePasswordSuccess({ user }));
+		dispatch(updatePasswordSuccess());
 	}
 	catch (err) {
 		dispatch(updatePasswordFail({ error: err.response.data.message }));

@@ -83,10 +83,9 @@ const authSlice = createSlice({
 			state.loading = true;
 			state.isUpdated = false;
 		},
-		updatePasswordSuccess (state, action) {
+		updatePasswordSuccess (state) {
 			state.loading = false;
 			state.isAuthenticated = true;
-			state.user = action.payload.user;
 			state.isUpdated = true;
 		},
 		updatePasswordFail (state, action) {
