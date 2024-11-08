@@ -19,6 +19,12 @@ import {
 	updatePasswordRequest,
 	updatePasswordSuccess,
 	updatePasswordFail,
+	forgetPasswordRequest,
+	forgetPasswordSuccess,
+	forgetPasswordFail,
+	resetPasswordRequest,
+	resetPasswordSuccess,
+	resetPasswordFail,
 } from '../slice/authSlice';
 
 export const login = ({ email, password }) => async (dispatch) => {
@@ -102,5 +108,30 @@ export const updatePassword = (data) => async (dispatch) => {
 	}
 	catch (err) {
 		dispatch(updatePasswordFail({ error: err.response.data.message }));
+	}
+};
+
+export const forgetPassword = (userData) => async (dispatch) => {
+	try {
+		dispatch(forgetPasswordRequest());
+
+		const { data: { message }} = await axios.post('/api/users/password/forget', userData);
+
+		dispatch(forgetPasswordSuccess(message));
+	}
+	catch (err) {
+		dispatch(forgetPasswordFail({ error: err.response.data.message }));
+	}
+};
+
+export const resetPassword = (userData, token) => async (dispatch) => {
+	try {
+		dispatch(resetPasswordRequest());
+		const { data } = await axios.post(`/api/users/password/reset${ { token } }`, userData);
+
+		dispatch(resetPasswordSuccess(data));
+	}
+	catch (err) {
+		dispatch(resetPasswordFail({ error: err.response.data.message }));
 	}
 };
