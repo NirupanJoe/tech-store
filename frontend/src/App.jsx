@@ -16,6 +16,7 @@ import { loadUser } from './actions/authActions';
 import Logout from './components/Pages/User/Logout';
 import MyPage from './components/Pages/User/MyPage';
 import ProtectedRoute from './components/Route/ProtectedRoute';
+import UpdateProfile from './components/Pages/User/UpdateProfile';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -36,6 +37,11 @@ const App = () => {
 			<Route path="/register" element={ <Register/> }/>
 			<Route path="/logout" element={ <Logout/> }/>
 			<Route path="/myPage" element={ <ProtectedRoute><MyPage/></ProtectedRoute> }/>
+			<Route
+				path="/updateProfile"
+				element={ <ProtectedRoute>
+					<UpdateProfile/></ProtectedRoute> }
+			/>
 		</Routes>
 		<Footer/>
 	</div>;

@@ -13,7 +13,7 @@ const UserProfileImage = () =>
 			/>
 		</figure>
 		<Link
-			to="#"
+			to="/updateProfile"
 			className="mt-5 w-full py-2 px-4 text-white bg-primary-500
 				rounded hover:bg-primary-600 transition-colors"
 		>
