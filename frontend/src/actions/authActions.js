@@ -16,6 +16,9 @@ import {
 	updateProfileRequest,
 	updateProfileSuccess,
 	updateProfileFail,
+	updatePasswordRequest,
+	updatePasswordSuccess,
+	updatePasswordFail,
 } from '../slice/authSlice';
 
 export const login = ({ email, password }) => async (dispatch) => {
@@ -86,5 +89,18 @@ export const updateProfile = (updatedUser) => async (dispatch) => {
 	}
 	catch (err) {
 		dispatch(updateProfileFail({ error: err.response.data.message }));
+	}
+};
+
+export const updatePassword = () => async (dispatch) => {
+	try {
+		dispatch(updatePasswordRequest());
+
+		const { data: { user }} = await axios.put('/api/users/password/update');
+
+		dispatch(updatePasswordSuccess({ user }));
+	}
+	catch (err) {
+		dispatch(updatePasswordFail({ error: err.response.data.message }));
 	}
 };

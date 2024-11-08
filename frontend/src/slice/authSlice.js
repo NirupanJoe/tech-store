@@ -65,6 +65,7 @@ const authSlice = createSlice({
 		},
 		updateProfileRequest (state) {
 			state.loading = true;
+			state.isUpdated = false;
 		},
 		updateProfileSuccess (state, action) {
 			state.loading = false;
@@ -75,6 +76,22 @@ const authSlice = createSlice({
 		updateProfileFail (state, action) {
 			state.isAuthenticated = false;
 			state.loading = false;
+			state.error = action.payload.error;
+		},
+		updatePasswordRequest (state) {
+			state.isAuthenticated = true;
+			state.loading = true;
+			state.isUpdated = false;
+		},
+		updatePasswordSuccess (state, action) {
+			state.loading = false;
+			state.isAuthenticated = true;
+			state.user = action.payload.user;
+			state.isUpdated = true;
+		},
+		updatePasswordFail (state, action) {
+			state.loading = false;
+			state.isAuthenticated = false;
 			state.error = action.payload.error;
 		},
 	},
@@ -97,6 +114,9 @@ export const {
 	updateProfileRequest,
 	updateProfileSuccess,
 	updateProfileFail,
+	updatePasswordRequest,
+	updatePasswordSuccess,
+	updatePasswordFail,
 } = authSlice.actions;
 
 export default authSlice.reducer;
