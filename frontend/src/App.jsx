@@ -49,7 +49,7 @@ const App = () => {
 				element={ <ProtectedRoute>
 					<UpdatePassword/></ProtectedRoute> }
 			/>
-			<Route path="/forgetPassword" element={ <ForgetPassword/> }/>
+			<Route path="/password/forget" element={ <ForgetPassword/> }/>
 		</Routes>
 		<Footer/>
 	</div>;

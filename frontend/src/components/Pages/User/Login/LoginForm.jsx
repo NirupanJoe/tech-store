@@ -19,7 +19,7 @@ const LoginForm = (props) => {
 		<PasswordInput { ...props }/>
 		<ErrorMessage { ...props }/>
 		<SubmitButton { ...props } label="Sign In"/>
-		<Link className="flex justify-end" to="/forgetPassword">Forget Password?</Link>
+		<Link className="flex justify-end" to="/password/forget">Forget Password?</Link>
 	</form>;
 };
 
