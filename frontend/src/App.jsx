@@ -18,6 +18,7 @@ import MyPage from './components/Pages/User/MyPage';
 import ProtectedRoute from './components/Route/ProtectedRoute';
 import UpdateProfile from './components/Pages/User/UpdateProfile';
 import UpdatePassword from './components/Pages/User/UpdatePassword';
+import ForgetPassword from './components/Pages/User/ForgetPassword';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -48,6 +49,7 @@ const App = () => {
 				element={ <ProtectedRoute>
 					<UpdatePassword/></ProtectedRoute> }
 			/>
+			<Route path="/forgetPassword" element={ <ForgetPassword/> }/>
 		</Routes>
 		<Footer/>
 	</div>;

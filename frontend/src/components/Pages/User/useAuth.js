@@ -13,6 +13,8 @@ const useAuth = () => {
 	useEffect(() => {
 		if(isAuthenticated)
 			navigate(navigatePrevRoute);
+		else
+			dispatch(clearAuthError());
 
 		return () => {
 			dispatch(clearAuthError());
