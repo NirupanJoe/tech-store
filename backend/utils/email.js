@@ -24,7 +24,7 @@ const sendEmail = async (options) => {
 };
 
 const buildResetUrl = (req, resetToken) =>
-	`${ req.protocol }://${ req.get('host') }/api/users/password/reset/${ resetToken }`;
+	`${ process.env.FRONTEND_URI }/password/reset/${ resetToken }`;
 
 const buildResetMessage = (req, resetToken) => {
 	const resetUrl = buildResetUrl(req, resetToken);
