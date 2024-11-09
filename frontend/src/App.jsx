@@ -19,6 +19,8 @@ import ProtectedRoute from './components/Route/ProtectedRoute';
 import UpdateProfile from './components/Pages/User/UpdateProfile';
 import UpdatePassword from './components/Pages/User/UpdatePassword';
 import ForgetPassword from './components/Pages/User/ForgetPassword';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -29,6 +31,7 @@ const App = () => {
 
 	return <div>
 		<Header/>
+		<ToastContainer theme="dark"/>
 		<Routes>
 			<Route path="/" element={ <Home/> }/>
 			<Route path="/product/:id" element={ <ProductDetails/> }/>
