@@ -113,10 +113,13 @@ exports.resetPassword = asyncHandler(async (
 			Status.BAD_REQUEST.code));
 	}
 	await updateUserPassword(user, req.body.password);
+	const token = user.getJwtToken(user);
+
+	setTokenCookie(res, token);
 
 	sendResponse(
 		res, Status.ACCEPTED.code, Status.ACCEPTED.message,
-		{ message: 'Password changed successfully' },
+		{ message: 'Password changed successfully', user: user, token: token },
 	);
 });
 
