@@ -21,6 +21,7 @@ import UpdatePassword from './components/Pages/User/UpdatePassword';
 import ForgetPassword from './components/Pages/User/ForgetPassword';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ResetPassword from './components/Pages/User/ResetPassword';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -53,6 +54,7 @@ const App = () => {
 					<UpdatePassword/></ProtectedRoute> }
 			/>
 			<Route path="/password/forget" element={ <ForgetPassword/> }/>
+			<Route path="/password/reset/:token" element={ <ResetPassword/> }/>
 		</Routes>
 		<Footer/>
 	</div>;
