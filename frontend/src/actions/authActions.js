@@ -127,7 +127,7 @@ export const forgetPassword = (userData) => async (dispatch) => {
 export const resetPassword = (userData, token) => async (dispatch) => {
 	try {
 		dispatch(resetPasswordRequest());
-		const { data } = await axios.post(`/api/users/password/reset${ { token } }`, userData);
+		const { data } = await axios.post(`/api/users/password/reset/${ token }`, userData);
 
 		dispatch(resetPasswordSuccess(data));
 	}
