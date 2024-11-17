@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { forgetPassword } from '../../../../actions/authActions';
+import { clearAuthMessage, forgetPassword } from '../../../../actions/authActions';
 import EmailInput from '../EmailInput';
 import ErrorMessage from '../ErrorMessage';
 import SubmitButton from '../SubmitButton';
@@ -11,23 +11,32 @@ const handleFormSubmit = (dispatch, email) => (e) => {
 	dispatch(forgetPassword({ email }));
 };
 
-const useSuccessMessageEffect = (message, setEmail) => {
+const useSuccessMessageEffect = (
+	message, setEmail, dispatch,
+) => {
 	useEffect(() => {
 		if(message) {
 			toast(message, {
 				type: 'success',
 				position: 'bottom-center',
+				onOpen: () => {
+					setEmail('');
+				},
+				onClose: () => {
+					dispatch(clearAuthMessage());
+				},
 			});
-			setEmail('');
 		}
-	}, [message, setEmail]);
+	}, [message, setEmail, dispatch]);
 };
 
 const ForgetPasswordForm = ({ email, setEmail }) => {
 	const dispatch = useDispatch();
 	const { message } = useSelector((state) => state.authState);
 
-	useSuccessMessageEffect(message, setEmail);
+	useSuccessMessageEffect(
+		message, setEmail, dispatch,
+	);
 
 	return (
 		<form
