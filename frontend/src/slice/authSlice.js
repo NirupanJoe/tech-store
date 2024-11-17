@@ -45,10 +45,9 @@ const authSlice = createSlice({
 			state.isAuthenticated = true;
 			state.user = action.payload.user;
 		},
-		loadUserFail (state, action) {
+		loadUserFail (state) {
 			state.loading = false;
 			state.isAuthenticated = false;
-			state.error = action.payload.error;
 		},
 		logoutRequest (state) {
 			state.loading = true;
