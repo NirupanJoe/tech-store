@@ -25,6 +25,7 @@ import {
 	resetPasswordRequest,
 	resetPasswordSuccess,
 	resetPasswordFail,
+	clearMessage,
 } from '../slice/authSlice';
 
 export const login = ({ email, password }) => async (dispatch) => {
@@ -134,4 +135,8 @@ export const resetPassword = (userData, token) => async (dispatch) => {
 	catch (err) {
 		dispatch(resetPasswordFail({ error: err.response.data.message }));
 	}
+};
+
+export const clearAuthMessage = () => (dispatch) => {
+	dispatch(clearMessage());
 };

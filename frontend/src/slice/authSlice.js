@@ -112,10 +112,14 @@ const authSlice = createSlice({
 			state.loading = false;
 			state.isAuthenticated = true;
 			state.user = action.payload.user;
+			state.message = action.payload.message;
 		},
 		resetPasswordFail (state, action) {
 			state.loading = false;
 			state.error = action.payload.error;
+		},
+		clearMessage (state) {
+			state.message = undefined;
 		},
 	},
 });
@@ -146,6 +150,7 @@ export const {
 	resetPasswordRequest,
 	resetPasswordSuccess,
 	resetPasswordFail,
+	clearMessage,
 } = authSlice.actions;
 
 export default authSlice.reducer;
