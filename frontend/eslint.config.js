@@ -274,7 +274,6 @@ export default [
 			'no-unsafe-negation': 'error',
 			'no-tabs': 'off',
 			'no-trailing-spaces': 'error',
-			'no-underscore-dangle': 'error',
 			'no-unneeded-ternary': 'error',
 			'no-useless-constructor': 'error',
 			'no-useless-computed-key': 'error',
