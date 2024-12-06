@@ -4,12 +4,14 @@ import productsReducer from './slice/productsSlice';
 import productReducer from './slice/productSlice';
 import searchReducer from './slice/searchSlice';
 import authReducer from './slice/authSlice';
+import cartReducer from './slice/cartSlice';
 
 const reducer = combineReducers({
 	productsState: productsReducer,
 	productState: productReducer,
 	searchState: searchReducer,
 	authState: authReducer,
+	cartState: cartReducer,
 });
 
 const middleware = () => [thunk];

@@ -1,9 +1,12 @@
+import { useDispatch } from 'react-redux';
+import { addCartItem } from '../../../actions/cartActions';
+
 const ProductHeading = ({ product: { name }, selectedColor, selectedStorage, selectedMemory }) =>
 	<h2 className="font-semibold mb-2">
 		{ name } | { selectedColor } | { selectedStorage } | { selectedMemory }
 	</h2>;
 
-const PriceDetails = ({ discountedPrice, price, discount }) =>
+const PriceDetails = ({ selectedVariant: { discountedPrice, price, discount }}) =>
 	<div className="mt-3">
 		<p className="text-sm">MRP (Inclusive of all taxes)</p>
 		<p className="text-sm mt-2 font-semibold">₹{ discountedPrice }</p>
@@ -16,20 +19,24 @@ const StockStatus = ({ product: { stock }}) =>
 		{ stock <= 0 ? 'Out of Stock' : '' }
 	</p>;
 
-const AddToCartButton = ({ product: { stock }}) =>
-	<button
-		className={ `w-full mt-4 px-4 py-2 bg-primary-600 text-white rounded ${
-			stock > 0 ? '' : 'opacity-50 cursor-not-allowed'
-		}` }
-		disabled={ stock === 0 }
-	>
-		{ stock > 0 ? 'Add to cart' : 'Out of stock' }
-	</button>;
+const AddToCartButton = ({ product: { stock, ...product }, ...props }) => {
+	const dispatch = useDispatch();
 
-const ProductPriceStock = ({ selectedVariant, ...props }) =>
+	return (
+		<button
+			className={ `w-full mt-4 px-4 py-2 bg-primary-600 text-white rounded ${ stock > 0 ? '' : 'opacity-50 cursor-not-allowed' }` }
+			disabled={ stock === 0 }
+			onClick={ () => dispatch(addCartItem({ product, ...props })) }
+		>
+			{ stock > 0 ? 'Add to cart' : 'Out of stock' }
+		</button>
+	);
+};
+
+const ProductPriceStock = (props) =>
 	<div className="bg-gray-100 p-4 rounded-lg mb-4">
 		<ProductHeading { ...props }/>
-		<PriceDetails { ...selectedVariant }/>
+		<PriceDetails { ...props }/>
 		<StockStatus { ...props }/>
 		<AddToCartButton { ...props }/>
 	</div>;
