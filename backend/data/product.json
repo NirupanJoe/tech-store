@@ -449,17 +449,17 @@
         "discount": 50000
       },
       {
-        "color": "#a5a8c4",
-        "colorName": "Phantom Violet",
+        "color": "#efc5be",
+        "colorName": "Phantom Pink",
         "storage": "512GB",
         "ram": "12GB",
         "imageUrls": [
-          "/assets/p9/phantomViolet/image.png",
-          "/assets/p9/phantomViolet/front.png",
-          "/assets/p9/phantomViolet/back.png"
+          "/assets/p9/phantomPink/image.png",
+          "/assets/p9/phantomPink/front.png",
+          "/assets/p9/phantomPink/back.png"
         ],
-        "price": 82999.99,
-        "discountedPrice": 79999.99,
+        "price": 79999.99,
+        "discountedPrice": 74999.99,
         "discount": 50000
       },
       {
