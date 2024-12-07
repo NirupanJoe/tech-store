@@ -12,7 +12,7 @@ const CartItems = ({ items }) => {
 		<div className="md:col-span-2 space-y-4">
 			{ items.map((item) =>
 				<div
-					key={ item.variantId }
+					key={ item.id }
 					className="bg-white shadow-md rounded-lg p-4 flex
 					items-center space-x-4 relative"
 				>
@@ -29,7 +29,7 @@ const CartItems = ({ items }) => {
 						</p>
 					</div>
 					<button
-						onClick={ () => dispatch(removeCartItem(item.variantId)) }
+						onClick={ () => dispatch(removeCartItem(item.id)) }
 						className="absolute top-2 right-2 text-red-500 hover:text-red-700"
 					>
 						<Trash size={ 20 }/>

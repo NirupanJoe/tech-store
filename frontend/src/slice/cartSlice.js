@@ -22,7 +22,7 @@ const cartSlice = createSlice({
 			state.error = action.payload;
 		},
 		removeCartItem (state, action) {
-			state.items = state.items.filter((item) => action.payload !== item.variantId);
+			state.items = state.items.filter((item) => action.payload !== item.id);
 			localStorage.setItem('cartItems', JSON.stringify(state.items));
 		},
 	},

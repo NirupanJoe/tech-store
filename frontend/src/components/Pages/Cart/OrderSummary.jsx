@@ -10,7 +10,7 @@ const OrderSummary = ({ items }) => {
 			<h2 className="text-xl font-bold mb-4 text-gray-800">Order Summary</h2>
 			<div className="space-y-2 mb-4">
 				{ items.map((item) =>
-					<div key={ item.variantId } className="flex justify-between">
+					<div key={ item.id } className="flex justify-between">
 						<span className="text-gray-600">{ item.name }</span>
 						<span className="font-semibold">
 							₹{ helper.formatPrice(item.price) }
