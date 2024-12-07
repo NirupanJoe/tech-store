@@ -62,13 +62,18 @@ const ProfileMenu = ({ isProfileOpen, setIsProfileOpen }) =>
 		</div>
 	</div>;
 
-const CartIcon = () =>
-	<div className="relative">
+const CartIcon = () => {
+	const { items } = useSelector((state) => state.cartState);
+
+	return <div className="relative">
 		<ShoppingCart className="h-6 w-6 text-gray-600 cursor-pointer"/>
 		<span className="absolute -top-2 -right-2 bg-red-500
-		text-white rounded-full w-4 h-4 flex items-center justify-center text-lg"
-		>0</span>
+		text-white rounded-full w-4 h-4 flex items-center justify-center text-xs"
+		>
+			{ items.length }
+		</span>
 	</div>;
+};
 
 const Close = ({ setIsMenuOpen }) =>
 	<XIcon
