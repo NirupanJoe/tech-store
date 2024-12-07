@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { addCartItem } from '../../../actions/cartActions';
 
 const ProductHeading = ({ product: { name }, selectedColor, selectedStorage, selectedMemory }) =>
@@ -21,12 +22,16 @@ const StockStatus = ({ product: { stock }}) =>
 
 const AddToCartButton = ({ product: { stock, ...product }, ...props }) => {
 	const dispatch = useDispatch();
+	const navigation = useNavigate();
 
 	return (
 		<button
 			className={ `w-full mt-4 px-4 py-2 bg-primary-600 text-white rounded ${ stock > 0 ? '' : 'opacity-50 cursor-not-allowed' }` }
 			disabled={ stock === 0 }
-			onClick={ () => dispatch(addCartItem({ product, ...props })) }
+			onClick={ () => {
+				dispatch(addCartItem({ product, ...props }));
+				navigation('/cart');
+			} }
 		>
 			{ stock > 0 ? 'Add to cart' : 'Out of stock' }
 		</button>

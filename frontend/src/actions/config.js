@@ -16,6 +16,7 @@ const config = {
 		{ label: '₹40001–₹50000', value: { minPrice: 40001, maxPrice: 50000 }},
 		{ label: 'Above ₹50000', value: { minPrice: 50001, maxPrice: Number.MAX_VALUE }},
 	],
+	decimalPlaces: 2,
 };
 
 export default config;
