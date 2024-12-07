@@ -21,6 +21,10 @@ const cartSlice = createSlice({
 			state.loading = false;
 			state.error = action.payload;
 		},
+		removeCartItem (state, action) {
+			state.items = state.items.filter((item) => action.payload !== item.variantId);
+			localStorage.setItem('cartItems', JSON.stringify(state.items));
+		},
 	},
 });
 
@@ -28,6 +32,7 @@ export const {
 	addCartItemRequest,
 	addCartItemSuccess,
 	addCartItemFail,
+	removeCartItem,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
