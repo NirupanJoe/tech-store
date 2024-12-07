@@ -65,14 +65,16 @@ const ProfileMenu = ({ isProfileOpen, setIsProfileOpen }) =>
 const CartIcon = () => {
 	const { items } = useSelector((state) => state.cartState);
 
-	return <div className="relative">
-		<ShoppingCart className="h-6 w-6 text-gray-600 cursor-pointer"/>
-		<span className="absolute -top-2 -right-2 bg-red-500
-		text-white rounded-full w-4 h-4 flex items-center justify-center text-xs"
-		>
-			{ items.length }
-		</span>
-	</div>;
+	return <Link to="/cart">
+		<div className="relative">
+			<ShoppingCart className="h-6 w-6 text-gray-600 cursor-pointer"/>
+			<span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full
+					w-4 h-4 flex items-center justify-center text-xs"
+			>
+				{ items.length }
+			</span>
+		</div>
+	</Link>;
 };
 
 const Close = ({ setIsMenuOpen }) =>
