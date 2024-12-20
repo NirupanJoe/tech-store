@@ -14,3 +14,11 @@ input[type="password"]::-moz-password-hidden {
 input[type="password"]::-ms-reveal {
 	display: none;
 }
+
+.form-input:invalid[focused="true"]{
+	border: 1px solid red;
+}
+
+.form-input:invalid[focused="true"] ~ span{
+	display: block;
+}
