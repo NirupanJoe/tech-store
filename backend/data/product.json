@@ -30,7 +30,7 @@
         ],
         "price": 39999.99,
         "discountedPrice": 34999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#cbd9e7",
@@ -44,7 +44,7 @@
         ],
         "price": 40999.99,
         "discountedPrice": 36999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#cbd9e7",
@@ -58,7 +58,7 @@
         ],
         "price": 40999.99,
         "discountedPrice": 36999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#cbd9e7",
@@ -72,7 +72,7 @@
         ],
         "price": 41999.99,
         "discountedPrice": 37999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#3e424b",
@@ -86,7 +86,7 @@
         ],
         "price": 39999.99,
         "discountedPrice": 34999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#3e424b",
@@ -100,7 +100,7 @@
         ],
         "price": 40999.99,
         "discountedPrice": 36999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#3e424b",
@@ -114,7 +114,7 @@
         ],
         "price": 40999.99,
         "discountedPrice": 36999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#3e424b",
@@ -128,7 +128,7 @@
         ],
         "price": 41999.99,
         "discountedPrice": 37999.99,
-        "discount": 50000
+        "discount": 5000
       }
     ],
     "user": "64d3ca2be4b0b72dff5d1a78"
@@ -164,7 +164,7 @@
         ],
         "price": 34999.99,
         "discountedPrice": 29999.99,
-        "discount": 30000
+        "discount": 3000
       },
       {
         "color": "#2a3244",
@@ -178,7 +178,7 @@
         ],
         "price": 36999.99,
         "discountedPrice": 31999.99,
-        "discount": 30000
+        "discount": 3000
       },
       {
         "color": "#2a3244",
@@ -192,7 +192,7 @@
         ],
         "price": 36999.99,
         "discountedPrice": 31999.99,
-        "discount": 30000
+        "discount": 3000
       },
       {
         "color": "#c9c9c8",
@@ -206,7 +206,7 @@
         ],
         "price": 34999.99,
         "discountedPrice": 29999.99,
-        "discount": 30000
+        "discount": 3000
       },
       {
         "color": "#c9c9c8",
@@ -220,7 +220,7 @@
         ],
         "price": 36999.99,
         "discountedPrice": 31999.99,
-        "discount": 30000
+        "discount": 3000
       },
       {
         "color": "#c9c9c8",
@@ -234,7 +234,7 @@
         ],
         "price": 36999.99,
         "discountedPrice": 31999.99,
-        "discount": 30000
+        "discount": 3000
       },
       {
         "color": "#c9c9c8",
@@ -248,7 +248,7 @@
         ],
         "price": 36999.99,
         "discountedPrice": 31999.99,
-        "discount": 30000
+        "discount": 3000
       }
     ],
     "user": "64d3ca2be4b0b72dff5d1a78"
@@ -284,7 +284,7 @@
         ],
         "price": 29999.99,
         "discountedPrice": 24999.99,
-        "discount": 30000
+        "discount": 3000
       },
       {
         "color": "#2a3244",
@@ -298,7 +298,7 @@
         ],
         "price": 31999.99,
         "discountedPrice": 27999.99,
-        "discount": 30000
+        "discount": 3000
       },
       {
         "color": "#2a3244",
@@ -312,7 +312,7 @@
         ],
         "price": 34999.99,
         "discountedPrice": 29999.99,
-        "discount": 30000
+        "discount": 3000
       },
       {
         "color": "#2a3244",
@@ -326,7 +326,7 @@
         ],
         "price": 36999.99,
         "discountedPrice": 31999.99,
-        "discount": 30000
+        "discount": 3000
       },
       {
         "color": "#e17e00",
@@ -340,7 +340,7 @@
         ],
         "price": 29999.99,
         "discountedPrice": 24999.99,
-        "discount": 30000
+        "discount": 3000
       },
       {
         "color": "#e17e00",
@@ -354,7 +354,7 @@
         ],
         "price": 31999.99,
         "discountedPrice": 27999.99,
-        "discount": 30000
+        "discount": 3000
       },
       {
         "color": "#e17e00",
@@ -368,7 +368,7 @@
         ],
         "price": 34999.99,
         "discountedPrice": 29999.99,
-        "discount": 30000
+        "discount": 3000
       },
       {
         "color": "#e17e00",
@@ -382,7 +382,7 @@
         ],
         "price": 36999.99,
         "discountedPrice": 31999.99,
-        "discount": 30000
+        "discount": 3000
       }
     ],
     "user": "64d3ca2be4b0b72dff5d1a78"
@@ -418,7 +418,7 @@
         ],
         "price": 69999.99,
         "discountedPrice": 64999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#efc5be",
@@ -432,7 +432,7 @@
         ],
         "price": 74999.99,
         "discountedPrice": 69999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#efc5be",
@@ -446,7 +446,7 @@
         ],
         "price": 79999.99,
         "discountedPrice": 74999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#efc5be",
@@ -460,7 +460,7 @@
         ],
         "price": 79999.99,
         "discountedPrice": 74999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#a5a8c4",
@@ -474,7 +474,7 @@
         ],
         "price": 69999.99,
         "discountedPrice": 64999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#a5a8c4",
@@ -488,7 +488,7 @@
         ],
         "price": 74999.99,
         "discountedPrice": 69999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#a5a8c4",
@@ -502,7 +502,7 @@
         ],
         "price": 79999.99,
         "discountedPrice": 74999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#a5a8c4",
@@ -516,7 +516,7 @@
         ],
         "price": 82999.99,
         "discountedPrice": 79999.99,
-        "discount": 50000
+        "discount": 5000
       }
     ],
     "user": "64d3ca2be4b0b72dff5d1a78"
@@ -552,7 +552,7 @@
         ],
         "price": 59999.99,
         "discountedPrice": 54999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#808080",
@@ -566,7 +566,7 @@
         ],
         "price": 64999.99,
         "discountedPrice": 59999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#808080",
@@ -580,7 +580,7 @@
         ],
         "price": 64999.99,
         "discountedPrice": 59999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#808080",
@@ -594,7 +594,7 @@
         ],
         "price": 69999.99,
         "discountedPrice": 64999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#c1d1a6",
@@ -608,7 +608,7 @@
         ],
         "price": 64999.99,
         "discountedPrice": 59999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#c1d1a6",
@@ -622,7 +622,7 @@
         ],
         "price": 69999.99,
         "discountedPrice": 64999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#c1d1a6",
@@ -636,7 +636,7 @@
         ],
         "price": 69999.99,
         "discountedPrice": 64999.99,
-        "discount": 50000
+        "discount": 5000
       },
       {
         "color": "#c1d1a6",
@@ -650,7 +650,7 @@
         ],
         "price": 74999.99,
         "discountedPrice": 69999.99,
-        "discount": 50000
+        "discount": 5000
       }
     ],
     "user": "64d3ca2be4b0b72dff5d1a78"
