@@ -12,6 +12,7 @@ export const addCartItem = ({ product, selectedVariant }) => (dispatch) => {
 			price: selectedVariant.discountedPrice,
 			image: selectedVariant.imageUrls[0],
 			color: selectedVariant.colorName,
+			data: { ...product, ...selectedVariant },
 		};
 
 		dispatch(addCartItemSuccess(data));
