@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react';
 import axios from 'axios';
 import FormInput from '../../../FormInput';
+import SubmitButton from './SubmitButton';
 
 const addressTypes = [
 	{ name: 'home', label: 'Home' },
@@ -62,7 +63,7 @@ const inputInfos = [
 		name: 'email',
 		label: 'Email Address',
 		required: true,
-		pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$',
+		pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$',
 		errorMessage: 'The Email Address field format is invalid.',
 		maxLength: 254,
 		inputMode: 'email',
@@ -220,6 +221,7 @@ const ContactDetails = () => {
 			<ContactDetailsSection { ...{ formData, handleInputChange } }/>
 			<DeliveryAddressSection { ...{ formData, handleInputChange } }/>
 			<AddressTypeSection { ...{ formData, handleInputChange } }/>
+			<SubmitButton { ...{ formData, inputInfos, deliveryInfos } }/>
 		</Fragment>
 	);
 };
