@@ -2,6 +2,12 @@ import { Fragment, useState } from 'react';
 import axios from 'axios';
 import FormInput from '../../../FormInput';
 
+const addressTypes = [
+	{ name: 'home', label: 'Home' },
+	{ name: 'work', label: 'Work' },
+	{ name: 'other', label: 'Other' },
+];
+
 const initialFormData = {
 	firstName: '',
 	lastName: '',
@@ -13,6 +19,7 @@ const initialFormData = {
 	street: '',
 	city: '',
 	state: '',
+	addressType: addressTypes[0].name,
 };
 
 const inputInfos = [
@@ -177,6 +184,25 @@ const DeliveryAddressSection = ({ formData, handleInputChange }) =>
 		/>
 	</Fragment>;
 
+const AddressTypeSection = ({ formData, handleInputChange }) =>
+	<Fragment>
+		<SectionHeader title="Address Type" className="mt-6"/>
+		<div className="grid grid-cols-3 gap-3 mt-6">
+			{ addressTypes.map((addressType) =>
+				<div key={ addressType.name } className="flex items-center">
+					<input
+						type="radio"
+						name="addressType"
+						value={ addressType.name }
+						defaultChecked={ formData.addressType === addressType.name }
+						className="form-radio w-5 h-5 mr-2 accent-blue-500"
+						onChange={ handleInputChange }
+					/>
+					<label className="text-base">{ addressType.label }</label>
+				</div>) }
+		</div>
+	</Fragment>;
+
 const ContactDetails = () => {
 	const [formData, setFormData] = useState(initialFormData);
 
@@ -191,8 +217,9 @@ const ContactDetails = () => {
 
 	return (
 		<Fragment>
-			<ContactDetailsSection formData={ formData } handleInputChange={ handleInputChange }/>
-			<DeliveryAddressSection formData={ formData } handleInputChange={ handleInputChange }/>
+			<ContactDetailsSection { ...{ formData, handleInputChange } }/>
+			<DeliveryAddressSection { ...{ formData, handleInputChange } }/>
+			<AddressTypeSection { ...{ formData, handleInputChange } }/>
 		</Fragment>
 	);
 };
