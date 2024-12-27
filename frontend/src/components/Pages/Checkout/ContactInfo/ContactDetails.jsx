@@ -2,6 +2,7 @@ import { Fragment, useState } from 'react';
 import axios from 'axios';
 import FormInput from '../../../FormInput';
 import SubmitButton from './SubmitButton';
+import Loader from '../../../Loader';
 
 const addressTypes = [
 	{ name: 'home', label: 'Home' },
@@ -21,6 +22,7 @@ const initialFormData = {
 	city: '',
 	state: '',
 	addressType: addressTypes[0].name,
+	loading: false,
 };
 
 const inputInfos = [
@@ -138,9 +140,12 @@ const InputGrid = ({ inputs, formData, onChange }) =>
 			/>) }
 	</div>;
 
-const fetchLocationDetails = async (pincode) => {
+const fetchLocationDetails = async (pincode, setFormData) => {
 	try {
+		setFormData((prev) => ({ ...prev, loading: true }));
 		const { data } = await axios(`https://api.postalpincode.in/pincode/${ pincode }`);
+
+		setFormData((prev) => ({ ...prev, loading: false }));
 
 		if(data[0].Status === 'Success') {
 			const { District: city, State: state } = data[0].PostOffice[0];
@@ -151,7 +156,7 @@ const fetchLocationDetails = async (pincode) => {
 	}
 	catch (error) {
 		console.error('Error fetching location details:', error);
-		return { city: '', state: '' };
+		return { city: '', state: '', loading: false };
 	}
 };
 
@@ -161,7 +166,7 @@ const updateFormData = ({ setFormData, name, value }) => {
 
 const handlePincodeChange = async ({ e, value, setFormData }) => {
 	if(value.length === e.target.maxLength) {
-		const locationDetails = await fetchLocationDetails(value);
+		const locationDetails = await fetchLocationDetails(value, setFormData);
 
 		setFormData((prev) => ({ ...prev, ...locationDetails }));
 	}
@@ -218,6 +223,7 @@ const ContactDetails = () => {
 
 	return (
 		<Fragment>
+			{ formData.loading && <Loader className="fixed inset-0 bg-black bg-opacity-50 z-50"/> }
 			<ContactDetailsSection { ...{ formData, handleInputChange } }/>
 			<DeliveryAddressSection { ...{ formData, handleInputChange } }/>
 			<AddressTypeSection { ...{ formData, handleInputChange } }/>
