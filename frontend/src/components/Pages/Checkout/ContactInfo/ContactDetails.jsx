@@ -7,7 +7,7 @@ import Loader from '../../../Loader';
 const addressTypes = [
 	{ name: 'home', label: 'Home' },
 	{ name: 'work', label: 'Work' },
-	{ name: 'other', label: 'Other' },
+	{ name: 'neighbour', label: 'Neighbour' },
 ];
 
 const initialFormData = {
