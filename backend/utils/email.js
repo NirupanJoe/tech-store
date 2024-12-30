@@ -23,8 +23,14 @@ const sendEmail = async (options) => {
 	await transporter.sendMail(message);
 };
 
-const buildResetUrl = (req, resetToken) =>
-	`${ process.env.FRONTEND_URI }/password/reset/${ resetToken }`;
+const buildResetUrl = (req, resetToken) => {
+	let baseURL = process.env.FRONTEND_URI;
+
+	if(process.env.NODE_ENV === 'production')
+		baseURL = `${ req.protocol }://${ req.get('host') }`;
+
+	return `${ baseURL }/password/reset/${ resetToken }`;
+};
 
 const buildResetMessage = (req, resetToken) => {
 	const resetUrl = buildResetUrl(req, resetToken);
