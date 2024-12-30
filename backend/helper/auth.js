@@ -1,5 +1,5 @@
 const crypto = require('crypto');
-const ErrorHandler = require('../utils/ErrorHandler');
+const ErrorHandler = require('../utils/errorHandler');
 const Status = require('../utils/statusEnum');
 const User = require('../models/user');
 

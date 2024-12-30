@@ -1,6 +1,6 @@
 const Order = require('../models/order');
 const Product = require('../models/product');
-const ErrorHandler = require('../utils/ErrorHandler');
+const ErrorHandler = require('../utils/errorHandler');
 const Status = require('../utils/statusEnum');
 
 const validateOrderItems = (orderItems) => {

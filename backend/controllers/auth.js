@@ -2,7 +2,7 @@ const asyncHandler = require('../utils/asyncHandler');
 const Status = require('../utils/statusEnum');
 const User = require('../models/user');
 const sendResponse = require('../utils/sendResponse');
-const ErrorHandler = require('../utils/ErrorHandler');
+const ErrorHandler = require('../utils/errorHandler');
 const { sendResetEmail } = require('../utils/email');
 const {
 	validateLoginFields,

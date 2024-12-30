@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 const Status = require('./statusEnum');
 const sendResponse = require('./sendResponse');
-const ErrorHandler = require('./ErrorHandler');
+const ErrorHandler = require('./errorHandler');
 
 const sendEmail = async (options) => {
 	const transporter = nodemailer.createTransport({

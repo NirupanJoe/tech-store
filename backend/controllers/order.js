@@ -9,7 +9,7 @@ const {
 	updateOrderDeliveryDetails,
 } = require('../helper/orders');
 const Order = require('../models/order');
-const ErrorHandler = require('../utils/ErrorHandler');
+const ErrorHandler = require('../utils/errorHandler');
 const validateObjectId = require('../utils/validateObjectId');
 
 const addOrderItems = asyncHandler(async (
