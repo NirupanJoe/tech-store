@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import MetaData from '../../../../MetaData';
 import useLoginForm from '../useLoginForm';
 import Title from '../Title';
-import UpdateForm from './updateForm';
+import UpdateForm from './UpdateForm';
 
 const UpdateProfile = () => {
 	const loginState = useLoginForm();
