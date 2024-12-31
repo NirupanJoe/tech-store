@@ -7,6 +7,10 @@ const cartSlice = createSlice({
 		items: localStorage.getItem('cartItems')
 			? JSON.parse(localStorage.getItem('cartItems'))
 			: [],
+		contactDetails: null,
+		deliveryOptions: null,
+		payment: null,
+		checkoutStep: 0,
 	},
 	reducers: {
 		addCartItemRequest (state) {

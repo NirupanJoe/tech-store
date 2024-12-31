@@ -3,6 +3,7 @@ import axios from 'axios';
 import FormInput from '../../../FormInput';
 import SubmitButton from './SubmitButton';
 import Loader from '../../../Loader';
+import SectionHeader from '../SectionHeader';
 
 const addressTypes = [
 	{ name: 'home', label: 'Home' },
@@ -126,9 +127,6 @@ const deliveryInfos = [
 	},
 ];
 
-const SectionHeader = ({ title, className }) =>
-	<h1 className={ `text-2xl font-medium mb-6 text-gray-800 ${ className }` }>{ title }</h1>;
-
 const InputGrid = ({ inputs, formData, onChange }) =>
 	<div className="grid sm:grid-cols-2 grid-cols-1 gap-3">
 		{ inputs.map((inputProps) =>
@@ -175,10 +173,7 @@ const handlePincodeChange = async ({ e, value, setFormData }) => {
 };
 
 const ContactDetailsSection = ({ formData, handleInputChange }) =>
-	<Fragment>
-		<SectionHeader title="1. Contact Details" className="pb-4"/>
-		<InputGrid inputs={ inputInfos } formData={ formData } onChange={ handleInputChange }/>
-	</Fragment>;
+	<InputGrid inputs={ inputInfos } formData={ formData } onChange={ handleInputChange }/>;
 
 const DeliveryAddressSection = ({ formData, handleInputChange }) =>
 	<Fragment>
@@ -222,13 +217,13 @@ const ContactDetails = () => {
 	};
 
 	return (
-		<Fragment>
+		<form>
 			{ formData.loading && <Loader className="fixed inset-0 bg-black bg-opacity-50 z-50"/> }
 			<ContactDetailsSection { ...{ formData, handleInputChange } }/>
 			<DeliveryAddressSection { ...{ formData, handleInputChange } }/>
 			<AddressTypeSection { ...{ formData, handleInputChange } }/>
 			<SubmitButton { ...{ formData, inputInfos, deliveryInfos } }/>
-		</Fragment>
+		</form>
 	);
 };
 
