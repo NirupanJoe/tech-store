@@ -10,7 +10,7 @@ const cartSlice = createSlice({
 		contactDetails: null,
 		deliveryOptions: null,
 		payment: null,
-		checkoutStep: 0,
+		checkoutStep: 1,
 	},
 	reducers: {
 		addCartItemRequest (state) {
