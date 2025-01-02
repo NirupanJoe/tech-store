@@ -12,11 +12,13 @@ const products = require('./routes/product');
 const auth = require('./routes/auth');
 const admin = require('./routes/admin');
 const order = require('./routes/order');
+const payment = require('./routes/payment');
 
 app.use('/api', products);
 app.use('/api/users', auth);
 app.use('/api/admin', admin);
 app.use('/api/orders', order);
+app.use('/api', payment);
 
 if(process.env.NODE_ENV === 'production') {
 	app.use(express.static(path.join(__dirname, '../frontend/dist')));
