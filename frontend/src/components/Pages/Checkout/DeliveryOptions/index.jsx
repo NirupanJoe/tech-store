@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import ShipmentInfo from './ShipmentInfo';
 import ProductInfo from './ProductInfo';
 import DeliverySection from './DeliverySection';
+import Button from '../../../Button';
 
 const DeliveryOptions = () => {
 	const { items } = useSelector(({ cartState }) => cartState);
@@ -15,6 +16,7 @@ const DeliveryOptions = () => {
 					<ProductInfo item={ item }/>
 					<DeliverySection/>
 				</Fragment>) }
+			<Button label="Continue to payment"/>
 		</div>
 	);
 };
