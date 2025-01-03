@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import helper from '../../../services/helper';
 
 const OrderItem = ({ name, price }) =>
@@ -25,7 +26,7 @@ const CheckoutButton = () =>
 		className="w-full bg-primary-600 text-white py-3 rounded-full hover:bg-primary-700
     transition duration-300 flex items-center justify-center space-x-2"
 	>
-		<span>Continue to Checkout</span>
+		<Link to="/checkout">Continue to Checkout</Link>
 	</button>;
 
 const calculateTotal = (items) =>
