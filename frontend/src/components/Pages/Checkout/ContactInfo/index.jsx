@@ -3,6 +3,7 @@ import SectionHeader from '../SectionHeader';
 import ContactDetails from './ContactDetails';
 import { useSelector } from 'react-redux';
 import DeliveryOptions from '../DeliveryOptions';
+import Payment from '../Payment';
 
 const checkoutSteps = [
 	{
@@ -18,6 +19,7 @@ const checkoutSteps = [
 	{
 		title: 'Payment',
 		name: 'payment',
+		children: <Payment/>,
 	},
 ];
 
