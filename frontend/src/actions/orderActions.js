@@ -3,9 +3,9 @@ import {
 	createOrderRequest,
 	createOrderSuccess,
 	createOrderFail,
-	getOrderRequest,
-	getOrderSuccess,
-	getOrderFail,
+	getOrdersRequest,
+	getOrdersSuccess,
+	getOrdersFail,
 } from '../slice/orderSlice';
 
 export const createOrder = (order) => async (dispatch) => {
@@ -22,12 +22,12 @@ export const createOrder = (order) => async (dispatch) => {
 
 export const getOrders = () => async (dispatch) => {
 	try {
-		dispatch(getOrderRequest());
+		dispatch(getOrdersRequest());
 		const { data } = await axios.get('/api/orders');
 
-		dispatch(getOrderSuccess(data));
+		dispatch(getOrdersSuccess(data));
 	}
 	catch (error) {
-		dispatch(getOrderFail(error.response.data.message));
+		dispatch(getOrdersFail(error.response.data.message));
 	}
 };
