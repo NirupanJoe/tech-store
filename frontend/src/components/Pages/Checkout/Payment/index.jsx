@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-import DebitCardForm from './DebitCardForm';
+import DebitCardContainer from './DebitCardContainer';
 
 const Payment = () => {
 	const [stripeApiKey, setStripeApiKey] = useState('');
@@ -17,7 +17,7 @@ const Payment = () => {
 
 	return stripeApiKey
 	&& <Elements stripe={ loadStripe(stripeApiKey) }>
-		<DebitCardForm/>
+		<DebitCardContainer/>
 	</Elements>;
 };
 
