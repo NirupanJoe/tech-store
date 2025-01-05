@@ -1,9 +1,11 @@
 import { Fragment, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import FormInput from '../../../FormInput';
 import SubmitButton from './SubmitButton';
 import Loader from '../../../Loader';
 import SectionHeader from '../SectionHeader';
+import { addShippingInfo, checkoutStepIncrement } from '../../../../slice/cartSlice';
 
 const addressTypes = [
 	{ name: 'home', label: 'Home' },
@@ -77,7 +79,7 @@ const deliveryInfos = [
 	{
 		type: 'text',
 		name: 'pincode',
-		label: 'Pincode*',
+		label: 'Pincode',
 		required: true,
 		pattern: '^[0-9]{6}$',
 		errorMessage: 'The Pincode field format is invalid.',
@@ -87,7 +89,7 @@ const deliveryInfos = [
 	{
 		type: 'text',
 		name: 'flatNo',
-		label: 'Flat/Home No*',
+		label: 'Flat/Home No',
 		required: true,
 		pattern: '^[A-Za-z0-9]{0,30}',
 		errorMessage: 'The Flat/Home No field format is invalid.',
@@ -95,7 +97,7 @@ const deliveryInfos = [
 	{
 		type: 'text',
 		name: 'street',
-		label: 'Street/Locality*',
+		label: 'Street/Locality',
 		required: true,
 		pattern: '^[A-Za-z0-9]{0,30}',
 		errorMessage: 'The Street/Locality field format is invalid.',
@@ -103,7 +105,7 @@ const deliveryInfos = [
 	{
 		type: 'text',
 		name: 'city',
-		label: 'City*',
+		label: 'City',
 		required: true,
 		pattern: '^[A-Za-z]{0,30}',
 		errorMessage: 'The City field format is invalid.',
@@ -112,7 +114,7 @@ const deliveryInfos = [
 	{
 		type: 'text',
 		name: 'state',
-		label: 'State*',
+		label: 'State',
 		required: true,
 		pattern: '^[A-Za-z]{0,30}',
 		errorMessage: 'The State field format is invalid.',
@@ -177,7 +179,7 @@ const ContactDetailsSection = ({ formData, handleInputChange }) =>
 
 const DeliveryAddressSection = ({ formData, handleInputChange }) =>
 	<Fragment>
-		<SectionHeader title="Delivery Address" className="mt-6"/>
+		<SectionHeader title="Delivery Address" className="my-6"/>
 		<InputGrid
 			inputs={ deliveryInfos }
 			formData={ formData }
@@ -204,20 +206,28 @@ const AddressTypeSection = ({ formData, handleInputChange }) =>
 		</div>
 	</Fragment>;
 
+const onHandleInputChange = ({ formData, setFormData }) => async (e) => {
+	const { name, value } = e.target;
+
+	updateFormData({ formData, setFormData, name, value });
+	if(name === 'pincode')
+		await handlePincodeChange({ value, setFormData, e });
+};
+
 const ContactDetails = () => {
 	const [formData, setFormData] = useState(initialFormData);
+	const dispatch = useDispatch();
 
-	const handleInputChange = async (e) => {
-		const { name, value } = e.target;
+	const handleInputChange = onHandleInputChange({ formData, setFormData });
 
-		updateFormData({ formData, setFormData, name, value });
-
-		if(name === 'pincode')
-			await handlePincodeChange({ value, setFormData, e });
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		dispatch(addShippingInfo(formData));
+		dispatch(checkoutStepIncrement());
 	};
 
 	return (
-		<form>
+		<form onSubmit={ handleSubmit }>
 			{ formData.loading && <Loader className="fixed inset-0 bg-black bg-opacity-50 z-50"/> }
 			<ContactDetailsSection { ...{ formData, handleInputChange } }/>
 			<DeliveryAddressSection { ...{ formData, handleInputChange } }/>

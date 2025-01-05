@@ -8,9 +8,9 @@ const cartSlice = createSlice({
 			? JSON.parse(localStorage.getItem('cartItems'))
 			: [],
 		contactDetails: null,
-		deliveryDetails: null,
+		shippingInfo: null,
 		payment: null,
-		checkoutStep: 2,
+		checkoutStep: 0,
 	},
 	reducers: {
 		addCartItemRequest (state) {
@@ -36,7 +36,13 @@ const cartSlice = createSlice({
 
 			state.items = [];
 			state.loading = false;
-			state.deliveryDetails = null;
+			state.shippingInfo = null;
+		},
+		addShippingInfo (state, action) {
+			state.shippingInfo = action.payload;
+		},
+		checkoutStepIncrement (state) {
+			state.checkoutStep += 1;
 		},
 	},
 });
@@ -47,6 +53,8 @@ export const {
 	addCartItemFail,
 	removeCartItem,
 	orderCompleted,
+	addShippingInfo,
+	checkoutStepIncrement,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

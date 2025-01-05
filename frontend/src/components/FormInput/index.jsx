@@ -27,7 +27,7 @@ const FormInput = ({ label, errorMessage, ...props }) => {
 
 	return (
 		<FormInputContent
-			label={ label }
+			label={ `${ label } ${ props.required ? ' *' : '' }` }
 			errorMessage={ errorMessage }
 			focused={ focused }
 			handleFocus={ handleFocus }

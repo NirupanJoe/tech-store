@@ -15,6 +15,7 @@ const SubmitButton = ({ formData, inputInfos, deliveryInfos }) => {
 
 	return (
 		<Button
+			type="submit"
 			disabled={ isDisabled }
 			label="Continue to delivery options"
 		/>
