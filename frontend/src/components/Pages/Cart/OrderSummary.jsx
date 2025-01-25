@@ -23,7 +23,7 @@ const OrderTotal = ({ total }) =>
 
 const CheckoutButton = () =>
 	<button
-		className="w-full bg-primary-600 text-white py-3 rounded-full hover:bg-primary-700
+		className="w-full bg-primary-500 text-white py-1.5 rounded-full hover:bg-primary-500
     transition duration-300 flex items-center justify-center space-x-2"
 	>
 		<Link to="/checkout">Continue to Checkout</Link>
