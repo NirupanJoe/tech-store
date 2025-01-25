@@ -37,6 +37,7 @@ const cartSlice = createSlice({
 			state.items = [];
 			state.loading = false;
 			state.shippingInfo = null;
+			state.checkoutStep = 0;
 		},
 		addShippingInfo (state, action) {
 			state.shippingInfo = action.payload;
