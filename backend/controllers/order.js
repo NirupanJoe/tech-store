@@ -4,9 +4,9 @@ const Status = require('../utils/statusEnum');
 const {
 	validateOrderItems,
 	createOrder,
-	updateProductStock,
 	updateOrderPaymentDetails,
 	updateOrderDeliveryDetails,
+	updateOrderItems,
 } = require('../helper/orders');
 const Order = require('../models/order');
 const ErrorHandler = require('../utils/errorHandler');
@@ -19,9 +19,9 @@ const addOrderItems = asyncHandler(async (
 
 	try {
 		validateOrderItems(orderItems);
-		const order = createOrder(req, orderItems);
 
-		await updateProductStock(orderItems);
+		const updatedOrder = await updateOrderItems(orderItems);
+		const order = createOrder(req, updatedOrder);
 
 		const createdOrder = await order.save();
 

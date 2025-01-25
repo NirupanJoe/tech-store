@@ -5,20 +5,23 @@ const orderSchema = new mongoose.Schema({
 	user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 	orderItems: [
 		{
-			product: {
+			productId: {
 				type: mongoose.Schema.Types.ObjectId,
 				ref: 'Product', required: true,
 			},
+			variantId: { type: mongoose.Schema.Types.ObjectId, required: true },
 			name: { type: String, required: true },
-			qty: { type: Number, required: true },
+			qty: { type: Number, required: true, default: 1 },
 			price: { type: Number, required: true },
 			image: { type: String, required: true },
+			product: { type: Object },
 		},
 	],
 	shippingAddress: {
 		address: { type: String, required: true },
 		city: { type: String, required: true },
 		postalCode: { type: String, required: true },
+		state: { type: String, required: true },
 		country: { type: String, required: true },
 		phoneNo: {
 			type: String,

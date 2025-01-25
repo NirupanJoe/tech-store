@@ -10,10 +10,7 @@ const validateOrderItems = (orderItems) => {
 
 const createOrder = (req, orderItems) => new Order({
 	user: req.user.id,
-	orderItems: orderItems.map((item) => ({
-		...item,
-		product: item.product,
-	})),
+	orderItems: orderItems,
 	shippingAddress: req.body.shippingAddress,
 	paymentMethod: req.body.paymentMethod,
 	itemsPrice: req.body.itemsPrice,
@@ -22,22 +19,41 @@ const createOrder = (req, orderItems) => new Order({
 	totalPrice: req.body.totalPrice,
 });
 
-const updateProductStock = async (orderItems) => {
+const updateProductStock = (product, item) => {
+	if(product.stock > 0) {
+		product.stock -= item.qty;
+		product.save();
+	}
+};
+
+const updateOrderItems = async (orderItems) => {
 	const productUpdates = orderItems.map(async (item) => {
-		const product = await Product.findById(item.product);
+		const product = await Product.findOne({
+			'_id': item.productId,
+			'variants._id': item.variantId,
+		});
 
 		if(!product)
 			throw new ErrorHandler('Product not found', Status.NOT_FOUND.code);
 
-		if(product.stock > 0) {
-			product.stock -= item.qty;
-			return product.save();
-		}
+		const variant = product.variants.id(item.variantId);
 
-		return product;
+		if(!variant)
+			throw new ErrorHandler('Variant not found', Status.NOT_FOUND.code);
+
+		updateProductStock(product, item);
+		// eslint-disable-next-line no-underscore-dangle
+		const updateProduct = { ...product }._doc;
+
+		updateProduct.variant = variant;
+		delete updateProduct.variants;
+
+		return { ...item, product: updateProduct };
 	});
 
-	await Promise.all(productUpdates);
+	const updatedOrder = await Promise.all(productUpdates);
+
+	return updatedOrder;
 };
 
 const updateOrderPaymentDetails = (order, paymentInfo) => {
@@ -60,7 +76,7 @@ const updateOrderDeliveryDetails = (order) => {
 
 module.exports = {
 	validateOrderItems,
-	updateProductStock,
+	updateOrderItems,
 	createOrder,
 	updateOrderPaymentDetails,
 	updateOrderDeliveryDetails,
