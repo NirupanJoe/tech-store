@@ -4,10 +4,13 @@ import { orderCompleted } from '../../../../slice/cartSlice';
 import { createOrder } from '../../../../actions/orderActions';
 import { CardNumberElement } from '@stripe/react-stripe-js';
 
-const showToast = (message, type) => {
+const showToast = (
+	message, type, options = {},
+) => {
 	toast(message, {
 		type: type,
 		position: 'bottom-center',
+		...options,
 	});
 };
 
@@ -22,32 +25,34 @@ const handlePaymentResult = ({ result, dispatch, order, navigate }) => {
 			id: result.paymentIntent.id,
 			status: result.paymentIntent.status,
 		};
+
 		dispatch(createOrder(order));
 		dispatch(orderCompleted());
-		showToast('Order Placed!', 'success');
-		navigate('/');
+		showToast(
+			'Order Placed!', 'success', { onClose: () => navigate('/') },
+		);
 	}
 	else
 		showToast('Please Try Again!', 'warning');
 };
 
-const buildCardPaymentDetails = (elements, user) => ({
+const buildCardPaymentDetails = (elements, shippingInfo) => ({
 	payment_method: {
 		card: elements.getElement(CardNumberElement),
 		billing_details: {
-			name: user.name,
-			email: user.email,
+			name: `${ shippingInfo.firstName } ${ shippingInfo.lastName }`,
+			email: shippingInfo.email,
 		},
 	},
 });
 
-const submitHandler = async ({ stripe, elements, dispatch, user, total, order, navigate }) => {
+const submitHandler = async ({ stripe, elements, dispatch, cartState, total, order, navigate }) => {
 	try {
 		const { data } = await axios.post('/api/payment/process', { amount: total });
 		const clientSecret = data.client_secret;
 
 		const result = await stripe.confirmCardPayment(clientSecret,
-			buildCardPaymentDetails(elements, user));
+			buildCardPaymentDetails(elements, cartState.shippingInfo));
 
 		handlePaymentResult({ dispatch, order, result, navigate });
 	}

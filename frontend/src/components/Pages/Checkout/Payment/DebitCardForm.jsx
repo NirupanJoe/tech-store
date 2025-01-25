@@ -9,21 +9,29 @@ import CardFields from './CardFields';
 import { getTotal } from '../../../../helpers/priceHelper';
 import submitHandler from './submitHandler';
 
+const getShippingAddress = ({ shippingInfo }) => ({
+	address: `${ shippingInfo.firstName } ${ shippingInfo.lastName }, ${ shippingInfo.flatNo }, ${ shippingInfo.street }, ${ shippingInfo.landmark } ${ shippingInfo.city }, ${ shippingInfo.state }, ${ shippingInfo.pincode }`,
+	city: shippingInfo.city,
+	state: shippingInfo.state,
+	postalCode: shippingInfo.pincode,
+	phoneNo: shippingInfo.mobileNumber,
+});
+
 const useData = () => {
 	const stripe = useStripe();
 	const elements = useElements();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const { items } = useSelector(({ cartState }) => cartState);
-	const { user } = useSelector(({ authState }) => authState);
-	const total = getTotal(items);
+	const cartState = useSelector((state) => state.cartState);
+	const total = getTotal(cartState.items);
 	const order = {
-		orderItems: items,
-		total: total,
+		orderItems: cartState.items,
+		shippingAddress: getShippingAddress(cartState),
+		totalPrice: total,
 		paymentMethod: 'Debit Card',
 	};
 
-	return { stripe, elements, dispatch, user, total, order, navigate };
+	return { stripe, elements, dispatch, cartState, total, order, navigate };
 };
 
 const DebitCardForm = () => {

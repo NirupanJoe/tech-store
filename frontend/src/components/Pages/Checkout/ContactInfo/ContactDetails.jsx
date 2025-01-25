@@ -148,9 +148,9 @@ const fetchLocationDetails = async (pincode, setFormData) => {
 		setFormData((prev) => ({ ...prev, loading: false }));
 
 		if(data[0].Status === 'Success') {
-			const { District: city, State: state } = data[0].PostOffice[0];
+			const { District: city, State: state, Country: country } = data[0].PostOffice[0];
 
-			return { city, state };
+			return { city, state, country };
 		}
 		return { city: '', state: '' };
 	}
