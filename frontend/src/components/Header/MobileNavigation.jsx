@@ -37,7 +37,7 @@ const ProfileUnauthenticated = ({ setIsMenuOpen }) =>
 
 const ProfileAuthenticated = ({ user, setIsMenuOpen }) =>
 	<Fragment>
-		<div className="block py-2 text-black-600 hover:text-black hover:font-bold">
+		<div className="block py-2 text-black-600">
 			Hi, { user.name }
 		</div>
 		<hr className="my-2 border-gray-300"/>

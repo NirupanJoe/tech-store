@@ -18,16 +18,17 @@ const authLinks = [
 const ProfileLink = ({ name, to }) =>
 	<Link
 		to={ to }
-		className="block px-4 py-2 text-sm text-black-700 hover:text-black hover:font-bold"
+		className="block px-2 py-2 text-sm text-black-700 hover:text-black hover:font-bold"
 	>
 		{ name }
 	</Link>;
 
 const ProfileAuthenticated = ({ user }) =>
 	<Fragment>
-		<div className="block px-4 py-2 text-sm text-black-700 hover:text-black hover:font-bold">
+		<div className="block px-2 py-2 text-sm text-black-700 cursor-default">
 			Hi, { user.name }
 		</div>
+		<hr className="my-2 border-gray-300"/>
 		{ authLinks .map((item) =>
 			<ProfileLink key={ item.name } { ...item }/>) }
 	</Fragment>;
@@ -42,7 +43,7 @@ const ProfileOpen = () => {
 	const { isAuthenticated, user } = useSelector((state) => state.authState);
 
 	return (
-		<div className="absolute right-0 top-6 w-48 bg-white rounded-md shadow-lg py-1 z-10">
+		<div className="absolute right-0 top-6 w-48 bg-white rounded-md border p-2 shadow-lg z-10">
 			{ isAuthenticated
 				? <ProfileAuthenticated user={ user }/>
 				: <ProfileUnauthenticated/> }
