@@ -14,6 +14,7 @@ import ForgetPassword from '@components/Pages/User/ForgetPassword';
 import ResetPassword from '@components/Pages/User/ResetPassword';
 import Cart from '@components/Pages/Cart';
 import Checkout from '@components/Pages/Checkout/Index';
+import NotFound from '@components/NotFound';
 
 export const routesConfig = [
 	{ path: '/', element: <Home/> },
@@ -31,4 +32,5 @@ export const routesConfig = [
 	{ path: '/password/reset/:token', element: <ResetPassword/> },
 	{ path: '/cart', element: <Cart/> },
 	{ path: '/checkout', element: <ProtectedRoute><Checkout/></ProtectedRoute> },
+	{ path: '*', element: <NotFound/> },
 ];
