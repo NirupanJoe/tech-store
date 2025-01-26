@@ -14,26 +14,43 @@ const showToast = (
 	});
 };
 
-const handlePaymentResult = ({ result, dispatch, order, navigate }) => {
-	if(result.error) {
-		showToast(result.error.message, 'error');
-		document.querySelector('#pay_btn').disabled = false;
-	}
-	else if(result.paymentIntent.status === 'succeeded') {
-		showToast('Payment Success!', 'success');
-		order.paymentInfo = {
-			id: result.paymentIntent.id,
-			status: result.paymentIntent.status,
-		};
+const handleError = (error) => {
+	showToast(error.message, 'error');
+	document.querySelector('#pay_btn').disabled = false;
+};
 
-		dispatch(createOrder(order));
-		dispatch(orderCompleted());
-		showToast(
-			'Order Placed!', 'success', { onClose: () => navigate('/') },
-		);
-	}
+const handlePaymentSuccess = ({ paymentIntent, order, dispatch, navigate }) => {
+	showToast('Payment Success!', 'success');
+
+	order.paymentInfo = {
+		id: paymentIntent.id,
+		status: paymentIntent.status,
+	};
+
+	dispatch(createOrder(order));
+	showToast(
+		'Order Placed!', 'success', {
+			onClose: () => {
+				navigate('/');
+				dispatch(orderCompleted());
+			},
+		},
+	);
+};
+
+const handlePaymentFailure = () => {
+	showToast('Please Try Again!', 'warning');
+};
+
+const handlePaymentResult = ({ result, dispatch, order, navigate }) => {
+	const { error, paymentIntent } = result;
+
+	if(error)
+		handleError(error);
+	else if(paymentIntent.status === 'succeeded')
+		handlePaymentSuccess({ paymentIntent, order, dispatch, navigate });
 	else
-		showToast('Please Try Again!', 'warning');
+		handlePaymentFailure();
 };
 
 const buildCardPaymentDetails = (elements, shippingInfo) => ({
