@@ -52,11 +52,11 @@ const Pricing = ({ price, discountedPrice, discount }) =>
 	</Fragment>;
 
 const BuyButton = ({ _id: id }) =>
-	<button className="bg-black text-white mt-4 py-2 px-4 rounded-full hover:bg-gray-500 w-1/2">
-		<Link to={ `/product/${ id }` }>
+	<Link to={ `/product/${ id }` }>
+		<button className="bg-black text-white mt-4 py-2 px-4 rounded-full hover:bg-gray-500 w-1/2">
 			Buy now
-		</Link>
-	</button>;
+		</button>
+	</Link>;
 
 const ProductCard = ({ product }) => {
 	const variant = product.variants[0];

@@ -22,12 +22,14 @@ const OrderTotal = ({ total }) =>
 	</div>;
 
 const CheckoutButton = () =>
-	<button
-		className="w-full bg-primary-500 text-white py-1.5 rounded-full hover:bg-primary-500
+	<Link to="/checkout">
+		<button
+			className="w-full bg-primary-500 text-white py-1.5 rounded-full hover:bg-primary-500
     transition duration-300 flex items-center justify-center space-x-2"
-	>
-		<Link to="/checkout">Continue to Checkout</Link>
-	</button>;
+		>
+			Continue to Checkout
+		</button>
+	</Link>;
 
 const calculateTotal = (items) =>
 	items.reduce((total, item) => total + item.price, 0);
