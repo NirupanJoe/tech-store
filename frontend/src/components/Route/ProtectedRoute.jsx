@@ -6,7 +6,7 @@ const ProtectedRoute = ({ children }) => {
 	const { isAuthenticated, loading } = useSelector((state) => state.authState);
 
 	if(!isAuthenticated && !loading)
-		return <Navigate to="/login"/>;
+		return <Navigate to="/login" replace={ true }/>;
 
 	if(isAuthenticated)
 		return children;
