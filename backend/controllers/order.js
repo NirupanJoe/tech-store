@@ -6,7 +6,7 @@ const {
 	createOrder,
 	updateOrderPaymentDetails,
 	updateOrderDeliveryDetails,
-	updateOrderItems,
+	updateProductStocks,
 } = require('../helper/orders');
 const Order = require('../models/order');
 const ErrorHandler = require('../utils/errorHandler');
@@ -20,10 +20,10 @@ const addOrderItems = asyncHandler(async (
 	try {
 		validateOrderItems(orderItems);
 
-		const updatedOrder = await updateOrderItems(orderItems);
-		const order = createOrder(req, updatedOrder);
-
+		const order = createOrder(req, orderItems);
 		const createdOrder = await order.save();
+
+		await updateProductStocks(orderItems);
 
 		sendResponse(
 			res, Status.OK.code, Status.OK.message, { order: createdOrder },
