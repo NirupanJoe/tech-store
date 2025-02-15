@@ -1,7 +1,9 @@
 import { useSelector } from 'react-redux';
+import EmptyOrder from '../../../assets/emptyOrder.png';
 
 const NoOrdersFound = () =>
-	<div className="h-[70vh] text-center flex justify-center items-center">
+	<div className="h-[50vh] text-center flex flex-col justify-center items-center">
+		<img src={ EmptyOrder } alt="Empty Order" className="w-1/2"/>
 		<p>You do not have any items in your Orders.</p>
 	</div>;
 
