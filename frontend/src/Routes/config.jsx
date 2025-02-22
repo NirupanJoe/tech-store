@@ -13,7 +13,7 @@ import UpdatePassword from '@components/Pages/User/UpdatePassword';
 import ForgetPassword from '@components/Pages/User/ForgetPassword';
 import ResetPassword from '@components/Pages/User/ResetPassword';
 import Cart from '@components/Pages/Cart';
-import Checkout from '@components/Pages/Checkout/Index';
+import Checkout from '@components/Pages/Checkout';
 import NotFound from '@components/NotFound';
 import Orders from '../components/Pages/Orders';
 
