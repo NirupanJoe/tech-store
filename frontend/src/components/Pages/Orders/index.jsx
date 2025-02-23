@@ -1,5 +1,7 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import EmptyOrder from '../../../assets/emptyOrder.png';
+import { getOrders } from '../../../actions/orderActions';
 
 const NoOrdersFound = () =>
 	<div className="h-[50vh] text-center flex flex-col justify-center items-center">
@@ -16,6 +18,12 @@ const OrderContainer = ({ orders }) => (orders.length > 0
 	: <NoOrdersFound/>);
 
 const Orders = () => {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(getOrders());
+	}, [dispatch]);
+
 	const { orders } = useSelector((state) => state.orderState);
 
 	return <div className="p-4 flex flex-col items-center">
