@@ -2,16 +2,13 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import EmptyOrder from '../../../assets/emptyOrder.png';
 import { getOrders } from '../../../actions/orderActions';
+import DisplayOrdersItems from './DisplayOrdersItems';
 
 const NoOrdersFound = () =>
 	<div className="h-[50vh] text-center flex flex-col justify-center items-center">
 		<img src={ EmptyOrder } alt="Empty Order" className="w-1/2"/>
 		<p>You do not have any items in your Orders.</p>
 	</div>;
-
-const DisplayOrdersItems = ({ orders }) => orders.map((order) => <div key={ order._id }>
-	<p>{ order.createdAt }</p>
-</div>);
 
 const OrderContainer = ({ orders }) => (orders.length > 0
 	? <DisplayOrdersItems orders={ orders }/>
