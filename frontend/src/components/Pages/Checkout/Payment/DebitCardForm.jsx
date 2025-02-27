@@ -16,6 +16,7 @@ const getShippingAddress = ({ shippingInfo }) => ({
 	postalCode: shippingInfo.pincode,
 	phoneNo: shippingInfo.mobileNumber,
 	country: shippingInfo.country,
+	email: shippingInfo.email,
 });
 
 const useData = () => {
