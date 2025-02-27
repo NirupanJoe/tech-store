@@ -6,6 +6,9 @@ import {
 	getOrdersRequest,
 	getOrdersSuccess,
 	getOrdersFail,
+	updateOrderPaidRequest,
+	updateOrderPaidSuccess,
+	updateOrderPaidFail,
 } from '../slice/orderSlice';
 
 export const createOrder = (order) => async (dispatch) => {
@@ -29,5 +32,17 @@ export const getOrders = () => async (dispatch) => {
 	}
 	catch (error) {
 		dispatch(getOrdersFail(error.response.data.message));
+	}
+};
+
+export const updateOrderPaid = (id, paymentInfo) => async (dispatch) => {
+	try {
+		dispatch(updateOrderPaidRequest());
+		const { data: { order }} = await axios.put(`/api/orders/paid/${ id }`, paymentInfo);
+
+		dispatch(updateOrderPaidSuccess(order));
+	}
+	catch (error) {
+		dispatch(updateOrderPaidFail(error.response.data.message));
 	}
 };
