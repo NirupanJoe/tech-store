@@ -27,6 +27,10 @@ const orderSchema = new mongoose.Schema({
 		postalCode: { type: String, required: true },
 		state: { type: String, required: true },
 		country: { type: String, required: true },
+		email: {
+			type: String,
+			validate: [validator.isEmail, 'Please Enter A Valid Email'],
+		},
 		phoneNo: {
 			type: String,
 			required: true,
@@ -40,7 +44,7 @@ const orderSchema = new mongoose.Schema({
 	paymentResult: {
 		id: { type: String },
 		status: { type: String },
-		updateTime: { type: String },
+		updateTime: { type: Date },
 		emailAddress: { type: String },
 	},
 	itemsPrice: { type: Number, required: true, default: 0.0 },
