@@ -9,12 +9,26 @@ import CardFields from './CardFields';
 import { getTotal } from '../../../../helpers/priceHelper';
 import submitHandler from './submitHandler';
 
+const formatAddress = ({
+	firstName,
+	lastName = '',
+	flatNo,
+	street,
+	landmark = '',
+	city,
+	state,
+	pincode,
+}) =>
+	`${ firstName } ${ lastName }, ${ flatNo }, ${ street }, ${ landmark } ${ city }, ${ state }, ${ pincode }`
+		.trim().replace(/\s{2,}/g, ' ');
+
 const getShippingAddress = ({ shippingInfo }) => ({
-	address: `${ shippingInfo.firstName } ${ shippingInfo.lastName }, ${ shippingInfo.flatNo }, ${ shippingInfo.street }, ${ shippingInfo.landmark } ${ shippingInfo.city }, ${ shippingInfo.state }, ${ shippingInfo.pincode }`,
+	address: formatAddress(shippingInfo),
 	city: shippingInfo.city,
 	state: shippingInfo.state,
 	postalCode: shippingInfo.pincode,
 	phoneNo: shippingInfo.mobileNumber,
+	...shippingInfo.alternativeNumber ? { alternativePhoneNo: shippingInfo.alternativeNumber } : {},
 	country: shippingInfo.country,
 	email: shippingInfo.email,
 });

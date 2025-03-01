@@ -39,6 +39,13 @@ const orderSchema = new mongoose.Schema({
 				'Please Enter A Valid Phone Number',
 			],
 		},
+		alternativePhoneNo: {
+			type: String,
+			validate: [
+				validator.isMobilePhone,
+				'Please Enter A Valid Phone Number',
+			],
+		},
 	},
 	paymentMethod: { type: String, required: true },
 	paymentResult: {
