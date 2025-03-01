@@ -8,20 +8,32 @@ const validateOrderItems = (orderItems) => {
 		throw new ErrorHandler('No order items', Status.BAD_REQUEST.code);
 };
 
-const createOrder = (req, orderItems) => new Order({
-	user: req.user.id,
-	orderItems: orderItems,
-	shippingAddress: req.body.shippingAddress,
-	paymentMethod: req.body.paymentMethod,
-	itemsPrice: req.body.itemsPrice,
-	taxPrice: req.body.taxPrice,
-	shippingPrice: req.body.shippingPrice,
-	totalPrice: req.body.totalPrice,
-});
+const updateOrderPaymentDetails = (order, paymentInfo) => {
+	order.isPaid = true;
+	order.paidAt = Date.now();
+	order.paymentResult = {
+		id: paymentInfo.id,
+		status: paymentInfo.status,
+		updateTime: paymentInfo?.updateTime || Date.now(),
+		emailAddress: paymentInfo?.emailAddress,
+	};
+
+	return order;
+};
+
+const createOrder = ({ req, orderItems, paymentInfo }) => {
+	const order = new Order({
+		user: req.user.id,
+		orderItems: orderItems,
+		...req.body,
+	});
+
+	return updateOrderPaymentDetails(order, paymentInfo);
+};
 
 const updateProductStocks = async (orderItems) => {
 	const productUpdates = orderItems.map(async (item) => {
-		const product = await Product.findById(item.product);
+		const product = await Product.findById(item.productId);
 
 		if(!product)
 			throw new ErrorHandler('Product not found', Status.NOT_FOUND.code);
@@ -35,18 +47,6 @@ const updateProductStocks = async (orderItems) => {
 	});
 
 	await Promise.all(productUpdates);
-};
-
-const updateOrderPaymentDetails = (order, paymentInfo) => {
-	order.isPaid = true;
-	order.paidAt = Date.now();
-	order.paymentResult = {
-		id: paymentInfo.id,
-		status: paymentInfo.status,
-		updateTime: paymentInfo.updateTime,
-		emailAddress: paymentInfo.emailAddress,
-	};
-	return order;
 };
 
 const updateOrderDeliveryDetails = (order) => {

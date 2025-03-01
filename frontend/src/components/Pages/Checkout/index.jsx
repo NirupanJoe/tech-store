@@ -1,8 +1,8 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import ContactInfo from './ContactInfo';
 import ViewOrder from './ViewOrder';
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 
 const Checkout = () => {
 	const { items } = useSelector((state) => state.cartState);

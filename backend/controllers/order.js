@@ -15,12 +15,12 @@ const validateObjectId = require('../utils/validateObjectId');
 const addOrderItems = asyncHandler(async (
 	req, res, next,
 ) => {
-	const { orderItems } = req.body;
+	const { orderItems, paymentInfo } = req.body;
 
 	try {
 		validateOrderItems(orderItems);
 
-		const order = createOrder(req, orderItems);
+		const order = createOrder({ req, orderItems, paymentInfo });
 		const createdOrder = await order.save();
 
 		await updateProductStocks(orderItems);

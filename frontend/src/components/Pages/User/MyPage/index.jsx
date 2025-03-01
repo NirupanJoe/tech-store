@@ -28,7 +28,7 @@ const UserInfo = ({ label, value }) =>
 	</div>;
 
 const UserProfileDetails = ({ user }) =>
-	<div className="w-full grid md:justify-start justify-center md:w-1/2 space-y-5">
+	<div className="w-full grid md:justify-start justify-center md:w-1/2 my-5">
 		<UserInfo label="Full Name" value={ user.name }/>
 		<UserInfo label="Email Address" value={ user.email }/>
 		<UserInfo label="Joined" value={ String(user.createdAt).substring(0, dateDisplayLength) }/>
@@ -36,22 +36,13 @@ const UserProfileDetails = ({ user }) =>
 	</div>;
 
 const UserActions = () =>
-	<div className="grid md:block">
-		<Link
-			to="#"
-			className="mt-5 w-full py-2 px-4 text-white bg-red-500
-				rounded hover:bg-red-600 transition-colors"
-		>
-			My Orders
-		</Link>
-		<Link
-			to="/updatePassword"
-			className="mt-3 w-full py-2 px-4 text-white bg-primary-500
+	<Link
+		to="/updatePassword"
+		className="mt-3 w-full py-2 px-4 text-white bg-primary-500
 				rounded hover:bg-primary-600 transition-colors"
-		>
-			Change Password
-		</Link>
-	</div>;
+	>
+		Change Password
+	</Link>;
 
 const MyPage = () => {
 	const { user } = useSelector((state) => state.authState);

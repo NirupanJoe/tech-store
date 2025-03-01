@@ -7,10 +7,10 @@ const categories = [
 	{ name: 'Tablets', to: '/tablets' },
 ];
 const guestLinks = [{ name: 'Log-In/Sign-Up', to: '/login' }];
-const profileLinks = [{ name: 'Orders', to: '#' }];
+const profileLinks = [{ name: 'Orders', to: '/orders' }];
 const authLinks = [
 	{ name: 'My Page', to: '/myPage' },
-	{ name: 'Orders', to: '#' },
+	{ name: 'Orders', to: '/orders' },
 	{ name: 'Log Out', to: '/logout' },
 ];
 

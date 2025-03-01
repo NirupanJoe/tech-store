@@ -6,7 +6,7 @@ const OrderItem = ({ item }) =>
 		<div className="flex flex-col">
 			<div className="font-medium pb-1.5">{ item.name }</div>
 			<div className="text-gray-800 pb-2">
-				{ item.color }, { item.data.ram }
+				{ item.colorName }, { item.data.ram }
 			</div>
 			<div className="font-medium">{ formatCurrency(item.price) }</div>
 		</div>

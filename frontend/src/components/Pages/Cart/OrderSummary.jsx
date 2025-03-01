@@ -4,7 +4,7 @@ import helper from '../../../services/helper';
 const OrderItem = ({ name, price }) =>
 	<div className="flex justify-between">
 		<span className="text-gray-600">{ name }</span>
-		<span className="font-semibold">₹{ helper.formatPrice(price) }</span>
+		<span className="font-semibold">{ helper.formatPrice(price) }</span>
 	</div>;
 
 const OrderItemsList = ({ items }) =>
@@ -17,7 +17,7 @@ const OrderTotal = ({ total }) =>
 	<div className="border-t pt-4 mb-4">
 		<div className="flex justify-between font-bold text-lg">
 			<span>Total</span>
-			<span>₹{ helper.formatPrice(total) }</span>
+			<span>{ helper.formatPrice(total) }</span>
 		</div>
 	</div>;
 

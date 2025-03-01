@@ -8,11 +8,11 @@ const CartItemImage = ({ src, alt }) =>
 		className="w-24 h-24 object-cover rounded-md"
 	/>;
 
-const CartItemDetails = ({ name, color, price }) =>
+const CartItemDetails = ({ name, colorName, price }) =>
 	<div className="flex-grow">
 		<h3 className="text-lg font-semibold text-gray-800">{ name }</h3>
-		<p className="text-sm text-gray-500">{ color }</p>
-		<p className="text-primary-600 font-bold">₹{ helper.formatPrice(price) }</p>
+		<p className="text-sm text-gray-500">{ colorName }</p>
+		<p className="text-primary-600 font-bold">{ helper.formatPrice(price) }</p>
 	</div>;
 
 const CartItemRemoveButton = ({ onRemove }) =>
@@ -29,7 +29,7 @@ const CartItem = ({ item, onRemove }) =>
 		className="bg-white shadow-md rounded-lg p-4 flex items-center space-x-4 relative"
 	>
 		<CartItemImage src={ item.image } alt={ item.name }/>
-		<CartItemDetails name={ item.name } color={ item.color } price={ item.price }/>
+		<CartItemDetails { ... item }/>
 		<CartItemRemoveButton onRemove={ onRemove }/>
 	</div>;
 

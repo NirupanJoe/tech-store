@@ -6,12 +6,12 @@ import { useSelector } from 'react-redux';
 
 const profileOpenData = [
 	{ name: 'Login/Sign-Up', to: '/login' },
-	{ name: 'Orders', to: '#' },
+	{ name: 'Orders', to: '/orders' },
 ];
 
 const authLinks = [
 	{ name: 'MyPage', to: '/myPage' },
-	{ name: 'Orders', to: '#' },
+	{ name: 'Orders', to: '/orders' },
 	{ name: 'Log Out', to: '/logout' },
 ];
 

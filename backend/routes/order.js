@@ -19,8 +19,8 @@ router.route('').post(addOrderItems)
 
 router.route('/:id').get(getOrderById);
 
-router.route('/:id/pay').put(updateOrderToPaid);
+router.route('/pay/:id').put(updateOrderToPaid);
 
-router.route('/:id/deliver').put(updateOrderToDelivered);
+router.route('/deliver/:id').put(updateOrderToDelivered);
 
 module.exports = router;
