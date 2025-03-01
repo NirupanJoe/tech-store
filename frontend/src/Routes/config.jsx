@@ -16,6 +16,7 @@ import Cart from '@components/Pages/Cart';
 import Checkout from '@components/Pages/Checkout';
 import NotFound from '@components/NotFound';
 import Orders from '../components/Pages/Orders';
+import OrderPlaced from '../components/Pages/OrderPlaced';
 
 export const routesConfig = [
 	{ path: '/', element: <Home/> },
@@ -34,5 +35,6 @@ export const routesConfig = [
 	{ path: '/cart', element: <Cart/> },
 	{ path: '/checkout', element: <ProtectedRoute><Checkout/></ProtectedRoute> },
 	{ path: '/orders', element: <ProtectedRoute><Orders/></ProtectedRoute> },
+	{ path: '/orderPlaced', element: <ProtectedRoute><OrderPlaced/></ProtectedRoute> },
 	{ path: '*', element: <NotFound/> },
 ];

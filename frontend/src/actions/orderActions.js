@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import {
 	createOrderRequest,
 	createOrderSuccess,
@@ -12,7 +13,6 @@ import {
 	processPaymentRequest,
 	processPaymentFail,
 } from '../slice/orderSlice';
-import { toast } from 'react-toastify';
 
 export const createOrder = (order) => async (dispatch) => {
 	try {
@@ -39,7 +39,7 @@ export const getOrders = () => async (dispatch) => {
 	}
 };
 
-const handlePaymentSuccess = ({	dispatch, order, paymentIntent }) => {
+const handlePaymentSuccess = ({	dispatch, order, paymentIntent, navigate }) => {
 	order.paymentInfo = {
 		id: paymentIntent.id,
 		status: paymentIntent.status,
@@ -50,12 +50,12 @@ const handlePaymentSuccess = ({	dispatch, order, paymentIntent }) => {
 		type: 'success',
 		position: 'bottom-center',
 		onClose: () => {
-			window.location.href = '/';
+			navigate('/orderPlaced');
 		},
 	});
 };
 
-export const processPayment = ({ stripe, total, order, paymentDetails }) =>
+export const processPayment = ({ stripe, total, paymentDetails, ...rest }) =>
 	async (dispatch) => {
 		try {
 			dispatch(processPaymentRequest());
@@ -66,7 +66,7 @@ export const processPayment = ({ stripe, total, order, paymentDetails }) =>
 			const { paymentIntent } = response;
 
 			(paymentIntent.status === 'succeeded')
-				&& handlePaymentSuccess({ dispatch, order, paymentIntent });
+				&& handlePaymentSuccess({ dispatch, paymentIntent, ...rest });
 		}
 		catch {
 			dispatch(processPaymentFail('Payment Failed!'));
