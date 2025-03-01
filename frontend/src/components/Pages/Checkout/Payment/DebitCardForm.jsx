@@ -62,7 +62,12 @@ const DebitCardForm = () => {
 
 	return <form onSubmit={ handleSubmit } className="bg-white shadow-lg rounded-lg px-4">
 		<CardFields/>
-		<Button id="pay_btn" type="submit" label="Confirm order and pay"/>
+		<Button
+			id="pay_btn"
+			className="disabled:cursor-not-allowed disabled:bg-gray-400"
+			type="submit"
+			label="Confirm order and pay"
+		/>
 	</form>;
 };
 
