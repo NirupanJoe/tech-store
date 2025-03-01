@@ -5,6 +5,7 @@ import { getOrders } from '../../../actions/orderActions';
 import DisplayOrdersItems from './DisplayOrdersItems';
 import Loader from '../../Loader';
 import Error from '../Error';
+import MetaData from '@MetaData';
 
 const NoOrdersFound = () =>
 	<div className="h-[50vh] text-center flex flex-col justify-center items-center">
@@ -18,6 +19,7 @@ const OrderContainer = ({ orders }) => (orders.length > 0
 
 const RenderOrders = ({ orders }) =>
 	<div className="p-4 flex flex-col items-center">
+		<MetaData title="Orders"/>
 		<h1 className="text-2xl font-bold text-gray-800 pt-4 leading-[45.5px]">Orders</h1>
 		<OrderContainer { ...{ orders } }/>
 	</div>;

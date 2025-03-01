@@ -1,9 +1,9 @@
 import { ShoppingCart } from 'lucide-react';
-import MetaData from '../../../MetaData';
+import MetaData from '@MetaData';
 
 const Header = ({ items }) =>
 	<div className="flex justify-between items-center mb-6">
-		<MetaData title="Cart | Home"/>
+		<MetaData title="Carts"/>
 		<h1 className="text-3xl font-bold text-gray-800 flex items-center">
 			<ShoppingCart className="mr-3 text-primary-600" size={ 32 }/>
 			Your Cart

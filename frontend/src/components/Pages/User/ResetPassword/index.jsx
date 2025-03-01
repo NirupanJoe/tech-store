@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import MetaData from '../../../../MetaData';
+import MetaData from '@MetaData';
 import Title from '../Title';
 import useLoginForm from '../useLoginForm';
 import ResetPasswordForm from './RestPasswordForm';

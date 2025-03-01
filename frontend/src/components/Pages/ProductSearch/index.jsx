@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import MetaData from '../../../MetaData';
+import MetaData from '@MetaData';
 import { useParams } from 'react-router-dom';
 import Products from '../../Products';
 import useFetchProducts from '../../../hook/useFetchProducts';

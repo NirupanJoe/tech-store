@@ -4,7 +4,7 @@ import ProductPriceStock from './ProductPriceStock';
 import Rating from '../../Rating';
 import InBoxItems from './InBoxItems';
 import Carousel from '../../Carousel';
-import MetaData from '../../../MetaData';
+import MetaData from '@MetaData';
 
 const ProductImageGallery = ({ productImage }) =>
 	<div className="md:w-1/2">

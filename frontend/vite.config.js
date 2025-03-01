@@ -24,6 +24,7 @@ export default defineConfig({
 		alias: {
 			'@': '/src',
 			'@components': '/src/components',
+			'@MetaData': '/src/MetaData.jsx',
 		},
 	},
 });

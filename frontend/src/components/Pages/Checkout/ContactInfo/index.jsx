@@ -4,6 +4,7 @@ import ContactDetails from './ContactDetails';
 import { useSelector } from 'react-redux';
 import DeliveryOptions from '../DeliveryOptions';
 import Payment from '../Payment';
+import MetaData from '@MetaData';
 
 const checkoutSteps = [
 	{
@@ -27,6 +28,7 @@ const ContactInfo = () => {
 	const { checkoutStep } = useSelector((state) => state.cartState);
 
 	return <div>
+		<MetaData title="Contact Info | Checkout"/>
 		{ checkoutSteps.map((step, i) => <Fragment key={ step.name }>
 			<SectionHeader
 				title={ `${ i + 1 }. ${ step.title }` }

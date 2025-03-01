@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import MetaData from '@MetaData';
 
 const dateDisplayLength = 10;
 
@@ -49,6 +50,7 @@ const MyPage = () => {
 
 	return (
 		<div className="flex flex-col items-center mt-5 md:flex-row md:justify-around md:space-x-4">
+			<MetaData title="My Profile"/>
 			<UserProfileImage/>
 			<UserProfileDetails user={ user }/>
 		</div>
