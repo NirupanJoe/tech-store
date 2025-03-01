@@ -5,7 +5,7 @@ const Header = ({ items }) =>
 	<div className="flex justify-between items-center mb-6">
 		<MetaData title="Carts"/>
 		<h1 className="text-3xl font-bold text-gray-800 flex items-center">
-			<ShoppingCart className="mr-3 text-primary-600" size={ 32 }/>
+			<ShoppingCart className="mr-3 text-primary-400" size={ 32 }/>
 			Your Cart
 		</h1>
 		<span className="text-lg font-semibold text-gray-600">

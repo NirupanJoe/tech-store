@@ -1,17 +1,8 @@
 import { CheckCircleIcon } from 'lucide-react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { orderCompleted } from '../../../slice/cartSlice';
-
-const HomePageButton = () =>
-	<Link to="/">
-		<button className="bg-primary-400 text-white px-6 py-2 rounded-lg
-			hover:bg-primary-500 transition"
-		>
-			Go to Homepage
-		</button>
-	</Link>;
+import HomePageButton from '../../HomePageButton';
 
 const OrderPlaced = () => {
 	const dispatch = useDispatch();
