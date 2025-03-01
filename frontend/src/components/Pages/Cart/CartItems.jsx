@@ -4,7 +4,7 @@ import OrderSummary from './OrderSummary';
 import CartItem from './CartItem';
 
 const CartItemList = ({ items, dispatch }) =>
-	<div className="md:col-span-2 space-y-4">
+	<div className="md:col-span-2 space-y-6">
 		{ items.map((item) =>
 			<CartItem
 				key={ item.id }
@@ -17,7 +17,9 @@ const CartItems = ({ items }) => {
 	const dispatch = useDispatch();
 
 	return (
-		<div className="grid md:grid-cols-3 gap-6">
+		<div className="container mx-auto p-8 grid md:grid-cols-3
+		gap-10 bg-white shadow-lg rounded-lg"
+		>
 			<CartItemList items={ items } dispatch={ dispatch }/>
 			<OrderSummary items={ items }/>
 		</div>
