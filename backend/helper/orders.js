@@ -33,7 +33,7 @@ const createOrder = ({ req, orderItems, paymentInfo }) => {
 
 const updateProductStocks = async (orderItems) => {
 	const productUpdates = orderItems.map(async (item) => {
-		const product = await Product.findById(item.product);
+		const product = await Product.findById(item.productId);
 
 		if(!product)
 			throw new ErrorHandler('Product not found', Status.NOT_FOUND.code);
