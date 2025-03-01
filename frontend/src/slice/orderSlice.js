@@ -14,6 +14,7 @@ const orderSlice = createSlice({
 		createOrderSuccess (state, action) {
 			state.loading = false;
 			state.orders = action.payload;
+			state.error = '';
 		},
 		createOrderFail (state, action) {
 			state.loading = false;
@@ -25,6 +26,7 @@ const orderSlice = createSlice({
 		getOrdersSuccess (state, action) {
 			state.loading = false;
 			state.orders = action.payload;
+			state.error = '';
 		},
 		getOrdersFail (state, action) {
 			state.loading = false;
@@ -34,6 +36,7 @@ const orderSlice = createSlice({
 			state.loading = false;
 		},
 		updateOrderPaidSuccess (state, action) {
+			state.error = '';
 			state.loading = false;
 			state.orders = state.orders.map((order) =>
 				(order._id === action.payload.id ? action.payload.order : order));
