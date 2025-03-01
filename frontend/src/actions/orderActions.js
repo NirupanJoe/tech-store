@@ -9,7 +9,10 @@ import {
 	updateOrderPaidRequest,
 	updateOrderPaidSuccess,
 	updateOrderPaidFail,
+	processPaymentRequest,
+	processPaymentFail,
 } from '../slice/orderSlice';
+import { toast } from 'react-toastify';
 
 export const createOrder = (order) => async (dispatch) => {
 	try {
@@ -19,21 +22,56 @@ export const createOrder = (order) => async (dispatch) => {
 		dispatch(createOrderSuccess(data));
 	}
 	catch (error) {
-		dispatch(createOrderFail(error.response.data.message));
+		dispatch(createOrderFail(error.message));
 	}
 };
 
 export const getOrders = () => async (dispatch) => {
 	try {
 		dispatch(getOrdersRequest());
+
 		const { data: { orders }} = await axios.get('/api/orders');
 
 		dispatch(getOrdersSuccess(orders));
 	}
 	catch (error) {
-		dispatch(getOrdersFail(error.response.data.message));
+		dispatch(getOrdersFail(error.message));
 	}
 };
+
+const handlePaymentSuccess = ({	dispatch, order, paymentIntent }) => {
+	order.paymentInfo = {
+		id: paymentIntent.id,
+		status: paymentIntent.status,
+	};
+
+	dispatch(createOrder(order));
+	toast('Order Placed!', {
+		type: 'success',
+		position: 'bottom-center',
+		onClose: () => {
+			window.location.href = '/';
+		},
+	});
+};
+
+export const processPayment = ({ stripe, total, order, paymentDetails }) =>
+	async (dispatch) => {
+		try {
+			dispatch(processPaymentRequest());
+			const { data } = await axios.post('/api/payment/process', { amount: total });
+
+			const response = await stripe.confirmCardPayment(data.client_secret, paymentDetails);
+
+			const { paymentIntent } = response;
+
+			(paymentIntent.status === 'succeeded')
+				&& handlePaymentSuccess({ dispatch, order, paymentIntent });
+		}
+		catch {
+			dispatch(processPaymentFail('Payment Failed!'));
+		}
+	};
 
 export const updateOrderPaid = (id, paymentInfo) => async (dispatch) => {
 	try {
