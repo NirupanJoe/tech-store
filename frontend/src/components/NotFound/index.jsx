@@ -34,7 +34,7 @@ const ErrorImage = () =>
 	</div>;
 
 const NotFound = () =>
-	<div className="flex flex-col items-center justify-center h-screen
+	<div className="flex flex-col items-center justify-center pb-10
 		bg-gradient-to-r from-blue-100 to-blue-300 text-gray-800"
 	>
 		<ErrorHeading/>
