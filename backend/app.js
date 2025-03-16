@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: '../.env' });
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const path = require('path');
@@ -19,6 +19,9 @@ app.use('/api/users', auth);
 app.use('/api/admin', admin);
 app.use('/api/orders', order);
 app.use('/api', payment);
+console.log('path', path.join(__dirname));
+
+console.log('process.env.NODE_ENV', process.env.NODE_ENV);
 
 if(process.env.NODE_ENV === 'production') {
 	app.use(express.static(path.join(__dirname, '../frontend/dist')));
