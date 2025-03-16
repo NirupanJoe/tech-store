@@ -28,7 +28,7 @@ const FilterSidebar = ({ isFilterOpen, setFilterOpen, props }) => {
 		<div
 			className={ `sm:w-1/3 w-11/12 md:w-1/4 transition-transform duration-300 ease-in-out 
       ${ isFilterOpen ? 'translate-x-0' : '-translate-x-full' } 
-      sm:translate-x-0 absolute sm:static bg-white z-10 h-full sm:h-auto` }
+      sm:translate-x-0 absolute sm:static bg-white z-10 sm:h-auto` }
 		>
 			<div className="flex p-2 sm:hidden sm: justify-between items-center">
 				<div className="text-lg font-semibold">Filters</div>
@@ -47,9 +47,12 @@ const ProductContent = (props) =>
 		<ProductPagination { ...props }/>
 	</div>;
 
-const FilterOverlay = ({ isFilterOpen, setFilterOpen }) => {
-	if(!isFilterOpen)
+const FilterOverlay = ({ isFilterOpen, setFilterOpen, props }) => {
+	const { filter } = props;
+
+	if(!filter || !isFilterOpen)
 		return null;
+
 	return (
 		<div
 			className="fixed inset-0 bg-black opacity-50 sm:hidden"
@@ -69,7 +72,7 @@ const RenderProducts = (props) => {
 					<FilterSidebar { ...{ props, isFilterOpen, setFilterOpen } }/>
 					<ProductContent { ...props }/>
 				</div>
-				<FilterOverlay isFilterOpen={ isFilterOpen } setFilterOpen={ setFilterOpen }/>
+				<FilterOverlay { ...{ props, isFilterOpen, setFilterOpen } }/>
 			</main>
 		</Fragment>
 	);
