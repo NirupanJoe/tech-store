@@ -55,7 +55,7 @@ const FilterOverlay = ({ isFilterOpen, setFilterOpen, props }) => {
 
 	return (
 		<div
-			className="fixed inset-0 bg-black opacity-50 sm:hidden"
+			className="fixed inset-0 bg-black opacity-50"
 			onClick={ () => setFilterOpen(false) }
 		/>
 	);
