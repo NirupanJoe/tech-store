@@ -1,6 +1,8 @@
 const app = require('./app');
 const connectDatabase = require('./config/database');
+const cors = require('cors');
 
+app.use(cors());
 connectDatabase();
 
 const defaultPORT = 8000;
