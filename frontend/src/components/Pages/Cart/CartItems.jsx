@@ -17,7 +17,7 @@ const CartItems = ({ items }) => {
 	const dispatch = useDispatch();
 
 	return (
-		<div className="container mx-auto p-8 grid md:grid-cols-3
+		<div className="grid md:grid-cols-3
 		gap-10 bg-white shadow-lg rounded-lg"
 		>
 			<CartItemList items={ items } dispatch={ dispatch }/>
