@@ -55,7 +55,7 @@ const FilterOverlay = ({ isFilterOpen, setFilterOpen, props }) => {
 
 	return (
 		<div
-			className="fixed inset-0 bg-black opacity-50"
+			className="fixed inset-0 bg-black opacity-50 sm:hidden"
 			onClick={ () => setFilterOpen(false) }
 		/>
 	);
@@ -67,7 +67,7 @@ const RenderProducts = (props) => {
 	return (
 		<Fragment>
 			<FilterHeader { ...{ ...props, isFilterOpen, setFilterOpen } }/>
-			<main className="mx-auto px-4 py-8">
+			<main className="mx-auto px-4 py-6">
 				<div className="flex flex-col sm:flex-row sm:justify-around">
 					<FilterSidebar { ...{ props, isFilterOpen, setFilterOpen } }/>
 					<ProductContent { ...props }/>

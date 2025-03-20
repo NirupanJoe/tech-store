@@ -1,16 +1,17 @@
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import helper from '../../services/helper';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Title = ({ title }) =>
-	<h3 className="text-lg font-semibold mt-4 h-5">{ title }</h3>;
+	<h3 className="text-lg font-semibold h-5">{ title }</h3>;
 
 const Image = ({ src, product: { _id: id, name: alt }}) =>
 	<div className="flex justify-center">
 		<Link to={ `/product/${ id }` }>
 			<LazyLoadImage
-				className="mt-2 sm:w-96 md:w-80 ld:w-96 sm:h-96 md:h-80 ld:h-96 object-contain"
+				className="mt-2 sm:w-96 md:w-80 ld:w-96 h-64 object-contain"
 				alt={ alt }
 				effect="blur"
 				wrapperProps={ { style: { transitionDelay: '0.5s' }} }
@@ -45,7 +46,7 @@ const Storage = ({ storage }) =>
 const Pricing = ({ price, discountedPrice, discount }) =>
 	<Fragment>
 		<p className="text-sm mt-2 font-semibold">
-			₹ { discountedPrice }
+			{ helper.formatPrice(discountedPrice) }
 		</p>
 		<p className="text-gray-400 line-through text-sm">{ price }</p>
 		<p className="text-primary-500 text-sm mt-1">Save { discount }</p>
@@ -61,7 +62,7 @@ const BuyButton = ({ _id: id }) =>
 const ProductCard = ({ product }) => {
 	const variant = product.variants[0];
 
-	return <div className="rounded-lg p-4 text-center">
+	return <div className="rounded-lg p-2 sm:p-4 text-center">
 		<Title title={ product.name }/>
 		<Image src={ variant.imageUrls[0] } product={ product }/>
 		<Color color={ variant.colorName }/>
