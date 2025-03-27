@@ -39,7 +39,7 @@ const AddToCartButton = ({ product: { stock, ...product }, ...props }) => {
 };
 
 const ProductPriceStock = (props) =>
-	<div className="bg-gray-100 p-4 rounded-lg mb-4">
+	<div className="bg-white shadow-md p-4 rounded-lg mb-4">
 		<ProductHeading { ...props }/>
 		<PriceDetails { ...props }/>
 		<StockStatus { ...props }/>

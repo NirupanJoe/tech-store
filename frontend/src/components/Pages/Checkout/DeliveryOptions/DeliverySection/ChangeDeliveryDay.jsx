@@ -11,7 +11,7 @@ const DeliveryOptionsList = ({ dates, selectedDate, onDateSelect, isExpanded }) 
 			className={ `w-full p-4 text-left my-1.5 rounded-lg border-2 transition-colors ${
 				selectedDate === date.full
 					? 'border-primary-500 font-medium'
-					: 'border-gray-200 hover:border-gray-300'
+					: 'border-gray-200 hover:border-primary-300'
 			}` }
 		>
 			{ date.full }

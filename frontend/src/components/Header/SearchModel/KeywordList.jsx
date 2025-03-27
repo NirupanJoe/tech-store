@@ -1,13 +1,10 @@
-import config from '../../../actions/config';
-
-const KeywordList = ({ keywords = config.popularKeywords, setSearchTerm, handleSearch, title }) => {
+const KeywordList = ({ keywords = [], setSearchTerm, handleSearch }) => {
 	const handleClick = (keyword) => {
 		setSearchTerm(keyword);
 		handleSearch(keyword);
 	};
 
-	return <div className="mt-4">
-		{ title && <h3 className="font-semibold mb-2">{ title }</h3> }
+	return <div className="mt-3">
 		<ul>
 			{ keywords.map((keyword, index) =>
 				<li

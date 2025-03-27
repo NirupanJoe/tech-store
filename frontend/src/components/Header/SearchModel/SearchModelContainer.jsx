@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import useSearchModalLogic from './useSearchModelLogic';
 import SearchInput from './searchInput';
-import KeywordList from './KeywordList';
+import PopularKeywords from './PopularKeywords';
 import SearchHistory from './SearchHistory';
 
 const SearchModelContainer = ({ onClose }) => {
@@ -9,7 +9,8 @@ const SearchModelContainer = ({ onClose }) => {
 
 	return <Fragment>
 		<SearchInput { ...{ ...searchProps, onClose } }/>
-		<KeywordList { ...{ ...searchProps, title: 'Popular Keywords' } }/>
+		<PopularKeywords { ...searchProps }/>
+		<hr className="border-gray-300 mt-2"/>
 		<SearchHistory { ...searchProps }/>
 	</Fragment>;
 };
