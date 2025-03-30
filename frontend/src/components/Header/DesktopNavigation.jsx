@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const data = [
@@ -11,20 +12,23 @@ const data = [
 	},
 ];
 
-const DesktopNavigation = ({ setIsMenuOpen }) =>
-	<nav className="hidden lg:flex space-x-6">
+const DesktopNavigation = () => {
+	const [selected, setSelected] = useState(null);
+
+	return <nav className="hidden lg:flex space-x-6">
 		{
 			data.map((item) =>
 				<Link
 					key={ item.name }
 					to={ item.to }
-					className="text-black text-md px-3 py-1
-           font-medium hover:bg-black hover:text-white hover:rounded-[40px]"
-					onClick={ () => setIsMenuOpen(false) }
+					className={ `text-black text-md px-3 py-1 ${ (item.name === selected) && 'bg-black text-white rounded-[40px]' }
+           font-medium hover:bg-black hover:text-white hover:rounded-[40px]` }
+					onClick={ () => setSelected(item.name) }
 				>
 					{ item.name }
 				</Link>)
 		}
 	</nav>;
+};
 
 export default DesktopNavigation;
