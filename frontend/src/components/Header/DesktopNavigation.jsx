@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-const data = [
+const navigationLinks = [
 	{
 		name: 'Smartphones',
 		to: '/smartphones',
@@ -13,22 +12,26 @@ const data = [
 ];
 
 const DesktopNavigation = () => {
-	const [selected, setSelected] = useState(null);
+	const location = useLocation();
 
-	return <nav className="hidden lg:flex space-x-6">
-		{
-			data.map((item) =>
-				<Link
-					key={ item.name }
-					to={ item.to }
-					className={ `text-black text-md px-3 py-1 ${ (item.name === selected) && 'bg-black text-white rounded-[40px]' }
-           font-medium hover:bg-black hover:text-white hover:rounded-[40px]` }
-					onClick={ () => setSelected(item.name) }
-				>
-					{ item.name }
-				</Link>)
-		}
-	</nav>;
+	return (
+		<nav className="hidden lg:flex space-x-6">
+			{ navigationLinks.map((item) => {
+				const isSelected = location.pathname === item.to;
+
+				return (
+					<Link
+						key={ item.name }
+						to={ item.to }
+						className={ `text-md px-3 py-1 font-medium transition-all text-black hover:bg-black hover:text-white hover:rounded-[40px]
+							${ isSelected && 'bg-black text-white rounded-[40px]' }` }
+					>
+						{ item.name }
+					</Link>
+				);
+			}) }
+		</nav>
+	);
 };
 
 export default DesktopNavigation;
