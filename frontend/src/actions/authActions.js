@@ -40,6 +40,18 @@ export const login = ({ email, password }) => async (dispatch) => {
 	}
 };
 
+export const googleAuth = ({ email, name, googleId }) => async (dispatch) => {
+	try {
+		dispatch(loginRequest());
+		const { data: { user }} = await axios.post('/api/users/google', { email, name, googleId });
+
+		dispatch(loginSuccess({ user }));
+	}
+	catch (error) {
+		dispatch(loginFail({ error: error.response.data.message }));
+	}
+};
+
 export const clearAuthError = () => (dispatch) => {
 	dispatch(clearError());
 };
