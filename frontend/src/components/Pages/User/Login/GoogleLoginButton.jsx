@@ -4,9 +4,8 @@ import { useDispatch } from 'react-redux';
 import { googleAuth } from '../../../../actions/authActions';
 import { toast } from 'react-toastify';
 
-// eslint-disable-next-line object-shorthand
 const withGoogleAuth = (dispatch) => ({
-	handleSuccess: function ({ credential }) {
+	handleSuccess ({ credential }) {
 		try {
 			const { email, name, sub: googleId } = jwtDecode(credential);
 
@@ -14,10 +13,10 @@ const withGoogleAuth = (dispatch) => ({
 		}
 		catch (error) {
 			console.error('Google Login decoding failed:', error);
-			this.handleError();
+			withGoogleAuth(dispatch).handleError();
 		}
 	},
-	handleError: function () {
+	handleError () {
 		toast('Google Login failed', {
 			type: 'error',
 			position: 'bottom-center',
