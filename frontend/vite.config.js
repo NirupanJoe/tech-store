@@ -1,9 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
-import { config } from 'dotenv';
-
-config({ path: '../.env' });
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -30,6 +27,5 @@ export default defineConfig({
 			'@MetaData': '/src/MetaData.jsx',
 		},
 	},
-	// eslint-disable-next-line no-undef
-	define: { 'process.env': process.env },
+	envDir: '../',
 });
