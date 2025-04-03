@@ -25,9 +25,26 @@ const userSchema = new mongoose.Schema({
 	},
 	password: {
 		type: String,
-		required: [true, 'Please Enter Your Password'],
+		validate: {
+			validator: function (value) {
+				return value || this.googleId;
+			},
+			message: 'Please Enter A Password.',
+		},
+
 		trim: true,
 		select: false,
+	},
+	googleId: {
+		type: String,
+		unique: true,
+		sparse: true,
+		validate: {
+			validator: function (value) {
+				return value || this.password;
+			},
+			message: 'Please Enter a googleId.',
+		},
 	},
 	resetPasswordToken: String,
 	resetPasswordTokenExpire: Date,

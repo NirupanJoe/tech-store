@@ -27,4 +27,5 @@ export default defineConfig({
 			'@MetaData': '/src/MetaData.jsx',
 		},
 	},
+	envDir: '../',
 });

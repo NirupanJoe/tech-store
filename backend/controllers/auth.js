@@ -242,3 +242,45 @@ exports.deleteUser = asyncHandler(async (
 		{ message: 'User deleted successfully' },
 	);
 });
+
+const findOrCreateGoogleUser = async (
+	name, email, googleId, next,
+) => {
+	const user = await User.findOne({ email });
+
+	if(!user)
+		return User.create({ name, email, googleId });
+	else if(!user.googleId) {
+		user.googleId = googleId;
+		await user.save();
+	}
+	else if(user.googleId !== googleId) {
+		next(new ErrorHandler('Invalid Google ID', Status.UNAUTHORIZED.code));
+		return null;
+	}
+
+	return user;
+};
+
+exports.googleAuth = asyncHandler(async (
+	req, res, next,
+) => {
+	const { name, email, googleId } = req.body;
+
+	const user = await findOrCreateGoogleUser(
+		name, email, googleId, next,
+	);
+
+	if(!user)
+		return;
+
+	const token = user.getJwtToken();
+
+	setTokenCookie(res, token);
+
+	user.googleId = undefined;
+
+	sendResponse(
+		res, Status.OK.code, Status.OK.message, { user, token },
+	);
+});
