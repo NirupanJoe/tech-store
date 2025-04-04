@@ -180,6 +180,20 @@
         "discountedPrice": 31999.99,
         "discount": 3000
       },
+			{
+        "color": "#2a3244",
+        "colorName": "Dark Blue",
+        "storage": "128GB",
+        "ram": "6GB",
+        "imageUrls": [
+          "/assets/tabE/gray/image.png",
+          "/assets/tabE/gray/front.png",
+          "/assets/tabE/gray/back.png"
+        ],
+        "price": 36999.99,
+        "discountedPrice": 31999.99,
+        "discount": 3000
+      },
       {
         "color": "#2a3244",
         "colorName": "Dark Blue",
