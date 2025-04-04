@@ -24,19 +24,15 @@ Follow these steps to set up the project:
 	git clone https://github.com/NirupanJoe/tech-store
 	```
 
-2.  **Backend Setup**
+2.  **Install Dependencies**
 
 	```
-	cd backend
-	npm install
-	npm run dev
+	npm run setup
 	```
 
-3.  **Frontend Setup**
+3.  **Start the Application**
 
 	```
-	cd frontend
-	npm install
 	npm run dev
 	```
 
