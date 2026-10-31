@@ -34,15 +34,8 @@ const addOrderItems = asyncHandler(async (
 	}
 });
 
-const getMyOrders = asyncHandler(async (
-	req, res, next,
-) => {
+const getMyOrders = asyncHandler(async (req, res) => {
 	const orders = await Order.find({ user: req.user.id });
-
-	if(orders.length === 0) {
-		return next(new ErrorHandler('No orders found',
-			Status.NOT_FOUND.code));
-	}
 
 	sendResponse(
 		res, Status.OK.code, Status.OK.message, { orders },
